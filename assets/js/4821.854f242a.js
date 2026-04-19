@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkportal_ia_universitaria=self.webpackChunkportal_ia_universitaria||[]).push([[4821],{4821:(a,e,i)=>{i.d(e,{createGitGraphServices:()=>r.b});var r=i(4187);i(2519)}}]);
