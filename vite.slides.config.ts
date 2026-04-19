@@ -24,7 +24,7 @@ const input = Object.fromEntries(
 
 export default defineConfig({
   root: 'slides',
-  base: '/slides/',
+  base: '/genai-program/slides/',
   build: {
     outDir: '../static/slides',
     emptyOutDir: true,

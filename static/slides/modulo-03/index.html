@@ -4,60 +4,790 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Módulo 03. Prompting y verificación</title>
-    <script type="module" crossorigin src="/slides/assets/reveal-init-Dr2l8QBW.js"></script>
-    <link rel="stylesheet" crossorigin href="/slides/assets/reveal-init-CU_mynG4.css">
-    <link rel="stylesheet" crossorigin href="/slides/assets/theme-AcWzmAPi.css">
+    <script type="module" crossorigin src="/genai-program/slides/assets/reveal-init-Dr2l8QBW.js"></script>
+    <link rel="stylesheet" crossorigin href="/genai-program/slides/assets/reveal-init-CU_mynG4.css">
+    <link rel="stylesheet" crossorigin href="/genai-program/slides/assets/theme-Cf8BPWTr.css">
   </head>
   <body>
     <div class="reveal">
       <div class="slides">
+
+        <!-- ============================================================
+             SLIDE 1: TITLE
+             ============================================================ -->
         <section class="title-slide">
-          <p class="eyebrow">Programa IA Universitaria</p>
-          <h1>Módulo 03. Prompting y verificación</h1>
-          <p>Desarrolla solicitudes reproducibles, criterios de evaluación, verificación con fuentes y corrección humana de salidas de IA.</p>
-          <aside class="notes">Abrir con el propósito del módulo y conectar con la evidencia esperada: Prompt inicial y revisado, Tabla de verificación, Auditoría final.</aside>
+          <p class="eyebrow">Programa IA Universitaria · Semanas 3–4</p>
+          <h1>Módulo 03<br/>Prompting y verificación</h1>
+          <p class="subtitle">Diseña solicitudes reproducibles · Audita lo que recibes · Decide tú</p>
+          <aside class="notes">
+            Abrir con el propósito del módulo: en dos semanas, el estudiante va a construir prompts defendibles y auditar las salidas que recibe. Conectar con la evidencia esperada: Bitácora de prompts (mínimo 2 iteraciones), Tabla de verificación (mínimo 3 afirmaciones), Auditoría final con decisiones humanas explícitas. Duración total: 10 horas (2 sesiones síncronas de 90 min + asincrónico). No empezar con "hoy vamos a ver" — empezar con una pregunta: ¿alguna vez le pidiste algo a alguien y la respuesta fue inútil porque entendió mal lo que necesitabas?
+          </aside>
         </section>
+
+        <!-- ============================================================
+             SLIDE 2: AGENDA (AMBAS SEMANAS)
+             ============================================================ -->
         <section>
-  <h2>Propósito del módulo</h2>
-  <ul><li>Desarrolla solicitudes reproducibles, criterios de evaluación, verificación con fuentes y corrección humana de salidas de IA.</li></ul>
-</section>
-<section>
-  <h2>Objetivos de aprendizaje</h2>
-  <ul><li>Diseñar prompts con contexto, tarea, formato, criterios y límites.</li><li>Auditar una salida de IA con fuentes, revisión humana y documentación del proceso.</li><li>Rechazar o corregir resultados cuando la evidencia sea insuficiente.</li></ul>
-</section>
-<section>
-  <h2>Competencias abordadas</h2>
-  <ul><li>Prompting reproducible</li><li>Verificación</li><li>Trazabilidad</li></ul>
-</section>
-<section>
-  <h2>Conceptos clave</h2>
-  <ul><li>Reescribe un prompt débil y demuestra mejora observable.</li><li>Documenta un ciclo de prompt, resultado, problema, revisión y decisión final.</li><li>Entrega una auditoría de salida de IA con evidencias.</li></ul>
-</section>
-<section>
-  <h2>Flujo docente paso a paso</h2>
-  <ul><li>90 min: Semana 3: anatomía de un prompt verificable y taller de reescritura</li><li>90 min: Semana 4: verificación con fuentes, auditoría de salida y decisión humana</li></ul>
-</section>
-<section>
-  <h2>Actividad principal</h2>
-  <ul><li>Completar una bitácora de prompts con dos iteraciones.</li><li>Auditar una respuesta con al menos dos evidencias externas.</li><li>Publicar una reflexión sobre qué decisión final fue humana.</li></ul>
-</section>
-<section>
-  <h2>Evidencia esperada</h2>
-  <ul><li>Prompt inicial y revisado</li><li>Tabla de verificación</li><li>Auditoría final</li></ul>
-</section>
-<section>
-  <h2>Ética, privacidad e integridad</h2>
-  <ul><li>Verificar afirmaciones sobre personas, salud, finanzas o decisiones de alto impacto con extremo cuidado.</li><li>No simular fuentes.</li></ul>
-</section>
-<section>
-  <h2>Reflexión de cierre</h2>
-  <ul><li>Qué delegaste a la IA.</li><li>Qué verificaste.</li><li>Qué decisión final tomaste tú.</li></ul>
-</section>
-        <section>
-          <h2>Cierre</h2>
-          <p>Registrar evidencias, dudas abiertas y siguiente acción antes de salir de la sesión.</p>
-          <aside class="notes">Cerrar con una tarea observable y recordar la política de trazabilidad.</aside>
+          <h2>Agenda — dos semanas</h2>
+          <div class="two-col">
+            <div class="card">
+              <h3><span class="tag">Semana 3</span> Prompting</h3>
+              <ul>
+                <li>¿Qué es un prompt?</li>
+                <li>Anatomía CTFCL</li>
+                <li>Tipos de prompts</li>
+                <li>La bitácora de prompts</li>
+                <li>Iteración en práctica</li>
+                <li>Errores comunes</li>
+                <li><strong>Demo + actividad</strong></li>
+              </ul>
+            </div>
+            <div class="card">
+              <h3><span class="tag">Semana 4</span> Verificación</h3>
+              <ul>
+                <li>¿Por qué verificar?</li>
+                <li>Proceso en 5 pasos</li>
+                <li>Herramientas</li>
+                <li>La tabla de verificación</li>
+                <li>Auditoría completa</li>
+                <li>Decisiones humanas</li>
+                <li><strong>Demo + actividad</strong></li>
+              </ul>
+            </div>
+          </div>
+          <p class="subtitle">Entregables: bitácora · tabla de verificación · auditoría final</p>
+          <aside class="notes">
+            Mostrar la agenda brevemente: 2 minutos máximo. Señalar que Semana 3 y Semana 4 tienen lógica acumulativa: primero construyen prompts bien hechos, luego aprenden a auditar lo que reciben. No adelantar verificación a Semana 3. La secuencia importa porque quien no sabe construir un prompt difícilmente puede identificar qué salió mal en la respuesta.
+          </aside>
         </section>
+
+        <!-- ============================================================
+             SLIDE 3: ¿QUÉ ES UN PROMPT?
+             ============================================================ -->
+        <section>
+          <h2>¿Qué es un prompt?</h2>
+          <p>La instrucción que le das a un sistema de IA.<br/>
+          <span class="hl">No es una búsqueda.</span> Es una especificación.</p>
+          <div class="two-col" style="margin-top:0.6em">
+            <div class="warning">
+              <strong>Búsqueda en Google</strong><br/>
+              <code>inhibición enzimática</code><br/><br/>
+              → El motor busca páginas que contengan esas palabras.<br/>
+              → Tú filtras los resultados.
+            </div>
+            <div class="tip">
+              <strong>Prompt a un LLM</strong><br/>
+              <code>Explícame la inhibición enzimática</code><br/><br/>
+              → El sistema <em>genera</em> una respuesta desde cero.<br/>
+              → Lo que no especificas, el sistema lo <span class="hl">inventa plausiblemente</span>.
+            </div>
+          </div>
+          <p style="margin-top:0.7em">Un prompt efectivo especifica: <strong>quién eres · qué quieres · cómo lo quieres · con qué criterios · qué NO debe hacer</strong></p>
+          <aside class="notes">
+            La distinción búsqueda vs. prompt es conceptualmente importante. En una búsqueda, el motor muestra páginas existentes y el humano filtra. En un prompt, el sistema genera nuevo texto. No hay páginas que "encontró" — generó texto estadísticamente probable dado el prompt. Eso significa que lo que no dijiste, lo asumió. Dar un ejemplo cercano: si no dices el nivel de dificultad, el sistema elige uno. Si no dices el formato, elige el más común en su entrenamiento. Esa elección puede ser incorrecta para tu propósito. Tiempo: 3 minutos.
+          </aside>
+        </section>
+
+        <!-- ============================================================
+             SLIDE 4: ANATOMÍA — CTFCL OVERVIEW
+             ============================================================ -->
+        <section>
+          <h2>Anatomía del prompt: <span class="hl">CTFCL</span></h2>
+          <p class="subtitle">Cinco componentes · Todos son necesarios · El orden es flexible</p>
+          <table>
+            <thead>
+              <tr><th>Letra</th><th>Componente</th><th>Qué aporta</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong class="verde">C</strong></td><td>Contexto</td><td>Quién eres, cuál es la tarea mayor, qué sabe el sistema sobre ti</td></tr>
+              <tr><td><strong class="verde">T</strong></td><td>Tarea</td><td>La acción específica que debe realizar el sistema</td></tr>
+              <tr><td><strong class="verde">F</strong></td><td>Formato</td><td>Cómo debe presentarse la respuesta</td></tr>
+              <tr><td><strong class="verde">C</strong></td><td>Criterios</td><td>Estándares de calidad que debe cumplir la respuesta</td></tr>
+              <tr><td><strong class="verde">L</strong></td><td>Límites</td><td>Qué NO debe hacer el sistema</td></tr>
+            </tbody>
+          </table>
+          <div class="callout" style="margin-top:0.6em">
+            La ausencia de cualquier componente produce una respuesta que el sistema rellena con <strong>supuestos propios</strong>.
+          </div>
+          <aside class="notes">
+            CTFCL es un mnemónico: Contexto, Tarea, Formato, Criterios, Límites. No hace falta seguir ese orden en el prompt; lo importante es que los cinco estén presentes. Dedicar 30 segundos a cada letra. Preguntar: "¿Cuál de estos cinco creen que se omite más frecuentemente?" (La respuesta más común: Criterios y Límites). Tiempo: 4 minutos. Las próximas dos diapositivas van al detalle con ejemplos.
+          </aside>
+        </section>
+
+        <!-- ============================================================
+             SLIDE 5: CONTEXTO — BUEN VS. MAL EJEMPLO
+             ============================================================ -->
+        <section>
+          <h2><span class="verde">C</span> — Contexto</h2>
+          <p class="subtitle">El sistema no sabe quién eres ni para qué es esto</p>
+          <div class="two-col">
+            <div>
+              <p><span class="rojo">Sin contexto</span></p>
+              <pre><code>Explícame la fotosíntesis.</code></pre>
+              <p style="font-size:0.6em">El sistema elige: ¿nivel primaria, bachillerato, bioquímica avanzada? Elige el más común en su entrenamiento. Puede ser irrelevante para ti.</p>
+            </div>
+            <div>
+              <p><span class="verde">Con contexto</span></p>
+              <pre><code>Soy estudiante de primer año de
+biología. Estoy preparando un
+examen de ecología básica y
+necesito entender la fotosíntesis
+al nivel de ese curso.</code></pre>
+              <p style="font-size:0.6em">El sistema sabe quién eres, en qué contexto estás y qué nivel de respuesta es apropiado.</p>
+            </div>
+          </div>
+          <aside class="notes">
+            El contexto no solo incluye quién eres como estudiante — también incluye el propósito del trabajo, la audiencia final, el curso, el instructor si es relevante. Preguntar al grupo: "¿Qué más de contexto podría ser relevante en este ejemplo?" Posibles respuestas: la asignación específica, el tipo de evaluación, si es para estudiar solo o para exponer. Todo lo que el estudiante no dice, el sistema lo rellena. Tiempo: 3 minutos. No saltar a la siguiente diapositiva antes de que el grupo vea la diferencia concreta entre los dos ejemplos.
+          </aside>
+        </section>
+
+        <!-- ============================================================
+             SLIDE 6: TAREA, FORMATO, CRITERIOS, LÍMITES
+             ============================================================ -->
+        <section>
+          <h2>Tarea · Formato · Criterios · Límites</h2>
+          <div class="two-col">
+            <div class="card">
+              <h3><span class="verde">T</span> Tarea — la acción</h3>
+              <pre><code>Explica la diferencia entre
+inhibición competitiva
+y no competitiva...</code></pre>
+              <p style="font-size:0.58em">Verbo específico: explica, resume, compara, lista, argumenta. Un solo verbo por prompt.</p>
+            </div>
+            <div class="card">
+              <h3><span class="verde">F</span> Formato — la forma</h3>
+              <pre><code>...en una tabla con 3 columnas:
+mecanismo, efecto Km,
+efecto Vmax.</code></pre>
+              <p style="font-size:0.58em">Tabla, viñetas, párrafos, lista numerada, código, JSON. Si no lo dices, el sistema elige.</p>
+            </div>
+            <div class="card">
+              <h3><span class="verde">C</span> Criterios — el estándar</h3>
+              <pre><code>...usando solo términos de
+bioquímica de segundo año
+universitario.</code></pre>
+              <p style="font-size:0.58em">Nivel de lenguaje, precisión, extensión, tono, audiencia. Qué hace "buena" a una respuesta.</p>
+            </div>
+            <div class="card">
+              <h3><span class="verde">L</span> Límites — el perímetro</h3>
+              <pre><code>...No incluyas historia
+ni inhibidores específicos
+por nombre.</code></pre>
+              <p style="font-size:0.58em">Qué excluir, qué no hacer, qué temas dejar fuera. Protege el alcance del resultado.</p>
+            </div>
+          </div>
+          <aside class="notes">
+            Esta diapositiva usa el two-col con cuatro tarjetas. Señalar que las cuatro filas forman parte del mismo prompt de ejemplo (bioquímica). Es útil leer el prompt completo ensamblado: "Soy estudiante de segundo año de biología [Contexto]... explica la diferencia entre inhibición competitiva y no competitiva [Tarea]... en una tabla con 3 columnas [Formato]... usando solo términos de bioquímica de segundo año [Criterios]... No incluyas historia ni inhibidores específicos [Límites]." Preguntar: ¿Cuál de los cuatro creen que cambia más la respuesta? Todos cambian algo diferente. Tiempo: 5 minutos.
+          </aside>
+        </section>
+
+        <!-- ============================================================
+             SLIDE 7: TIPOS DE PROMPTS
+             ============================================================ -->
+        <section>
+          <h2>Tipos de prompts</h2>
+          <div class="three-col">
+            <div class="card">
+              <h3>Instrucción directa</h3>
+              <pre><code>Resume este párrafo
+en 2 oraciones que
+retengan el argumento
+principal.</code></pre>
+              <p style="font-size:0.58em">Una tarea, un objeto. La forma más simple y controlable.</p>
+            </div>
+            <div class="card">
+              <h3>Rol / perspectiva</h3>
+              <pre><code>Actúa como abogado
+del diablo de este
+argumento y señala
+3 debilidades.</code></pre>
+              <p style="font-size:0.58em">Útil para explorar. <span class="amarillo">Verificar</span> las objeciones que genera.</p>
+            </div>
+            <div class="card">
+              <h3>Ejemplo-guiado (few-shot)</h3>
+              <pre><code>[Ejemplo 1]
+[Ejemplo 2]
+Ahora aplica el mismo
+formato a: [tu texto]</code></pre>
+              <p style="font-size:0.58em">Cuando el formato es difícil de describir en palabras.</p>
+            </div>
+          </div>
+          <div class="two-col" style="margin-top:0.6em">
+            <div class="card">
+              <h3>Cadena de pensamiento</h3>
+              <pre><code>Piensa paso a paso antes
+de responder. Primero
+identifica las premisas,
+luego evalúa la conclusión.</code></pre>
+              <p style="font-size:0.58em">El proceso visible es más fácil de verificar.</p>
+            </div>
+            <div class="card">
+              <h3>Iteración refinada</h3>
+              <p style="font-size:0.68em">No es un tipo de prompt: es una <strong>estrategia</strong>. Prompt amplio → identificar problema → prompt específico de seguimiento. Cada vuelta va en la bitácora.</p>
+              <p style="font-size:0.58em"><span class="hl">Documentar cada iteración, no solo la final.</span></p>
+            </div>
+          </div>
+          <aside class="notes">
+            Cinco tipos: instrucción directa, rol, few-shot, cadena de pensamiento, iteración. En clase esto puede reducirse a tres si el tiempo es ajustado: instrucción directa (el más común), few-shot (el más útil para tareas de formato), y cadena de pensamiento (el más útil para análisis). La iteración no es un tipo sino una práctica que aplica a todos los tipos. Señalar que el prompt de rol requiere verificación especial: el sistema adopta el rol pero no tiene juicio real sobre qué es una debilidad vs. una fortaleza. Tiempo: 5 minutos.
+          </aside>
+        </section>
+
+        <!-- ============================================================
+             SLIDE 8: LA BITÁCORA DE PROMPTS
+             ============================================================ -->
+        <section>
+          <h2>La bitácora de prompts</h2>
+          <p class="subtitle">Registro obligatorio · Evidencia de proceso · No burocracia</p>
+          <table>
+            <thead>
+              <tr>
+                <th>Col. 1</th>
+                <th>Col. 2</th>
+                <th>Col. 3</th>
+                <th>Col. 4</th>
+                <th>Col. 5</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>Prompt escrito</th>
+                <th>Sistema + fecha</th>
+                <th>Resumen de salida</th>
+                <th>Qué cambié y por qué</th>
+                <th>Decisión humana final</th>
+              </tr>
+              <tr>
+                <td style="font-size:0.7em">Texto literal del prompt</td>
+                <td style="font-size:0.7em">Nombre del sistema, versión o fecha</td>
+                <td style="font-size:0.7em">2-3 líneas de qué generó</td>
+                <td style="font-size:0.7em">"Añadí criterio de nivel porque la respuesta era demasiado avanzada"</td>
+                <td style="font-size:0.7em">"Usé párr. 2 textual; reescribí párr. 1 por término incorrecto"</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="callout" style="margin-top:0.5em">
+            <strong>¿Por qué importa?</strong> Demuestra que el proceso fue tuyo. Permite al instructor evaluar tu razonamiento, no solo el producto final. Crea trazabilidad académica.
+          </div>
+          <aside class="notes">
+            La bitácora es la diferencia entre "usé IA" y "usé IA de esta manera, con este propósito, y tomé estas decisiones". La columna más difícil es la 4: "qué cambié y por qué". Esa columna es exactamente donde está el razonamiento del estudiante. Si esa columna dice solo "mejoré el prompt", no hay reflexión. Debe decir qué problema identificó y qué elemento cambió. Dar un ejemplo concreto: "La respuesta era para nivel universitario avanzado; yo necesito nivel introductorio; añadí 'usando solo terminología de primer año'". Pedir que abran su bitácora ahora si tienen dispositivo. Tiempo: 5 minutos.
+          </aside>
+        </section>
+
+        <!-- ============================================================
+             SLIDE 9: ITERACIÓN EN PRÁCTICA
+             ============================================================ -->
+        <section>
+          <h2>Iteración en práctica</h2>
+          <p class="subtitle">Diagnosticar el problema · Ajustar un elemento específico · Documentar</p>
+          <div class="three-col">
+            <div class="card">
+              <h3><span class="step">1</span> Demasiado amplio</h3>
+              <pre><code>Explícame el
+cambio climático.</code></pre>
+              <p style="font-size:0.6em"><span class="rojo">Problema:</span> respuesta enciclopédica, sin propósito definido.<br/><span class="amarillo">Diagnóstico:</span> falta contexto, tarea, formato, nivel.</p>
+            </div>
+            <div class="card">
+              <h3><span class="step">2</span> Tono incorrecto</h3>
+              <pre><code>Soy estudiante. Explica
+efectos en ecosistemas
+costeros en 3 párrafos,
+nivel básico.</code></pre>
+              <p style="font-size:0.6em"><span class="rojo">Problema:</span> suena a textbook; no sirve para discusión oral.<br/><span class="amarillo">Diagnóstico:</span> falta especificar propósito de uso y tono.</p>
+            </div>
+            <div class="card">
+              <h3><span class="step">3</span> Funcional</h3>
+              <pre><code>Soy estudiante preparando
+notas para discusión de
+clase. Resume los 3 efectos
+principales en tono
+conversacional, viñetas,
+máx. 2 líneas cada una.
+Solo consenso científico;
+sin debates políticos.</code></pre>
+              <p style="font-size:0.6em"><span class="verde">Resultado:</span> útil, apropiado, usable.</p>
+            </div>
+          </div>
+          <p style="margin-top:0.4em; font-size:0.75em"><span class="hl">Regla:</span> documenta cada iteración, no solo la final. El proceso importa tanto como el resultado.</p>
+          <aside class="notes">
+            Este es el ejemplo central de la Semana 3. Leer las tres versiones en voz alta con las notas de diagnóstico. Preguntar: "¿Qué cambió entre la versión 1 y la 2?" (Se añadió contexto, tarea específica, nivel.) "¿Entre la 2 y la 3?" (Se añadió propósito de uso, tono específico, límite temático.) El mensaje clave: no hay una fórmula — hay un proceso de diagnóstico. ¿Qué problema tiene esta respuesta? ¿Qué componente del prompt lo causó? ¿Qué cambio específico lo resuelve? Tiempo: 6 minutos.
+          </aside>
+        </section>
+
+        <!-- ============================================================
+             SLIDE 10: ERRORES COMUNES EN PROMPTS
+             ============================================================ -->
+        <section>
+          <h2>Errores comunes en prompts</h2>
+          <div class="warning" style="margin-bottom:0.5em">
+            <strong>Pedir citas o referencias</strong> — <span class="rojo">Peligro alto</span><br/>
+            <span style="font-size:0.75em">"Dame 5 artículos académicos con DOIs." → El sistema genera citas plausibles que <em>no existen</em>. Autores reales, títulos verosímiles, DOIs formateados, sin artículo. Nunca uses una referencia de IA sin verificar en doi.org.</span>
+          </div>
+          <div class="two-col">
+            <div class="callout">
+              <strong>Demasiado vago</strong><br/>
+              <span style="font-size:0.72em"><code>Explícame la computación cuántica.</code><br/>El sistema inventa nivel, audiencia y propósito. Correcto pero inútil para tu necesidad.</span>
+            </div>
+            <div class="callout">
+              <strong>Múltiples tareas en uno</strong><br/>
+              <span style="font-size:0.72em">"Resume + identifica limitaciones + propón preguntas + formatea como informe." → Cuatro tareas = cuatro prompts. Una tarea por prompt.</span>
+            </div>
+            <div class="callout">
+              <strong>Presión emocional</strong><br/>
+              <span style="font-size:0.72em">"Por favor sé muy cuidadoso esta vez." → El sistema no responde a urgencia ni amabilidad. No cambia la calidad de la salida.</span>
+            </div>
+            <div class="callout">
+              <strong>Asumir contexto previo</strong><br/>
+              <span style="font-size:0.72em">En la mayoría de los sistemas, cada sesión comienza desde cero. Si tu trabajo es relevante, pégalo explícitamente.</span>
+            </div>
+          </div>
+          <aside class="notes">
+            El error de pedir citas merece un párrafo de énfasis especial: es el más común Y el más costoso académicamente. El sistema no tiene acceso a bases de datos bibliográficas en el sentido de "buscar y verificar". Genera texto que tiene la forma de una cita. Esto es exactamente lo que se va a demostrar en la Semana 4. Los otros cuatro errores son igualmente importantes pero menos urgentes. El error de "presión emocional" sorprende a muchos estudiantes: creen que poner "por favor" o "es muy importante" mejora la respuesta. No lo hace. El sistema procesa tokens, no intenciones. Tiempo: 4 minutos.
+          </aside>
+        </section>
+
+        <!-- ============================================================
+             SLIDE 11: DEMO SEMANA 3
+             ============================================================ -->
+        <section>
+          <p class="activity-label">Demo · Instructor</p>
+          <h2>Reescribir un prompt en vivo</h2>
+          <div class="two-col">
+            <div>
+              <p><strong>Prompt débil (ejecutar primero):</strong></p>
+              <pre><code>Explícame la
+inhibición enzimática.</code></pre>
+            </div>
+            <div>
+              <p><strong>Prompt CTFCL (ejecutar segundo):</strong></p>
+              <pre><code>Soy estudiante de 2º año de biología
+redactando un informe de laboratorio
+sobre cinética enzimática para
+Bioquímica I.
+Explica la diferencia entre
+inhibición competitiva y no
+competitiva en una tabla con
+3 columnas: mecanismo de acción,
+efecto sobre Km, efecto sobre Vmax.
+Usa solo términos de bioquímica de
+nivel sophomore universitario.
+No incluyas antecedentes históricos
+ni nombres de inhibidores
+específicos.</code></pre>
+            </div>
+          </div>
+          <p class="tip" style="margin-top:0.5em">Al comparar: señala diferencia de nivel · estructura · longitud · afirmaciones no pedidas</p>
+          <aside class="notes">
+            EJECUCIÓN: abrir el sistema que uses normalmente (no importa cuál). Ejecutar el prompt débil. Mostrar la respuesta. Preguntar: ¿para quién está escrita esta respuesta? ¿Qué nivel asumió? Luego ejecutar el prompt CTFCL. Mostrar la respuesta. Comparar específicamente: (1) nivel de lenguaje — ¿qué términos usa? (2) estructura — ¿da tabla o párrafos? (3) longitud — ¿es proporcional a lo que pediste? (4) afirmaciones adicionales — ¿qué añadió que no pediste? NO hacer juicios de valor generales. Mantener el análisis técnico: este prompt produjo este resultado; este otro prompt produjo este otro. Objetivo de la demo: que el estudiante vea que el prompt débil devuelve una respuesta que el sistema diseñó para una audiencia imaginaria. Duración: 15 minutos de la sesión.
+          </aside>
+        </section>
+
+        <!-- ============================================================
+             SLIDE 12: ACTIVIDAD SEMANA 3
+             ============================================================ -->
+        <section>
+          <p class="activity-label">Actividad · Semana 3</p>
+          <h2>Taller de reescritura de prompts</h2>
+          <div class="callout" style="margin-bottom:0.6em">
+            <strong>Duración:</strong> 45 min · Individual o parejas · Con bitácora abierta
+          </div>
+          <ol style="font-size:0.82em">
+            <li>Elige una tarea real de otro curso o de interés propio.</li>
+            <li>Escribe un primer prompt — tan vago como quieras.</li>
+            <li>Ejecútalo en el sistema que uses normalmente.</li>
+            <li>Identifica el <strong>problema principal</strong> con la respuesta (nivel, tono, formato, alcance).</li>
+            <li>Reescribe añadiendo los componentes CTFCL que faltaban.</li>
+            <li>Ejecuta la segunda versión. Documenta la diferencia.</li>
+            <li>Haz una <strong>tercera iteración</strong>: identifica qué aún falta en la segunda versión.</li>
+          </ol>
+          <div class="tip" style="margin-top:0.5em">
+            <strong>Mínimo en tu bitácora:</strong> 3 filas (prompt inicial · iteración 1 · iteración 2), con razón del cambio en cada una.
+          </div>
+          <aside class="notes">
+            Dejar 45 minutos para esta actividad (práctica estructurada + práctica aplicada del flujo docente). Circular durante los primeros 10 minutos para ver qué prompts están escribiendo. Al ver un prompt, no decirle al estudiante qué cambiar: hacerle una pregunta. "¿Qué nivel de profundidad esperas?" "¿Quién va a leer esto?" "¿Qué formato te sirve para tu propósito?" Si alguien termina rápido: pedirle que use la misma tarea en una disciplina diferente y observe qué cambia. Al finalizar: recoger 2-3 ejemplos del grupo para mostrar brevemente al plenario. No evaluar públicamente; destacar un elemento bien hecho en cada uno.
+          </aside>
+        </section>
+
+        <!-- ============================================================
+             SLIDE 13: TRANSICIÓN SEMANA 4
+             ============================================================ -->
+        <section class="title-slide">
+          <p class="eyebrow">Módulo 03 · Semana 4</p>
+          <h1>Verificación de fuentes<br/>y auditoría</h1>
+          <p class="subtitle">Tienes un prompt bien construido. Ahora: ¿qué haces con lo que recibes?</p>
+          <aside class="notes">
+            Diapositiva de transición. Recordar la lógica acumulativa: en Semana 3 aprendieron a construir prompts controlados. En Semana 4 aprenden que incluso con un prompt perfecto, la salida requiere verificación. La razón: el sistema genera texto plausible, no texto verificado. Abrir con la pregunta de activación: "¿Alguien intentó verificar una de las afirmaciones que trajo de tarea? ¿Qué encontró?" Dejar 2-3 respuestas. Duración de esta transición: 1-2 minutos.
+          </aside>
+        </section>
+
+        <!-- ============================================================
+             SLIDE 14: ¿POR QUÉ VERIFICAR?
+             ============================================================ -->
+        <section>
+          <h2>¿Por qué verificar?</h2>
+          <p>Porque los sistemas de IA expresan <span class="hl">confianza lingüística</span><br/>independientemente de su precisión factual.</p>
+          <div class="two-col" style="margin-top:0.6em">
+            <div class="warning">
+              <strong>Lo que parece:</strong><br/>
+              <span style="font-size:0.8em">"Estudios demuestran que el 73% de los estudiantes que usan IA mejoran su rendimiento académico (Johnson et al., 2022)."</span><br/><br/>
+              <span style="font-size:0.72em">→ Suena documentado. Suena preciso. Suena académico.</span>
+            </div>
+            <div class="tip">
+              <strong>Lo que es:</strong><br/>
+              <span style="font-size:0.8em">Texto generado estadísticamente. El sistema no leyó estudios. Generó una afirmación que suena al tipo de afirmación que aparece en ese contexto.</span><br/><br/>
+              <span style="font-size:0.72em">→ El artículo puede no existir. El porcentaje puede ser inventado.</span>
+            </div>
+          </div>
+          <div class="callout" style="margin-top:0.5em">
+            <strong>La fluidez es una propiedad del lenguaje, no de la verdad.</strong> No puedes usar el tono como indicador de confiabilidad.
+          </div>
+          <aside class="notes">
+            Este es el concepto más importante de la Semana 4. La mayoría de los estudiantes asocian confianza lingüística con precisión. El sistema escribe como si supiera — pero eso es una propiedad del entrenamiento, no del conocimiento. Un sistema de IA que dice "no estoy seguro de esto" tampoco correlaciona bien con imprecisión real. Las expresiones de incertidumbre no son señales de confiabilidad. Preguntar: "¿Alguna vez recibieron una respuesta que sonaba muy segura y luego resultó estar equivocada?" Conectar con experiencias del grupo. Tiempo: 5 minutos.
+          </aside>
+        </section>
+
+        <!-- ============================================================
+             SLIDE 15: EL PROCESO DE VERIFICACIÓN
+             ============================================================ -->
+        <section>
+          <h2>El proceso de verificación</h2>
+          <p class="subtitle">Cinco pasos · No son opcionales · Son la estructura mínima defensible</p>
+          <ol style="font-size:0.82em; line-height:1.7">
+            <li><span class="step">1</span> <strong>Identificar afirmaciones específicas</strong> — estadísticas, citas, nombres, fechas. No verificas "el párrafo"; verificas afirmaciones concretas.</li>
+            <li><span class="step">2</span> <strong>Buscar la fuente primaria</strong> — DOI del artículo, repositorio institucional, documento oficial. No otra web que cita lo mismo.</li>
+            <li><span class="step">3</span> <strong>Comparar</strong> — ¿Existe la fuente? ¿Dice lo que el sistema afirmó? ¿El contexto es el mismo?</li>
+            <li><span class="step">4</span> <strong>Documentar el resultado</strong> — <span class="verde">confirmada</span> / <span class="rojo">no encontrada</span> / <span class="rojo">incorrecta</span> / <span class="amarillo">con matices</span></li>
+            <li><span class="step">5</span> <strong>Resolver</strong> — retener con cita correcta, corregir, eliminar, o reformular con el matiz real.</li>
+          </ol>
+          <aside class="notes">
+            Ir paso a paso. El más importante de entender es el paso 3: una fuente puede existir y aun así no respaldar la afirmación específica del sistema. El sistema puede haber simplificado, distorsionado o sacado de contexto. El paso 4 tiene cuatro estados posibles — el más frecuente es "con matices": la fuente existe pero dice algo más complejo. El paso 5 es el que muchos estudiantes omiten: verifican, encuentran el problema, y luego no hacen nada con esa información. La resolución es obligatoria. Tiempo: 5 minutos.
+          </aside>
+        </section>
+
+        <!-- ============================================================
+             SLIDE 16: HERRAMIENTAS DE VERIFICACIÓN
+             ============================================================ -->
+        <section>
+          <h2>Herramientas de verificación</h2>
+          <table>
+            <thead>
+              <tr><th>Herramienta</th><th>Uso</th><th>URL</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>doi.org</strong></td>
+                <td>Verificar existencia de artículo por DOI</td>
+                <td><code>doi.org</code></td>
+              </tr>
+              <tr>
+                <td><strong>Google Scholar</strong></td>
+                <td>Buscar artículo por título exacto</td>
+                <td><code>scholar.google.com</code></td>
+              </tr>
+              <tr>
+                <td><strong>Semantic Scholar</strong></td>
+                <td>Buscar por autor + palabras clave</td>
+                <td><code>semanticscholar.org</code></td>
+              </tr>
+              <tr>
+                <td><strong>Bases institucionales</strong></td>
+                <td>Acceso completo según suscripción</td>
+                <td>Según tu biblioteca</td>
+              </tr>
+              <tr>
+                <td><strong>Wikipedia</strong></td>
+                <td>Solo orientación inicial; <span class="rojo">nunca citar</span></td>
+                <td><code>wikipedia.org</code></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="callout" style="margin-top:0.5em">
+            <strong>Flujo estándar:</strong> Copia el DOI o título → doi.org o Scholar → si aparece, lee el abstract → confirma que dice lo que el sistema afirmó.
+          </div>
+          <aside class="notes">
+            Hacer esta diapositiva interactiva: abrir doi.org en pantalla y mostrar cómo se pega un DOI. Si tienes un DOI alucinado preparado, úsalo aquí para previsualizar la demo. La distinción clave: Wikipedia como punto de partida para orientarse sobre un tema desconocido está bien; como fuente citable en un trabajo académico, no. Si alguien pregunta por Perplexity u otras herramientas de búsqueda con IA: también requieren verificación de sus fuentes — el hecho de que citen no garantiza que las citas sean correctas. Tiempo: 4 minutos.
+          </aside>
+        </section>
+
+        <!-- ============================================================
+             SLIDE 17: LA TABLA DE VERIFICACIÓN
+             ============================================================ -->
+        <section>
+          <h2>La tabla de verificación</h2>
+          <p class="subtitle">Documento de auditoría · Obligatorio para entregas con salida de IA</p>
+          <table>
+            <thead>
+              <tr>
+                <th>Afirmación de la IA</th>
+                <th>Fuente citada</th>
+                <th>Acción tomada</th>
+                <th>Resultado</th>
+                <th>Cómo se resolvió</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="font-size:0.65em">"Un estudio de 2019 de Stanford encontró que el 78% de los estudiantes con IA mejoran calificaciones."</td>
+                <td style="font-size:0.65em">Johnson et al., 2019, J. Educational Technology</td>
+                <td style="font-size:0.65em">Busqué título en Google Scholar; pegué DOI en doi.org</td>
+                <td style="font-size:0.65em"><span class="rojo">No encontrada</span> — DOI no resuelve; no aparece en Scholar</td>
+                <td style="font-size:0.65em">Eliminé la afirmación completa del trabajo final</td>
+              </tr>
+              <tr>
+                <td style="font-size:0.65em">"La tasa de adopción de IA en universidades latinoamericanas creció 40% entre 2020 y 2023."</td>
+                <td style="font-size:0.65em">Ninguna</td>
+                <td style="font-size:0.65em">Busqué en Google Scholar "AI adoption Latin American universities 2020 2023"</td>
+                <td style="font-size:0.65em"><span class="amarillo">Con matices</span> — encontré un informe IESALC 2022 pero con cifras diferentes y alcance distinto</td>
+                <td style="font-size:0.65em">Reformulé citando el informe real con sus propias cifras</td>
+              </tr>
+            </tbody>
+          </table>
+          <aside class="notes">
+            Mostrar las dos filas de ejemplo. La primera muestra el caso de cita alucinada (no existe): resolución = eliminar. La segunda muestra el caso de "con matices" (existe algo relacionado pero diferente): resolución = reformular con la fuente real. Preguntar al grupo: "¿Hay un tercer caso posible?" (Sí: confirmada — la fuente existe y dice exactamente lo que el sistema afirmó. En ese caso: retener y citar correctamente.) Señalar que la tabla tiene cinco columnas, igual que la bitácora — pero función diferente: una documenta el proceso de prompting, la otra documenta el proceso de verificación. Tiempo: 5 minutos.
+          </aside>
+        </section>
+
+        <!-- ============================================================
+             SLIDE 18: AUDITORÍA COMPLETA
+             ============================================================ -->
+        <section>
+          <h2>Auditoría completa</h2>
+          <p class="subtitle">Más allá de la verificación de hechos</p>
+          <div class="two-col">
+            <div>
+              <p><strong>La verificación de hechos cubre:</strong></p>
+              <ul style="font-size:0.78em">
+                <li>Estadísticas y números</li>
+                <li>Citas y referencias</li>
+                <li>Nombres y fechas</li>
+                <li>Afirmaciones causales específicas</li>
+              </ul>
+            </div>
+            <div>
+              <p><strong>La auditoría completa también pregunta:</strong></p>
+              <ul style="font-size:0.78em">
+                <li>¿El encuadre es equilibrado?</li>
+                <li>¿Faltan perspectivas relevantes?</li>
+                <li>¿La estructura sirve a <em>mi</em> objetivo real?</li>
+                <li>¿Qué decidí conservar, cortar o modificar?</li>
+              </ul>
+            </div>
+          </div>
+          <div class="callout" style="margin-top:0.6em">
+            <strong>Si tu entrega final es idéntica a la salida del sistema, no hay auditoría.</strong><br/>
+            <span style="font-size:0.8em">La auditoría produce un texto diferente del original. Esa diferencia es tu trabajo.</span>
+          </div>
+          <aside class="notes">
+            Esta diapositiva distingue verificación de hechos (necesaria pero no suficiente) de auditoría completa (el estándar académico). Los sistemas de IA tienen sesgo de encuadre frecuente: presentan una sola perspectiva como si fuera la única. Pueden omitir voces críticas, perspectivas minoritarias, o debate legítimo dentro de un campo. La auditoría completa es donde el estudiante demuestra criterio intelectual, no solo competencia técnica. El punto final es importante: si la entrega es idéntica a la salida, eso es señal de que no hubo proceso humano de revisión. Tiempo: 4 minutos.
+          </aside>
+        </section>
+
+        <!-- ============================================================
+             SLIDE 19: DECISIONES HUMANAS EN EL BUCLE
+             ============================================================ -->
+        <section>
+          <h2>Decisiones humanas en el bucle</h2>
+          <p class="subtitle">"Asistido por IA, liderado por humanos" — qué significa en concreto</p>
+          <div class="three-col">
+            <div class="card">
+              <h3><span class="big-num">1</span></h3>
+              <p style="font-size:0.72em"><strong>Qué preguntar</strong><br/>El sistema responde; tú decides qué vale la pena preguntar.</p>
+            </div>
+            <div class="card">
+              <h3><span class="big-num">2</span></h3>
+              <p style="font-size:0.72em"><strong>Si la salida es apta</strong><br/>El sistema no sabe para qué usarás su respuesta. Tú sí.</p>
+            </div>
+            <div class="card">
+              <h3><span class="big-num">3</span></h3>
+              <p style="font-size:0.72em"><strong>Qué verificar y con qué profundidad</strong><br/>No todo tiene igual riesgo. Tú calibras el escrutinio necesario.</p>
+            </div>
+            <div class="card">
+              <h3><span class="big-num">4</span></h3>
+              <p style="font-size:0.72em"><strong>Qué aceptar vs. rechazar</strong><br/>Párrafos, argumentos, enfoques. La selección es tuya.</p>
+            </div>
+            <div class="card">
+              <h3><span class="big-num">5</span></h3>
+              <p style="font-size:0.72em"><strong>Cómo integrar con tus fuentes</strong><br/>El sistema no conoce tu bibliografía. Tú sí.</p>
+            </div>
+            <div class="tip" style="font-size:0.72em; display:flex; align-items:center; justify-content:center;">
+              La evidencia de estas 5 decisiones es lo que distingue un trabajo académico con IA de una salida de IA con tu nombre encima.
+            </div>
+          </div>
+          <aside class="notes">
+            Esta diapositiva es el concepto central de todo el módulo. Las cinco decisiones son lo que hace que el proceso sea académicamente defendible. La bitácora documenta las decisiones 1, 2, 4 y 5. La tabla de verificación documenta la decisión 3. Juntos, esos dos documentos crean la trazabilidad completa del proceso. Preguntar: "¿Cuál de estas cinco decisiones creen que es la más difícil de documentar?" La respuesta más común es la 3 (calibrar profundidad de verificación) — porque requiere juicio. Decir: "Ese juicio es exactamente lo que están desarrollando en este módulo." Tiempo: 5 minutos.
+          </aside>
+        </section>
+
+        <!-- ============================================================
+             SLIDE 20: DEMO SEMANA 4
+             ============================================================ -->
+        <section>
+          <p class="activity-label">Demo · Instructor</p>
+          <h2>Verificar una cita alucinada en vivo</h2>
+          <div class="two-col">
+            <div>
+              <p><strong>Prompt que genera cita plausible:</strong></p>
+              <pre><code>Dame una referencia académica
+en formato APA de un estudio
+publicado entre 2018 y 2022
+que demuestre que el uso de IA
+en educación superior mejora
+el rendimiento académico.</code></pre>
+              <p style="font-size:0.65em">El sistema genera: autor plausible, título verosímil, revista existente, DOI formateado — todo ficticio.</p>
+            </div>
+            <div>
+              <p><strong>Proceso de verificación:</strong></p>
+              <ol style="font-size:0.72em; line-height:1.9">
+                <li>Copiar el DOI → abrir <code>doi.org</code> → mostrar resultado</li>
+                <li>Copiar el título exacto → buscar en Google Scholar → mostrar resultado</li>
+                <li>Si aparece algo: leer el abstract → ¿dice lo que el sistema afirmó?</li>
+              </ol>
+              <div class="warning" style="margin-top:0.5em; font-size:0.72em">
+                <strong>Mensaje clave:</strong> El sistema no está mintiendo. Está generando lo que estadísticamente suena como una respuesta a esta pregunta. Eso es exactamente el problema.
+              </div>
+            </div>
+          </div>
+          <aside class="notes">
+            EJECUCIÓN: abrir el sistema en pantalla. Ejecutar el prompt. Mostrar la cita generada — señalar que suena completamente real: autor, año, título, revista, DOI. Abrir doi.org. Pegar el DOI. Mostrar lo que sucede (no resuelve o resuelve a algo diferente). Abrir Google Scholar. Buscar el título exacto entre comillas. Mostrar los resultados (ausencia o desajuste). Si por casualidad aparece algo similar: leer el abstract en voz alta y comparar con lo que el sistema afirmó. El mensaje al final es importante: "No les estoy diciendo que esta herramienta es mala. Les estoy diciendo que esta afirmación específica no está respaldada por la fuente citada, y eso es lo que tengo que resolver antes de entregarlo." Duración: 15 minutos de la sesión.
+          </aside>
+        </section>
+
+        <!-- ============================================================
+             SLIDE 21: ACTIVIDAD SEMANA 4
+             ============================================================ -->
+        <section>
+          <p class="activity-label">Actividad · Semana 4</p>
+          <h2>Tabla de verificación — construcción en vivo</h2>
+          <div class="callout" style="margin-bottom:0.6em">
+            <strong>Material de entrada:</strong> La salida de IA que trajeron de tarea (con 3 afirmaciones identificadas)
+          </div>
+          <div class="two-col">
+            <div>
+              <p><strong>Fase 1 — Verificación (20 min):</strong></p>
+              <ol style="font-size:0.78em; line-height:1.7">
+                <li>Abrir la tabla de verificación en 5 columnas.</li>
+                <li>Llenar columnas 1-2 (afirmación + fuente citada).</li>
+                <li>Verificar cada afirmación: doi.org y/o Google Scholar.</li>
+                <li>Registrar resultado: <span class="verde">confirmada</span> / <span class="rojo">no encontrada</span> / <span class="rojo">incorrecta</span> / <span class="amarillo">con matices</span></li>
+              </ol>
+            </div>
+            <div>
+              <p><strong>Fase 2 — Auditoría (25 min):</strong></p>
+              <ol style="font-size:0.78em; line-height:1.7">
+                <li>Completar columna 5 (cómo se resolvió cada afirmación).</li>
+                <li>Escribir párrafo de auditoría completa (150-200 palabras):<br/>¿Es el encuadre equilibrado? ¿Faltan perspectivas? ¿Qué decidiste conservar, cortar o modificar?</li>
+              </ol>
+              <div class="warning" style="font-size:0.72em; margin-top:0.5em">
+                El párrafo de auditoría <strong>no es un resumen</strong> de lo que dijo la IA. Es un análisis de lo que tú decidiste hacer con esa salida.
+              </div>
+            </div>
+          </div>
+          <aside class="notes">
+            Monitorear durante la Fase 1 dos errores frecuentes: (1) buscar el tema general en lugar de la afirmación específica — pedir que busquen el título exacto o el DOI exacto; (2) aceptar como verificación otro sitio web que repite la misma afirmación sin fuente original — eso no es verificación, es encontrar la misma afirmación en otro lugar. Durante la Fase 2: el párrafo de auditoría completa es el artefacto más exigente del módulo. Recordar que no es un resumen. Si un estudiante dice "no sé qué escribir", preguntarle: "¿Qué párrafo de la salida de IA no te convenció? ¿Por qué?" Esa respuesta es el párrafo de auditoría.
+          </aside>
+        </section>
+
+        <!-- ============================================================
+             SLIDE 22: ERRORES DE VERIFICACIÓN FRECUENTES
+             ============================================================ -->
+        <section>
+          <h2>Errores de verificación frecuentes</h2>
+          <div class="two-col">
+            <div class="warning">
+              <strong>Buscar el tema, no la afirmación</strong><br/>
+              <span style="font-size:0.75em">Si el sistema dijo "Johnson et al. 2022 encontró que el 73%…", debes buscar a Johnson 2022, no "IA y educación". La búsqueda general no verifica la afirmación específica.</span>
+            </div>
+            <div class="warning">
+              <strong>Otra web que repite lo mismo</strong><br/>
+              <span style="font-size:0.75em">Encontrar un blog, un PDF de clase o una noticia que diga lo mismo no es verificación. Necesitas la fuente primaria: el artículo, el informe oficial, el documento original.</span>
+            </div>
+            <div class="warning">
+              <strong>"El sistema verificó sus propias afirmaciones"</strong><br/>
+              <span style="font-size:0.75em">Un sistema de IA no puede verificar sus propias afirmaciones de forma confiable. Consistencia interna (no contradecirse) ≠ verificación externa (existe una fuente independiente).</span>
+            </div>
+            <div class="warning">
+              <strong>Verificar pero no resolver</strong><br/>
+              <span style="font-size:0.75em">Encontrar que una afirmación es incorrecta y luego dejarla en la entrega es peor que no verificar. La columna 5 de la tabla (resolución) es obligatoria.</span>
+            </div>
+          </div>
+          <aside class="notes">
+            El tercer error (el sistema verificó sus propias afirmaciones) es conceptualmente el más importante y el más difícil de corregir. Algunos estudiantes preguntan a la IA "¿esta cita es real?" y aceptan la respuesta. Explicar: el sistema va a generar texto que responde a esa pregunta de la misma manera que generó la cita — plausiblemente, no con verificación real. La única forma de saber si una cita existe es buscarla en una fuente independiente del sistema. Tiempo: 4 minutos.
+          </aside>
+        </section>
+
+        <!-- ============================================================
+             SLIDE 23: LO QUE LLEVAS EN DOS SEMANAS
+             ============================================================ -->
+        <section>
+          <h2>Lo que llevas en dos semanas</h2>
+          <div class="three-col">
+            <div class="card">
+              <h3><span class="tag">Semana 3</span></h3>
+              <ul style="font-size:0.75em">
+                <li>Marco CTFCL para prompts reproducibles</li>
+                <li>Cuatro tipos de prompts y cuándo usarlos</li>
+                <li>Bitácora de prompts en 5 columnas</li>
+                <li>Proceso de iteración con diagnóstico</li>
+                <li>Cinco errores comunes que evitar</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h3><span class="tag">Semana 4</span></h3>
+              <ul style="font-size:0.75em">
+                <li>Por qué la fluidez ≠ precisión</li>
+                <li>Proceso de verificación en 5 pasos</li>
+                <li>doi.org, Google Scholar, Semantic Scholar</li>
+                <li>Tabla de verificación en 5 columnas</li>
+                <li>Auditoría completa con decisiones explícitas</li>
+              </ul>
+            </div>
+            <div class="tip" style="display:flex; flex-direction:column; justify-content:center;">
+              <p style="font-size:0.8em"><strong>La práctica que se lleva:</strong></p>
+              <p style="font-size:0.75em">Nunca más entregar una salida de IA sin una bitácora que muestre el proceso y una tabla que documente las verificaciones. El proceso es tan evaluable como el producto.</p>
+            </div>
+          </div>
+          <div class="callout" style="margin-top:0.5em; font-size:0.8em">
+            <strong>Tus entregables:</strong> Bitácora (2+ tareas, 2+ iteraciones) · Tabla de verificación (3+ afirmaciones) · Auditoría final (200-300 palabras)
+          </div>
+          <aside class="notes">
+            Diapositiva de cierre del módulo. Leer las dos columnas de aprendizajes. Preguntar: "¿Cuál de estas cosas les va a cambiar el flujo de trabajo más inmediatamente?" Escuchar 2-3 respuestas. Conectar con la pregunta de salida que se usó en la Semana 3: "¿Qué fue lo que más afectó la calidad de la respuesta?" Y con la de Semana 4: "¿Qué afirmación te sorprendió más al verificarla?" El mensaje final: el proceso es tan evaluable como el producto. La bitácora y la tabla no son trámites — son el trabajo. Tiempo: 5-8 minutos (incluyendo preguntas finales).
+          </aside>
+        </section>
+
+        <!-- ============================================================
+             SLIDE 24: PRÓXIMO MÓDULO
+             ============================================================ -->
+        <section>
+          <h2>Próximo módulo</h2>
+          <div class="two-col">
+            <div class="card">
+              <h3><span class="tag">Módulo 03</span> Lo que ya tienes</h3>
+              <ul style="font-size:0.75em">
+                <li><span class="verde">✓</span> Construir prompts con CTFCL</li>
+                <li><span class="verde">✓</span> Iterar y documentar el proceso</li>
+                <li><span class="verde">✓</span> Verificar afirmaciones con fuentes primarias</li>
+                <li><span class="verde">✓</span> Auditar salidas con decisiones humanas explícitas</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h3><span class="tag">Módulo 04</span> Semanas 5–6</h3>
+              <p style="font-size:0.8em"><strong>Estudio, lectura y escritura</strong></p>
+              <ul style="font-size:0.72em">
+                <li>Usar IA para preparar fichas de lectura verificables</li>
+                <li>Revisar borradores sin delegar autoría</li>
+                <li>Declarar el uso de IA en entregas académicas</li>
+                <li>Distinguir mejora de estilo vs. generación no atribuida</li>
+              </ul>
+              <p style="font-size:0.65em; margin-top:0.5em">Si la bitácora y la tabla no están completas, el módulo siguiente será más difícil.</p>
+            </div>
+          </div>
+          <div class="callout" style="margin-top:0.6em">
+            <strong>Antes de Semana 5:</strong> entregar Módulo 03 completo según fecha indicada en el calendario del curso.
+          </div>
+          <aside class="notes">
+            Diapositiva de transición hacia el Módulo 04. Señalar la continuidad: el módulo siguiente parte del supuesto de que ya saben prompting y verificación. El prompting y la verificación van a aparecer de nuevo en Módulo 04 aplicados a lectura académica y escritura. Si alguien no completó la bitácora o la tabla de verificación, ese es el momento de hacerlo — no después de que empiece el Módulo 04. Recordar la fecha de entrega del Módulo 03 según el calendario del curso. Cerrar con la reflexión de cierre: "¿Qué delegaste a la IA en este módulo? ¿Qué verificaste? ¿Qué decisión final tomaste tú?" Tiempo: 5 minutos.
+          </aside>
+        </section>
+
       </div>
     </div>
   </body>
