@@ -7,7 +7,7 @@ const config: Config = {
   favicon: 'img/favicon.svg',
   url: 'https://adawolfs.github.io',
   baseUrl: '/genai-program/',
-  organizationName: 'genai-program',
+  organizationName: 'adawolfs',
   projectName: 'genai-program',
   onBrokenLinks: 'ignore',
   i18n: {
