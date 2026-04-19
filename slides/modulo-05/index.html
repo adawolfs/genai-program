@@ -4,60 +4,797 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Módulo 05. Datos, código y automatización</title>
-    <script type="module" crossorigin src="/slides/assets/reveal-init-Dr2l8QBW.js"></script>
-    <link rel="stylesheet" crossorigin href="/slides/assets/reveal-init-CU_mynG4.css">
-    <link rel="stylesheet" crossorigin href="/slides/assets/theme-AcWzmAPi.css">
+    <script type="module" crossorigin src="/genai-program/slides/assets/reveal-init-Dr2l8QBW.js"></script>
+    <link rel="stylesheet" crossorigin href="/genai-program/slides/assets/reveal-init-CU_mynG4.css">
+    <link rel="stylesheet" crossorigin href="/genai-program/slides/assets/theme-Cf8BPWTr.css">
   </head>
   <body>
     <div class="reveal">
       <div class="slides">
+
+        <!-- ─── 1. TÍTULO ─────────────────────────────────────────────────── -->
         <section class="title-slide">
-          <p class="eyebrow">Programa IA Universitaria</p>
-          <h1>Módulo 05. Datos, código y automatización</h1>
-          <p>Trabaja con CSV, hojas de cálculo, notebooks, scripts simples y asistentes de código para producir análisis reproducibles con licencias claras.</p>
-          <aside class="notes">Abrir con el propósito del módulo y conectar con la evidencia esperada: Notebook, script o hoja, README, Visualización comentada.</aside>
+          <p class="eyebrow">Programa IA Universitaria · Semanas 7–8</p>
+          <h1>Módulo 05<br />Datos, código<br />y automatización</h1>
+          <p class="subtitle">CSV, hojas de cálculo, notebooks y asistentes de código para producir análisis reproducibles con licencias claras.</p>
+          <aside class="notes">
+            Bienvenida al módulo más técnico del programa. El énfasis no está en aprender a programar: está en entender el flujo de análisis, documentar cada decisión y saber qué parte es nuestra responsabilidad cuando la IA genera código o fórmulas. Recordar que hay dos rutas disponibles: hoja de cálculo (sin código) y Python/Jupyter (con código). Ambas cubren los mismos objetivos de aprendizaje. Preguntar a mano alzada quién planea seguir cada ruta y anotarlo para facilitar la sesión.
+          </aside>
         </section>
+
+        <!-- ─── 2. AGENDA ──────────────────────────────────────────────────── -->
         <section>
-  <h2>Propósito del módulo</h2>
-  <ul><li>Trabaja con CSV, hojas de cálculo, notebooks, scripts simples y asistentes de código para producir análisis reproducibles con licencias claras.</li></ul>
-</section>
-<section>
-  <h2>Objetivos de aprendizaje</h2>
-  <ul><li>Limpiar y analizar un dataset simple con herramientas accesibles.</li><li>Usar IA para explicar, revisar o prototipar código sin dejar de probarlo.</li><li>Documentar datos, licencias, pasos de análisis y límites.</li></ul>
-</section>
-<section>
-  <h2>Competencias abordadas</h2>
-  <ul><li>Datos básicos</li><li>Reproducibilidad</li><li>Automatización responsable</li></ul>
-</section>
-<section>
-  <h2>Conceptos clave</h2>
-  <ul><li>Entrega un notebook, hoja de cálculo o script comentado.</li><li>Explica qué parte del flujo fue asistida por IA y qué pruebas realizó.</li><li>Identifica licencia y restricciones de un dataset.</li></ul>
-</section>
-<section>
-  <h2>Flujo docente paso a paso</h2>
-  <ul><li>90 min: Semana 7: pregunta, dataset, licencia, carga y limpieza inicial</li><li>90 min: Semana 8: análisis reproducible, pruebas, visualización y README</li></ul>
-</section>
-<section>
-  <h2>Actividad principal</h2>
-  <ul><li>Completar notebook o hoja de cálculo con dos preguntas de análisis.</li><li>Generar una visualización y explicar su límite.</li><li>Documentar licencia, fuente y uso de IA.</li></ul>
-</section>
-<section>
-  <h2>Evidencia esperada</h2>
-  <ul><li>Notebook, script o hoja</li><li>README</li><li>Visualización comentada</li></ul>
-</section>
-<section>
-  <h2>Ética, privacidad e integridad</h2>
-  <ul><li>Usar datos públicos o anonimizados.</li><li>No inferir atributos sensibles ni perfilar personas reales.</li></ul>
-</section>
-<section>
-  <h2>Reflexión de cierre</h2>
-  <ul><li>Qué delegaste a la IA.</li><li>Qué verificaste.</li><li>Qué decisión final tomaste tú.</li></ul>
-</section>
-        <section>
-          <h2>Cierre</h2>
-          <p>Registrar evidencias, dudas abiertas y siguiente acción antes de salir de la sesión.</p>
-          <aside class="notes">Cerrar con una tarea observable y recordar la política de trazabilidad.</aside>
+          <h2>Agenda de dos semanas</h2>
+          <div class="two-col">
+            <div class="card">
+              <h3>Semana 7 — Datos</h3>
+              <ul>
+                <li>Anatomía de un dataset</li>
+                <li>El ciclo de análisis</li>
+                <li>Limpieza con IA asistida</li>
+                <li>Fuentes de datos abiertas</li>
+                <li>README de datos</li>
+                <li><strong>Demo + Actividad</strong></li>
+              </ul>
+            </div>
+            <div class="card">
+              <h3>Semana 8 — Código</h3>
+              <ul>
+                <li>Asistentes de código: qué hacen</li>
+                <li>Anatomía de un notebook</li>
+                <li>Flujo de trabajo con IA</li>
+                <li>Leer código generado</li>
+                <li>Visualización responsable</li>
+                <li><strong>Demo + Actividad</strong></li>
+              </ul>
+            </div>
+          </div>
+          <p style="margin-top:0.6em"><span class="tag">Ruta A</span> Google Sheets / Excel &nbsp; <span class="tag">Ruta B</span> Python + Jupyter</p>
+          <aside class="notes">
+            Confirmar rutas: quien elige Ruta A (hoja de cálculo) puede seguir todo el módulo sin escribir ni una línea de Python. La elección de ruta no afecta la calificación. Los mismos entregables se adaptan a ambas rutas. Anunciar que el dataset de práctica está disponible en el LMS antes de iniciar la sesión — quienes tienen baja conectividad pueden descargarlo ahora.
+          </aside>
         </section>
+
+        <!-- ─── 3. ANATOMÍA DE UN DATASET ──────────────────────────────────── -->
+        <section>
+          <h2>Anatomía de un dataset</h2>
+          <p class="subtitle">Cada tabla tiene filas, columnas y valores. El orden importa.</p>
+          <table>
+            <thead>
+              <tr>
+                <th>id_estudiante</th>
+                <th>carrera</th>
+                <th>semestre</th>
+                <th>promedio</th>
+                <th>fecha_ingreso</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1001</td>
+                <td>Ingeniería</td>
+                <td>3</td>
+                <td>8.4</td>
+                <td>2022-08-15</td>
+              </tr>
+              <tr>
+                <td>1002</td>
+                <td>Derecho</td>
+                <td>5</td>
+                <td>9.1</td>
+                <td>2021-01-20</td>
+              </tr>
+              <tr>
+                <td>1003</td>
+                <td>Ingeniería</td>
+                <td>1</td>
+                <td></td>
+                <td>2024-08-12</td>
+              </tr>
+              <tr>
+                <td>1004</td>
+                <td>Medicina</td>
+                <td>7</td>
+                <td>7.8</td>
+                <td>2020-08-10</td>
+              </tr>
+            </tbody>
+          </table>
+          <ul style="margin-top:0.5em; font-size:0.75em">
+            <li><strong>Filas = observaciones</strong>: cada fila es un estudiante individual</li>
+            <li><strong>Columnas = variables</strong>: cada columna es un atributo</li>
+            <li><strong>Celda vacía</strong> en <em>promedio</em> de id 1003: valor faltante — ¿qué significa?</li>
+          </ul>
+          <aside class="notes">
+            Señalar la celda vacía en el promedio del estudiante 1003. Preguntar al grupo: ¿Qué puede significar ese valor faltante? ¿No tiene promedio todavía porque es de primer semestre? ¿Hubo un error de captura? ¿Está de baja? Este es el punto central: la IA no puede responder esa pregunta por nosotros — necesitamos contexto del dominio. Esta es una de las decisiones que siempre son humanas.
+          </aside>
+        </section>
+
+        <!-- ─── 4. TIPOS DE VARIABLES ──────────────────────────────────────── -->
+        <section>
+          <h2>Tipos de variables</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Tipo</th>
+                <th>Subtipo</th>
+                <th>Ejemplo en el dataset</th>
+                <th>Operaciones válidas</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Numérica continua</strong></td>
+                <td>Números reales</td>
+                <td>promedio (8.4, 9.1…)</td>
+                <td>Media, mediana, desv. estándar</td>
+              </tr>
+              <tr>
+                <td><strong>Numérica discreta</strong></td>
+                <td>Enteros contables</td>
+                <td>semestre (1, 3, 5…)</td>
+                <td>Conteo, moda, rango</td>
+              </tr>
+              <tr>
+                <td><strong>Categórica nominal</strong></td>
+                <td>Sin orden</td>
+                <td>carrera (Ingeniería, Derecho…)</td>
+                <td>Frecuencia, proporción</td>
+              </tr>
+              <tr>
+                <td><strong>Categórica ordinal</strong></td>
+                <td>Con orden</td>
+                <td>nivel de satisfacción (1–5)</td>
+                <td>Mediana, percentiles</td>
+              </tr>
+              <tr>
+                <td><strong>Fecha / hora</strong></td>
+                <td>Temporal</td>
+                <td>fecha_ingreso (2022-08-15)</td>
+                <td>Diferencia, rango, tendencia</td>
+              </tr>
+              <tr>
+                <td><strong>Texto libre</strong></td>
+                <td>No estructurado</td>
+                <td>comentario de evaluación</td>
+                <td>Frecuencia de términos, sentimiento</td>
+              </tr>
+            </tbody>
+          </table>
+          <aside class="notes">
+            El tipo de variable determina qué operaciones son válidas. Calcular la media de "carrera" no tiene sentido. Ordenar "semestre" de menor a mayor sí tiene sentido. Un error frecuente en datasets reales: columnas numéricas almacenadas como texto (porque hay una coma en vez de punto decimal, o porque hay una letra mezclada). La IA puede ayudar a detectar esto, pero la corrección requiere decisión humana sobre cómo interpretarlo.
+          </aside>
+        </section>
+
+        <!-- ─── 5. CICLO DE ANÁLISIS ───────────────────────────────────────── -->
+        <section>
+          <h2>El ciclo de análisis de datos</h2>
+          <p class="subtitle">Seis etapas. La IA puede ayudar en cada una. El juicio es tuyo.</p>
+          <div class="three-col" style="font-size:0.72em">
+            <div class="card">
+              <h3><span class="step">1</span> Definir</h3>
+              <p>¿Qué pregunta específica quieres responder? ¿Con qué datos es contestable?</p>
+            </div>
+            <div class="card">
+              <h3><span class="step">2</span> Obtener</h3>
+              <p>¿De dónde vienen los datos? ¿Qué licencia tienen? Documentar URL y fecha.</p>
+            </div>
+            <div class="card">
+              <h3><span class="step">3</span> Limpiar</h3>
+              <p>Duplicados, tipos incorrectos, valores faltantes. Cada decisión se documenta.</p>
+            </div>
+            <div class="card">
+              <h3><span class="step">4</span> Analizar</h3>
+              <p>Estadísticas descriptivas, visualizaciones, cruces de variables.</p>
+            </div>
+            <div class="card">
+              <h3><span class="step">5</span> Interpretar</h3>
+              <p>¿Qué significan los números? ¿Qué <em>no</em> dicen? Correlación ≠ causalidad.</p>
+            </div>
+            <div class="card">
+              <h3><span class="step">6</span> Comunicar</h3>
+              <p>¿Para quién? ¿En qué formato? Visualización + nota de límites.</p>
+            </div>
+          </div>
+          <aside class="notes">
+            Énfasis en la etapa 5 (Interpretar): es la que la IA menos puede hacer por nosotros. La IA no sabe qué significa un resultado en el contexto de tu institución, tu ciudad, tu grupo de estudio. También es importante notar que el ciclo es iterativo: después de limpiar, puedes descubrir que la pregunta original no es contestable con los datos disponibles y tienes que volver a la etapa 1. Eso es normal y es parte del proceso.
+          </aside>
+        </section>
+
+        <!-- ─── 6. LIMPIEZA CON IA ─────────────────────────────────────────── -->
+        <section>
+          <h2>Limpieza de datos con IA asistida</h2>
+          <div class="two-col">
+            <div>
+              <p><strong>Lo que puedes pedirle:</strong></p>
+              <pre><code>Prompt: "Tengo fechas mezcladas en formato
+DD/MM/AAAA y AAAA-MM-DD en Google Sheets.
+¿Qué fórmula estandariza todo a AAAA-MM-DD?"
+
+Respuesta de la IA:
+=SI(LARGO(A2)=10,
+   SI(EXTRAE(A2,3,1)="/",
+      TEXTO(FECHANUMERO(A2),"AAAA-MM-DD"),
+      A2),
+   "")</code></pre>
+            </div>
+            <div>
+              <p><strong>Lo que tú haces después:</strong></p>
+              <ol style="font-size:0.75em">
+                <li>Leer la fórmula antes de pegarla</li>
+                <li>Verificar con 3–5 filas conocidas</li>
+                <li>Documentar: qué pediste, qué obtuviste, qué probaste</li>
+              </ol>
+              <div class="warning" style="margin-top:0.7em; font-size:0.7em">
+                <strong>La IA no puede:</strong> ver tu archivo real · saber qué significa un valor faltante en tu contexto · decidir si eliminar o imputar filas
+              </div>
+            </div>
+          </div>
+          <aside class="notes">
+            La fórmula del ejemplo es deliberadamente compleja para ilustrar que la IA puede generar algo que parece correcto pero que hay que probar. Preguntar: "Antes de aplicar esta fórmula a 200 filas, ¿cómo saben que funciona?" La respuesta correcta: prueben con 3 filas donde saben el resultado esperado. Si la fórmula da resultado incorrecto en alguna de esas filas, hay que corregir antes de escalar. Regla de privacidad: si el dataset tiene datos personales, no se pega en el chat de IA. Se pide el código y se aplica localmente.
+          </aside>
+        </section>
+
+        <!-- ─── 7. README DE DATOS ─────────────────────────────────────────── -->
+        <section>
+          <h2>Documentación de datos: el README</h2>
+          <p class="subtitle">Sin documentación, el análisis no es reproducible ni defendible.</p>
+          <pre style="font-size:0.48em"><code># README de datos — [Nombre del análisis]
+
+## Fuente
+- Dataset: Calificaciones universitarias 2023
+- URL: https://datos.ejemplo.edu/calificaciones-2023
+- Organización: Universidad Ejemplo
+
+## Licencia
+- Tipo: CC-BY 4.0
+- ¿Puedo usarlo?: Sí, con atribución
+- Citar como: Universidad Ejemplo (2023). Calificaciones...
+
+## Acceso
+- Fecha de descarga: 2026-04-19
+- Versión del archivo: v1.2 (última actualización 2026-03-01)
+
+## Modificaciones realizadas
+- Columnas eliminadas: id_interno (irrelevante para el análisis)
+- Filas eliminadas: 13 filas con promedio nulo (estudiantes de 1.er sem.)
+- Formatos normalizados: fechas estandarizadas a ISO 8601
+
+## Limitaciones conocidas
+- No incluye estudiantes de posgrado
+- Período: agosto 2022 – diciembre 2023 únicamente
+
+## Uso de IA en la limpieza
+- Herramienta: ChatGPT 4o
+- Fórmula de estandarización de fechas: generada por IA, verificada
+  manualmente con 5 filas. Prompt: "[texto del prompt]"</code></pre>
+          <aside class="notes">
+            Este README es un entregable obligatorio, no opcional. Sin él, la entrega no es válida. El campo "Uso de IA en la limpieza" es el equivalente a la declaración de uso de IA que vimos en el módulo de escritura: trazabilidad del proceso. Pedir que cada estudiante tenga este template abierto durante la actividad y lo vaya llenando en tiempo real, no al final.
+          </aside>
+        </section>
+
+        <!-- ─── 8. FUENTES DE DATOS ABIERTAS ──────────────────────────────── -->
+        <section>
+          <h2>Fuentes de datos abiertas</h2>
+          <p class="subtitle">Siempre verificar la licencia antes de usar.</p>
+          <div class="three-col" style="font-size:0.65em">
+            <div class="card">
+              <h3>Kaggle Datasets</h3>
+              <p>Variedad amplia. Licencias: CC0, CC-BY u "Other".</p>
+              <p><span class="amarillo">&#9654;</span> Revisar la pestaña "License" de cada dataset.</p>
+            </div>
+            <div class="card">
+              <h3>Our World in Data</h3>
+              <p>Salud, energía, demografía. Licencia: CC-BY 4.0.</p>
+              <p><span class="verde">&#9654;</span> Bien documentado, recomendado para principiantes.</p>
+            </div>
+            <div class="card">
+              <h3>World Bank Open Data</h3>
+              <p>Economía y desarrollo global. Licencia: CC-BY 4.0.</p>
+              <p><span class="verde">&#9654;</span> Datos actualizados y con metadatos completos.</p>
+            </div>
+            <div class="card">
+              <h3>Datos.gob.mx / .gov.co</h3>
+              <p>Datos gubernamentales de México y Colombia.</p>
+              <p><span class="amarillo">&#9654;</span> Calidad variable según dependencia.</p>
+            </div>
+            <div class="card">
+              <h3>UCI ML Repository</h3>
+              <p>Datasets clásicos de aprendizaje automático.</p>
+              <p><span class="amarillo">&#9654;</span> Licencia variable, revisar cada dataset.</p>
+            </div>
+            <div class="card">
+              <h3>Dataset provisto</h3>
+              <p>CSV de práctica del instructor.</p>
+              <p><span class="verde">&#9654;</span> Licencia CC0 confirmada. Listo para usar.</p>
+            </div>
+          </div>
+          <aside class="notes">
+            Trampas comunes: Kaggle tiene datasets con licencia "Other" que en la práctica son restrictivos. Algunos datasets gubernamentales tienen datos de personas reales sin anonimizar. La regla: si la licencia no dice explícitamente que puedes usar, modificar y redistribuir para fines educativos, trátalo como restringido y pregunta. El dataset provisto en el LMS es el más seguro para esta práctica.
+          </aside>
+        </section>
+
+        <!-- ─── 9. DEMO SEMANA 7 ───────────────────────────────────────────── -->
+        <section>
+          <h2>Demo: CSV en Google Sheets con IA</h2>
+          <p class="subtitle">Instructor en pantalla compartida — 15 minutos</p>
+          <div class="two-col">
+            <div>
+              <ol style="font-size:0.72em">
+                <li>Abrir <code>datos_practica.csv</code> en Google Sheets</li>
+                <li>Identificar tipos de variables en cada columna</li>
+                <li>Formular una pregunta analítica concreta</li>
+                <li>Prompt a la IA → obtener fórmula</li>
+                <li><span class="hl">Verificar manualmente con 3 filas</span></li>
+                <li>Aplicar fórmula a toda la columna</li>
+                <li>Documentar en el README en tiempo real</li>
+              </ol>
+            </div>
+            <div class="callout" style="font-size:0.68em">
+              <strong>Punto pedagógico central:</strong><br/>
+              No mostrar el resultado de la fórmula sin haber hecho la verificación manual primero.<br/><br/>
+              La secuencia es: describir → obtener → <em>verificar</em> → aplicar → documentar.<br/><br/>
+              Saltarse la verificación es el error más común y el que más consecuencias tiene.
+            </div>
+          </div>
+          <aside class="notes">
+            Guión de la demo: (1) Abrir el archivo en pantalla. (2) Decir en voz alta qué tipo es cada columna. (3) Elegir la pregunta: "¿Cuál es el promedio de la columna [X] para cada valor de la columna [Y]?" (4) Abrir ChatGPT o Claude en otra pestaña y hacer el prompt con esa pregunta específica. (5) Copiar la fórmula — antes de pegarla, leerla en voz alta y explicar qué hace cada parte. (6) Calcular manualmente con 3 filas. (7) Pegar la fórmula y confirmar que coincide. (8) Llenar el campo de README en vivo mientras el grupo observa. Duración objetivo: 12-15 minutos.
+          </aside>
+        </section>
+
+        <!-- ─── 10. ACTIVIDAD SEMANA 7 ─────────────────────────────────────── -->
+        <section>
+          <div class="activity-label">Actividad · Semana 7</div>
+          <h2>Análisis de dataset</h2>
+          <p class="subtitle">Individual · 25 min en clase + completar de forma asíncrona</p>
+          <div class="two-col">
+            <div>
+              <p><strong>Ruta A — Hoja de cálculo:</strong></p>
+              <ol style="font-size:0.72em">
+                <li>Abrir <code>datos_practica.csv</code> en tu herramienta</li>
+                <li>Responder Pregunta 1 con fórmulas + IA</li>
+                <li>Verificar resultado con 3 filas manuales</li>
+                <li>Responder Pregunta 2 de la misma forma</li>
+                <li>Completar README de datos (plantilla en LMS)</li>
+              </ol>
+            </div>
+            <div>
+              <p><strong>Ruta B — Python/Colab:</strong></p>
+              <ol style="font-size:0.72em">
+                <li>Abrir el notebook base en Google Colab</li>
+                <li>Responder Pregunta 1 (escribir comentario → IA → verificar)</li>
+                <li>Añadir celda Markdown de interpretación</li>
+                <li>Responder Pregunta 2 de la misma forma</li>
+                <li>Completar README de datos</li>
+              </ol>
+            </div>
+          </div>
+          <div class="tip" style="font-size:0.65em; margin-top:0.5em">
+            <strong>Entregable:</strong> hoja de cálculo o notebook + README de datos completo. Fecha límite: antes de la Semana 8.
+          </div>
+          <aside class="notes">
+            Circular por el aula (o monitorear el chat en línea). La pregunta clave a hacer a cada estudiante: "¿Cómo verificaste que tu fórmula o código está bien?" Si la respuesta es "lo vi y parecía correcto", intervenir: pedir que muestren el cálculo manual de 3 filas. Esta verificación manual es el núcleo del aprendizaje de la Semana 7. Si hay estudiantes que terminan muy rápido, pedirles que identifiquen un segundo problema de calidad de datos en el CSV y propongan cómo limpiarlo.
+          </aside>
+        </section>
+
+        <!-- ─── 11. TRANSICIÓN SEMANA 8 ───────────────────────────────────── -->
+        <section class="title-slide">
+          <p class="eyebrow">Semana 8</p>
+          <h1>Código<br />y automatización<br />responsable</h1>
+          <p class="subtitle">Notebooks, asistentes de código, visualización y reproducibilidad.</p>
+          <aside class="notes">
+            Transición entre semanas. Conectar con la Semana 7: "Ya saben cómo analizar un dataset y documentar el proceso. Esta semana vamos a ver cómo hacer ese proceso más automatizable y repetible, usando código." Para estudiantes en ruta sin código: "Esta semana se enfocan en la visualización y en el README técnico. Las mismas habilidades de documentación y verificación aplican igual."
+          </aside>
+        </section>
+
+        <!-- ─── 12. ASISTENTES DE CÓDIGO ──────────────────────────────────── -->
+        <section>
+          <h2>Asistentes de código: qué hacen</h2>
+          <div class="two-col">
+            <div>
+              <table style="font-size:0.6em">
+                <thead>
+                  <tr><th>Capacidad</th><th>Ejemplo</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td><strong>Autocompletar</strong></td><td>Escribes <code>df.groupby(</code> y sugiere el resto</td></tr>
+                  <tr><td><strong>Generar</strong></td><td>Función desde un comentario descriptivo</td></tr>
+                  <tr><td><strong>Explicar</strong></td><td>"¿Qué hace este bloque de código?"</td></tr>
+                  <tr><td><strong>Revisar</strong></td><td>"¿Hay algún bug en esta función?"</td></tr>
+                  <tr><td><strong>Traducir</strong></td><td>SQL → pandas, R → Python</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div>
+              <div class="warning" style="font-size:0.68em">
+                <strong>Límites críticos:</strong>
+                <ul>
+                  <li>No conoce tu entorno (versión de Python, librerías instaladas)</li>
+                  <li>No conoce tu dataset real ni sus particularidades</li>
+                  <li>Puede generar código que parece correcto pero falla con tus datos</li>
+                  <li>Puede usar funciones obsoletas o en desuso</li>
+                  <li><strong>No puede ejecutar el código</strong> — eso lo haces tú</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <aside class="notes">
+            El punto más importante de esta diapositiva es el último: la IA no ejecuta el código. Nosotros sí. Eso significa que si el código tiene un error, el error lo cometemos nosotros al aplicarlo sin verificar. La responsabilidad del resultado es siempre del analista, no del asistente. Preguntar: "Si la IA genera código que borra un archivo equivocado, ¿quién es responsable?" La respuesta correcta: quien ejecutó el código sin leerlo.
+          </aside>
+        </section>
+
+        <!-- ─── 13. ANATOMÍA DE UN NOTEBOOK ──────────────────────────────── -->
+        <section>
+          <h2>Anatomía de un notebook Jupyter</h2>
+          <p class="subtitle">Celdas de código y celdas de Markdown alternadas — con propósito.</p>
+          <pre style="font-size:0.48em"><code>┌─────────────────────────────────────────────────────────────┐
+│ [Markdown] ## 2. Limpieza de datos                          │
+│ Eliminamos filas con promedio nulo porque corresponden a    │
+│ estudiantes de primer semestre sin evaluaciones completas.  │
+│ Total antes: 200 filas. Esperamos conservar ~187.           │
+├─────────────────────────────────────────────────────────────┤
+│ [Código]  [3]                                               │
+│ df_clean = df.dropna(subset=['promedio'])                   │
+│ print(f"Filas eliminadas: {len(df) - len(df_clean)}")       │
+│ ──────────────────────────────────────────────────────────  │
+│ Output: Filas eliminadas: 13                                │
+├─────────────────────────────────────────────────────────────┤
+│ [Markdown] **Resultado:** Se eliminaron 13 filas (6.5 %).   │
+│ Este porcentaje es bajo; no esperamos sesgo significativo.  │
+│ Ver README para justificación metodológica completa.        │
+└─────────────────────────────────────────────────────────────┘</code></pre>
+          <ul style="font-size:0.7em; margin-top:0.4em">
+            <li>La celda Markdown explica el <strong>por qué</strong>, no solo el qué</li>
+            <li>El notebook se puede correr de arriba a abajo sin errores (Kernel → Restart &amp; Run All)</li>
+            <li>Las interpretaciones van en celdas de Markdown, nunca en comentarios de código</li>
+          </ul>
+          <aside class="notes">
+            El patrón Markdown → Código → Markdown (interpretación) es el estándar para notebooks reproducibles. Un notebook que solo tiene celdas de código sin explicaciones no es analítico — es un script sin contexto. La prueba de reproducibilidad es simple: ¿puede alguien que nunca vio tus datos correr el notebook de arriba a abajo y obtener exactamente los mismos resultados? Si la respuesta es no, hay trabajo pendiente.
+          </aside>
+        </section>
+
+        <!-- ─── 14. FLUJO DE TRABAJO CON IA ───────────────────────────────── -->
+        <section>
+          <h2>Flujo de trabajo con asistente de código</h2>
+          <p class="subtitle">Seis pasos para que el código generado sea tuyo en comprensión y responsabilidad.</p>
+          <div class="two-col" style="font-size:0.68em">
+            <div>
+              <p><span class="step">1</span> <strong>Escribir el comentario</strong> — describir exactamente qué debe hacer la función</p>
+              <pre style="font-size:0.85em"><code># Calcula promedio de 'precio' por 'categoria'
+# Ignora valores nulos (skipna=True)
+# Devuelve DataFrame: categoria, precio_promedio</code></pre>
+              <p><span class="step">2</span> <strong>Pedir a la IA</strong> — usar el comentario como prompt</p>
+              <p><span class="step">3</span> <strong>Leer línea por línea</strong> — antes de ejecutar, entender cada línea</p>
+            </div>
+            <div>
+              <p><span class="step">4</span> <strong>Probar con entradas conocidas</strong></p>
+              <pre style="font-size:0.85em"><code>test_df = pd.DataFrame({
+    'categoria': ['A','A','B','B'],
+    'precio': [10, 20, 30, None]
+})
+# Esperado: A=15.0, B=30.0</code></pre>
+              <p><span class="step">5</span> <strong>Manejar casos borde</strong> — DataFrame vacío, tipos incorrectos</p>
+              <p><span class="step">6</span> <strong>Documentar</strong> — prompt usado, código obtenido, modificaciones, pruebas</p>
+            </div>
+          </div>
+          <aside class="notes">
+            El paso 1 (escribir el comentario antes de pedir a la IA) es el más importante pedagógicamente: si el estudiante no puede describir con precisión qué quiere que haga el código, no está listo para pedirlo. La vaguedad en el prompt produce código vago. El paso 4 (probar con entradas conocidas) es el equivalente de la verificación manual de la Semana 7. Siempre hay que tener un caso de prueba donde sepamos la respuesta antes de aplicar el código al dataset real.
+          </aside>
+        </section>
+
+        <!-- ─── 15. CÓMO LEER CÓDIGO GENERADO ─────────────────────────────── -->
+        <section>
+          <h2>Cómo leer código generado por IA</h2>
+          <p><strong>Regla de oro:</strong> si no puedes explicar cada línea, <span class="hl">no puedes defenderla</span>.</p>
+          <div class="two-col" style="margin-top:0.4em">
+            <div>
+              <p style="font-size:0.72em"><strong>Proceso de lectura:</strong></p>
+              <ol style="font-size:0.68em">
+                <li>Lee la firma: ¿qué recibe? ¿qué devuelve?</li>
+                <li>Lee el cuerpo línea a línea</li>
+                <li>Traza una entrada a mano</li>
+                <li>Pide a la IA que explique lo que no entiendes</li>
+              </ol>
+            </div>
+            <div class="warning" style="font-size:0.62em">
+              <strong>Señales de alerta — revisar con cuidado:</strong>
+              <ul>
+                <li><code>eval()</code> / <code>exec()</code> — ejecuta código arbitrario</li>
+                <li><code>subprocess</code> / <code>os.system()</code> — comandos del sistema</li>
+                <li><code>requests.get()</code> sin explicación — llamadas a internet</li>
+                <li><code>open(ruta, 'w')</code> en ruta absoluta — escribe en tu sistema</li>
+                <li>Importaciones de librerías desconocidas</li>
+              </ul>
+              <p style="margin-top:0.4em">Ante cualquiera: <strong>pregunta antes de ejecutar.</strong></p>
+            </div>
+          </div>
+          <aside class="notes">
+            Estas señales de alerta son raras en código analítico de datos, pero aparecen ocasionalmente cuando la IA "soluciona" un problema de forma creativa. Por ejemplo, para leer un archivo Excel podría usar subprocess para instalar una librería, o podría hacer una llamada a internet para descargar datos de ejemplo. Ninguna de estas cosas es necesariamente maliciosa, pero el estudiante debe entender qué está pasando antes de ejecutar. El principio es simple: si no sabes qué hace una línea, no la ejecutes hasta saberlo.
+          </aside>
+        </section>
+
+        <!-- ─── 16. VISUALIZACIÓN RESPONSABLE ─────────────────────────────── -->
+        <section>
+          <h2>Visualización de datos responsable</h2>
+          <div class="two-col">
+            <div>
+              <p style="font-size:0.72em"><strong>Elementos obligatorios:</strong></p>
+              <ol style="font-size:0.68em">
+                <li><strong>Título</strong> — describe qué muestra, no "Gráfica 1"</li>
+                <li><strong>Etiquetas de ejes</strong> — nombre + unidad</li>
+                <li><strong>Fuente</strong> — URL o referencia completa</li>
+                <li><strong>n</strong> — tamaño de muestra (n = 187)</li>
+                <li><strong>Nota de límites</strong> — qué NO muestra esta gráfica</li>
+              </ol>
+            </div>
+            <div>
+              <div class="warning" style="font-size:0.65em">
+                <strong>Errores comunes a evitar:</strong>
+                <ul>
+                  <li>Eje Y que no empieza en cero — exagera diferencias</li>
+                  <li>Escala logarítmica sin indicarlo</li>
+                  <li>Rango de fechas selectivo (cherry-picking)</li>
+                  <li>Gráfica de pay con más de 5 categorías</li>
+                  <li>Rojo/verde para diferencias que no son negativas/positivas</li>
+                </ul>
+              </div>
+              <div class="tip" style="font-size:0.65em; margin-top:0.5em">
+                La IA genera el código de la gráfica. Tú verificas que las etiquetas sean correctas, la escala sea apropiada y la nota de límites sea honesta.
+              </div>
+            </div>
+          </div>
+          <aside class="notes">
+            Preparar una imagen de una gráfica mal hecha para mostrar en este punto: eje Y truncado, sin fuente, sin unidades. Preguntar al grupo qué está mal. La discusión es más valiosa que la explicación. Énfasis en la nota de límites: "Esta gráfica muestra el promedio de calificaciones por carrera, pero no considera el tamaño de cada carrera ni el período de tiempo." Esta nota es la que distingue un análisis honesto de uno que oculta sus supuestos.
+          </aside>
+        </section>
+
+        <!-- ─── 17. DEMO SEMANA 8 ─────────────────────────────────────────── -->
+        <section>
+          <h2>Demo: generar y depurar código con IA</h2>
+          <p class="subtitle">Instructor en pantalla compartida — 15 minutos</p>
+          <div class="two-col">
+            <div>
+              <ol style="font-size:0.7em">
+                <li>Abrir el notebook base en Google Colab</li>
+                <li>Escribir el comentario descriptivo</li>
+                <li>Pedir a la IA que genere el código</li>
+                <li>Leer cada línea en voz alta antes de ejecutar</li>
+                <li><span class="hl">Ejecutar → Error deliberado</span></li>
+                <li>Leer el mensaje de error: <code>KeyError: 'precio'</code></li>
+                <li>Diagnosticar con <code>df.columns</code></li>
+                <li>Corregir y ejecutar de nuevo</li>
+                <li>Añadir celda Markdown de interpretación</li>
+              </ol>
+            </div>
+            <div class="callout" style="font-size:0.68em">
+              <strong>Por qué introducir un error deliberado:</strong><br/><br/>
+              El debugging no es un fracaso — es una habilidad. Mostrar que el error es normal y depurable reduce la ansiedad del estudiantado y enseña el proceso correcto de diagnóstico.<br/><br/>
+              Frase modelo: "El error me dice exactamente qué está mal. Vamos a leerlo juntos."
+            </div>
+          </div>
+          <aside class="notes">
+            Guión del error deliberado: antes de la sesión, renombrar la columna 'precio' a 'price' en el CSV de demostración. Cuando el código generado por la IA use 'precio', obtendremos un KeyError. Mostrar el proceso: (1) no entrar en pánico; (2) leer el mensaje completo del error; (3) identificar la línea exacta; (4) verificar qué columnas existen con df.columns; (5) corregir el nombre; (6) ejecutar de nuevo. Este proceso de 5 pasos es más valioso que cualquier código perfecto. Si el tiempo lo permite, pedir a un estudiante que dicte cómo cree que se debe corregir.
+          </aside>
+        </section>
+
+        <!-- ─── 18. ACTIVIDAD SEMANA 8 ────────────────────────────────────── -->
+        <section>
+          <div class="activity-label">Actividad · Semana 8</div>
+          <h2>Notebook completo</h2>
+          <p class="subtitle">Individual · 25 min en clase + completar de forma asíncrona</p>
+          <div class="two-col">
+            <div>
+              <p><strong>Ruta B — Python/Colab:</strong></p>
+              <ol style="font-size:0.68em">
+                <li>Completar celda de análisis para Pregunta 1 (flujo de 6 pasos)</li>
+                <li>Completar celda de análisis para Pregunta 2</li>
+                <li>Generar visualización con los 5 elementos obligatorios</li>
+                <li>Añadir nota de límites en celda Markdown</li>
+                <li>Verificar: Kernel → Restart &amp; Run All sin errores</li>
+                <li>Completar README técnico</li>
+              </ol>
+            </div>
+            <div>
+              <p><strong>Ruta A — Hoja de cálculo:</strong></p>
+              <ol style="font-size:0.68em">
+                <li>Crear gráfica con los 5 elementos obligatorios</li>
+                <li>Escribir nota de límites en celda adyacente</li>
+                <li>Completar README completo (pestaña o documento)</li>
+                <li>Verificar que el proceso es reproducible (¿puede alguien más repetirlo con tus instrucciones?)</li>
+              </ol>
+            </div>
+          </div>
+          <div class="tip" style="font-size:0.65em; margin-top:0.5em">
+            <strong>Entregable:</strong> notebook .ipynb con README + visualización comentada, o hoja de cálculo equivalente. Revisión por pares antes de la Semana 9.
+          </div>
+          <aside class="notes">
+            En la revisión por pares que se hace de forma asíncrona, pedir que cada estudiante verifique si el README del compañero tiene todos los campos requeridos y si la visualización tiene los 5 elementos. No es una evaluación sumativa — es formativa. El objetivo es que cada uno identifique qué le falta antes de la entrega final. Proporcionar una lista de verificación simple: 10 preguntas de sí/no que corresponden a los requisitos del entregable.
+          </aside>
+        </section>
+
+        <!-- ─── 19. README TÉCNICO ────────────────────────────────────────── -->
+        <section>
+          <h2>Reproducibilidad: el README técnico</h2>
+          <p class="subtitle">Para la ruta de código — entregable obligatorio.</p>
+          <pre style="font-size:0.46em"><code># README — Análisis de calificaciones universitarias 2023
+
+## Descripción
+Análisis exploratorio de calificaciones por carrera y semestre.
+Pregunta: ¿Qué carreras presentan mayor variabilidad en promedios?
+
+## Entorno
+- Python: 3.11.7
+- pandas: 2.1.4  |  matplotlib: 3.8.2  |  numpy: 1.26.3
+- Instalar: pip install -r requirements.txt
+
+## Datos
+- Archivo: datos/calificaciones_clean.csv
+- Fuente: https://datos.ejemplo.edu/calificaciones-2023
+- Licencia: CC-BY 4.0  |  Ver: datos/README_datos.md
+
+## Cómo reproducir
+1. Instalar dependencias: pip install -r requirements.txt
+2. Abrir analisis.ipynb en Jupyter o Google Colab
+3. Ejecutar: Kernel → Restart & Run All
+4. Los resultados deben coincidir con los del informe adjunto
+
+## Uso de IA
+- Herramienta: Claude 3.7 Sonnet
+- Generado por IA: función calcular_promedio_por_carrera() (celda 5)
+- Modificado: nombre de columna corregido ('carrera' → 'nombre_carrera')
+- Verificado: prueba con 4 filas conocidas, resultado esperado confirmado
+
+## Problemas conocidos
+- Dataset no incluye estudiantes de intercambio (aprox. 3% del total)</code></pre>
+          <aside class="notes">
+            El campo "Uso de IA" en el README técnico es la versión para código de la declaración de uso de IA que los estudiantes ya conocen del módulo de escritura. Enfatizar que documentar qué generó la IA y qué se modificó no es castigarse: es el estándar de integridad académica y profesional para trabajo asistido. Si no se puede llenar ese campo con información real, probablemente el código no fue verificado correctamente.
+          </aside>
+        </section>
+
+        <!-- ─── 20. RUTA SIN CÓDIGO ───────────────────────────────────────── -->
+        <section>
+          <h2>Ruta sin código: todo con hojas de cálculo</h2>
+          <p class="subtitle">Los mismos objetivos, herramientas diferentes.</p>
+          <div class="tip" style="margin-bottom:0.7em; font-size:0.72em">
+            Esta ruta es completa, no es una versión reducida. Lo que se evalúa es la comprensión del flujo de análisis, la documentación y el pensamiento crítico — no el lenguaje usado.
+          </div>
+          <table style="font-size:0.58em">
+            <thead>
+              <tr><th>Equivalente en Python</th><th>En hoja de cálculo</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>df.head()</code></td><td>Ver las primeras filas visualmente</td></tr>
+              <tr><td><code>df.describe()</code></td><td>Funciones <code>PROMEDIO()</code>, <code>MAX()</code>, <code>MIN()</code>, <code>CONTAR()</code></td></tr>
+              <tr><td><code>df.groupby('col').mean()</code></td><td>Tabla dinámica (pivot table)</td></tr>
+              <tr><td><code>df.dropna()</code></td><td>Filtrar y eliminar filas vacías</td></tr>
+              <tr><td><code>plt.bar()</code></td><td>Insertar → Gráfico → Barras</td></tr>
+              <tr><td><code>df['col'].value_counts()</code></td><td><code>CONTAR.SI()</code> por categoría</td></tr>
+            </tbody>
+          </table>
+          <p style="font-size:0.68em; margin-top:0.5em"><strong>Herramientas válidas:</strong> Google Sheets · Microsoft Excel · LibreOffice Calc (funciona offline)</p>
+          <aside class="notes">
+            Esta diapositiva es especialmente importante para no dejar a nadie atrás. Si hay estudiantes que se sienten intimidados por Python, señalar esta tabla y decir explícitamente: "Todo lo que hacemos en Python en este módulo tiene un equivalente directo en la herramienta que ya conocen." El factor diferenciador no es la herramienta — es el proceso de verificación, documentación y pensamiento crítico, que es el mismo en ambas rutas.
+          </aside>
+        </section>
+
+        <!-- ─── 21. SEÑALES DE ALERTA ─────────────────────────────────────── -->
+        <section>
+          <h2>Señales de alerta en trabajo asistido por IA</h2>
+          <div class="warning" style="font-size:0.62em; margin-bottom:0.6em">
+            <strong>Si ves esto en un estudiante — intervenir inmediatamente:</strong>
+          </div>
+          <table style="font-size:0.58em">
+            <thead>
+              <tr><th>Señal</th><th>Qué está pasando</th><th>Cómo responder</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Copia código sin leerlo ni ejecutarlo</td>
+                <td>La IA como sustituto, no asistente</td>
+                <td>"Explícame qué hace cada línea."</td>
+              </tr>
+              <tr>
+                <td>Análisis sin README ni fuente de datos</td>
+                <td>Sin trazabilidad</td>
+                <td>No aceptar entrega hasta completar README.</td>
+              </tr>
+              <tr>
+                <td>Visualización sin título ni ejes</td>
+                <td>Resultado incompleto</td>
+                <td>Mostrar lista de elementos obligatorios.</td>
+              </tr>
+              <tr>
+                <td>Datos personales en el chat de IA</td>
+                <td>Violación de privacidad</td>
+                <td>Detener. Explicar la regla. Escalar si hay sensibles.</td>
+              </tr>
+              <tr>
+                <td>"La IA no puede equivocarse en estadísticas"</td>
+                <td>Malentendido sobre capacidades de la IA</td>
+                <td>Mostrar un ejemplo concreto de error estadístico de la IA.</td>
+              </tr>
+              <tr>
+                <td>Notebook no corre de arriba a abajo</td>
+                <td>No es reproducible</td>
+                <td>"Kernel → Restart &amp; Run All. Corrígelo antes de entregar."</td>
+              </tr>
+            </tbody>
+          </table>
+          <aside class="notes">
+            Estas señales de alerta son las situaciones más frecuentes en módulos de este tipo. Tenerlas en mente durante las sesiones de práctica. El más urgente es el de datos personales: si un estudiante pega un archivo con nombres reales o identificadores en un servicio de IA externo, hay que intervenir de inmediato, no al final de la clase. El riesgo no es académico — puede ser legal o reputacional para la institución.
+          </aside>
+        </section>
+
+        <!-- ─── 22. LO QUE LLEVAS EN DOS SEMANAS ──────────────────────────── -->
+        <section>
+          <h2>Lo que llevas en dos semanas</h2>
+          <div class="three-col" style="font-size:0.7em">
+            <div class="card">
+              <h3>Datos</h3>
+              <ul>
+                <li>Leer y describir un dataset</li>
+                <li>Identificar tipos de variables</li>
+                <li>Limpiar con IA y verificar</li>
+                <li>Documentar fuente y licencia</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h3>Código</h3>
+              <ul>
+                <li>Flujo de 6 pasos con asistente</li>
+                <li>Leer antes de ejecutar</li>
+                <li>Probar con casos conocidos</li>
+                <li>Documentar lo que generó la IA</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h3>Comunicar</h3>
+              <ul>
+                <li>Visualización con 5 elementos</li>
+                <li>Nota de límites honesta</li>
+                <li>README técnico completo</li>
+                <li>Análisis reproducible</li>
+              </ul>
+            </div>
+          </div>
+          <div class="callout" style="font-size:0.68em; margin-top:0.7em">
+            <strong>La pregunta que siempre debes poder responder:</strong> "¿Cómo sé que este resultado es correcto?" Si no tienes respuesta, el análisis no está completo.
+          </div>
+          <aside class="notes">
+            Cierre de las dos semanas. Pedir a 2-3 voluntarios que respondan la pregunta del callout con respecto a su propio trabajo de esta semana. Las respuestas deben incluir: verificación manual, prueba con casos conocidos, o comparación con una fuente externa. Si alguien responde "porque la IA lo dijo", eso es una señal de que el módulo no terminó su trabajo todavía — y hay que reforzar el concepto una vez más.
+          </aside>
+        </section>
+
+        <!-- ─── 23. PRÓXIMO MÓDULO ─────────────────────────────────────────── -->
+        <section>
+          <h2>Próximo módulo</h2>
+          <div class="two-col">
+            <div>
+              <p class="eyebrow">Módulo 06</p>
+              <h3 style="margin-top:0.2em">Comunicación, colaboración y carrera</h3>
+              <ul style="font-size:0.75em">
+                <li>Comunicar hallazgos técnicos a audiencias no técnicas</li>
+                <li>Colaboración responsable con IA en equipos</li>
+                <li>Proyectar habilidades hacia el mercado laboral</li>
+                <li>Construir un portafolio de trabajo trazable</li>
+              </ul>
+            </div>
+            <div>
+              <div class="tip" style="font-size:0.72em">
+                <strong>Para la Semana 9 — trae preparado:</strong>
+                <ul>
+                  <li>Entregable completo del Módulo 05 (notebook o hoja de cálculo + README)</li>
+                  <li>Una visualización que quieras mostrar a alguien sin conocimientos técnicos</li>
+                  <li>Una pregunta sobre cómo explicar tu análisis a esa persona</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <aside class="notes">
+            El puente entre este módulo y el siguiente: el Módulo 06 tomará los productos de análisis que generaron aquí y preguntará cómo comunicarlos. Esto cierra el ciclo: no basta con hacer el análisis — hay que saber contarlo. La visualización que traigan para la Semana 9 debe ser la del entregable del Módulo 05, preferentemente una que les generó alguna duda de interpretación o límite. Esas dudas serán el punto de partida de la primera sesión del Módulo 06.
+          </aside>
+        </section>
+
       </div>
     </div>
   </body>
