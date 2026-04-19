@@ -1,0 +1,600 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Módulo 02. Fundamentos de IA y límites</title>
+    <link rel="stylesheet" href="../shared/theme.css" />
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+
+        <!-- 01 TITLE -->
+        <section class="title-slide">
+          <p class="eyebrow">Programa IA Universitaria · Semana 2</p>
+          <h1>Módulo 02.<br/>Fundamentos de IA y límites</h1>
+          <p class="subtitle">Capacidades reales, límites estructurales, alucinaciones y sesgo</p>
+          <aside class="notes">
+            Bienvenida breve. Conectar con el Módulo 01: ya tienen las reglas de uso; hoy vamos a entender por qué esas reglas existen. Anunciar los dos entregables del módulo: tabla de comparación e informe breve de contraste. Tiempo total: 90 minutos.
+          </aside>
+        </section>
+
+        <!-- 02 AGENDA -->
+        <section>
+          <h2>Agenda de hoy</h2>
+          <p class="subtitle">90 minutos · Semana 2</p>
+          <table>
+            <thead>
+              <tr><th>Tramo</th><th>Actividad</th><th>Tiempo</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Apertura</td><td>Activación y contexto</td><td>10 min</td></tr>
+              <tr><td>Demo</td><td>Provocar una alucinación en vivo</td><td>15 min</td></tr>
+              <tr><td>Práctica guiada</td><td>Comparar dos respuestas de IA</td><td>20 min</td></tr>
+              <tr><td>Transición</td><td>Hallazgos en plenaria</td><td>5 min</td></tr>
+              <tr><td>Práctica aplicada</td><td>Verificar tres afirmaciones</td><td>25 min</td></tr>
+              <tr><td>Cierre</td><td>Reflexión y ticket de salida</td><td>10 min</td></tr>
+              <tr><td>Asignación</td><td>Instrucciones del informe de contraste</td><td>5 min</td></tr>
+            </tbody>
+          </table>
+          <aside class="notes">
+            Leer el plan en voz alta para que el estudiantado sepa dónde se dirige la sesión. Recordar que la práctica ocurre en el aula — no llegan con el trabajo hecho. Los entregables finales son asíncronos.
+          </aside>
+        </section>
+
+        <!-- 03 CÓMO FUNCIONA UN LLM -->
+        <section>
+          <h2>¿Cómo funciona un LLM?</h2>
+          <p class="subtitle">La intuición sin matemáticas</p>
+          <div class="two-col">
+            <div>
+              <p><strong>Tokens, no palabras</strong></p>
+              <p>El modelo divide el texto en fragmentos — palabras, sílabas, signos. Los procesa como patrones, no como significados.</p>
+              <p><strong>Predicción estadística</strong></p>
+              <p>Dado el texto anterior, ¿cuál es el token más probable que sigue? Repetido miles de veces → un párrafo completo.</p>
+            </div>
+            <div class="callout">
+              <p><strong>La analogía más útil:</strong></p>
+              <p>Es el autocompletado de tu teléfono, pero entrenado con cientos de miles de millones de tokens de texto.</p>
+              <br/>
+              <p class="rojo">No "sabe" cosas. Predice texto probable.</p>
+            </div>
+          </div>
+          <aside class="notes">
+            Preguntar quién usa el autocompletado del teléfono. Construir la analogía desde ahí. El punto crítico: el modelo no tiene un modelo del mundo — tiene patrones estadísticos sobre cómo el texto se organiza. Una respuesta fluida no implica conocimiento verdadero. Tomar 3-4 minutos en esta slide.
+          </aside>
+        </section>
+
+        <!-- 04 TOKENS Y CONTEXTO -->
+        <section>
+          <h2>Tokens y ventana de contexto</h2>
+          <div class="two-col">
+            <div class="card">
+              <h3>Token</h3>
+              <p>Unidad mínima de procesamiento. Puede ser una palabra, una sílaba, un signo de puntuación.</p>
+              <p><em>"inteligencia artificial"</em> → 3 tokens</p>
+              <p>El modelo trabaja con estos fragmentos, no con palabras completas ni con conceptos.</p>
+            </div>
+            <div class="card">
+              <h3>Ventana de contexto</h3>
+              <p>La "memoria de trabajo" de la conversación. El modelo solo puede considerar los N tokens más recientes.</p>
+              <p>En conversaciones largas, <span class="rojo">olvida lo que ocurrió al principio.</span></p>
+              <p>No acumula conocimiento entre sesiones distintas.</p>
+            </div>
+          </div>
+          <div class="tip" style="margin-top:0.7em">
+            <strong>Entrenamiento vs. inferencia:</strong> El modelo se entrena una vez en datos masivos. Después se "despliega" y responde. Lo que sabe está fijo en ese momento.
+          </div>
+          <aside class="notes">
+            El concepto de ventana de contexto es importante para explicar por qué "darle más contexto" tiene límites. Si un estudiante dice "le di toda mi tesis para que la analice", explorar si la tesis entra dentro de la ventana. También explica por qué el modelo no recuerda conversaciones anteriores.
+          </aside>
+        </section>
+
+        <!-- 05 LO QUE LA IA HACE BIEN -->
+        <section>
+          <h2>Lo que la IA generativa hace bien</h2>
+          <p class="subtitle"><span class="verde">Capacidades consistentemente fuertes</span></p>
+          <div class="three-col">
+            <div class="card">
+              <h3>Reformulación</h3>
+              <p>Reescribir en otro tono, formalidad o longitud. Ideal para borradores y adaptaciones de audiencia.</p>
+            </div>
+            <div class="card">
+              <h3>Síntesis</h3>
+              <p>Condensar documentos largos conservando puntos principales. Funciona bien con textos estructurados.</p>
+            </div>
+            <div class="card">
+              <h3>Texto estructurado</h3>
+              <p>Tablas, listas, esquemas, plantillas, correos formales. Sigue formatos claros con alta confiabilidad.</p>
+            </div>
+            <div class="card">
+              <h3>Explicación por niveles</h3>
+              <p>El mismo concepto para bachillerato, universitario o experto. Aplicación directamente útil en el aula.</p>
+            </div>
+            <div class="card">
+              <h3>Traducción</h3>
+              <p>Alta calidad entre idiomas bien representados en entrenamiento. Especialmente sólido en inglés-español.</p>
+            </div>
+            <div class="card">
+              <h3>Lluvia de ideas</h3>
+              <p>Generar alternativas, ángulos o contraargumentos. Excelente para estimular el pensamiento propio.</p>
+            </div>
+          </div>
+          <aside class="notes">
+            Pedir ejemplos al grupo: ¿han usado la IA para alguna de estas cosas? El objetivo de esta slide es evitar el rechazo total — la IA es útil. El módulo enseña cuándo y cómo, no si usar o no usar.
+          </aside>
+        </section>
+
+        <!-- 06 LO QUE LA IA NO PUEDE HACER -->
+        <section>
+          <h2>Lo que la IA <em>no</em> puede hacer</h2>
+          <p class="subtitle"><span class="rojo">Límites estructurales, no fallas de versión</span></p>
+          <div class="two-col">
+            <ul>
+              <li><span class="rojo">Sin acceso a internet</span> — salvo que tenga herramientas habilitadas explícitamente</li>
+              <li><span class="rojo">Sin memoria entre sesiones</span> — cada conversación parte de cero</li>
+              <li><span class="rojo">Sin corte al día</span> — su conocimiento termina en la fecha de entrenamiento</li>
+            </ul>
+            <ul>
+              <li><span class="rojo">No puede verificar sus afirmaciones</span> — no tiene acceso a la verdad</li>
+              <li><span class="rojo">Olvida en conversaciones largas</span> — el contexto tiene un límite</li>
+              <li><span class="amarillo">Razonamiento complejo poco confiable</span> — puede razonar de manera convincente hacia conclusiones incorrectas</li>
+            </ul>
+          </div>
+          <div class="warning" style="margin-top:0.7em">
+            Estos no son bugs que se van a corregir en la próxima versión. Son consecuencias estructurales del paradigma actual.
+          </div>
+          <aside class="notes">
+            Enfatizar que estos límites son distintos a los errores ocasionales. Son limitaciones de diseño. Si un estudiante dice "pero ChatGPT-5 ya puede buscar en internet", aclarar que las herramientas de búsqueda son un complemento externo, no una capacidad nativa del modelo, y que añaden sus propias fuentes de error.
+          </aside>
+        </section>
+
+        <!-- 07 ALUCINACIONES: DEFINICIÓN -->
+        <section>
+          <h2>Alucinaciones: definición</h2>
+          <div class="two-col">
+            <div>
+              <p>Una <span class="hl">alucinación</span> es una salida del modelo que suena plausible, está bien estructurada y es <strong>factualmente incorrecta</strong>.</p>
+              <br/>
+              <p>Ejemplo típico:</p>
+              <div class="callout">
+                <p><em>"Según García López et al. (2021) en la Revista Latinoamericana de Educación Digital, vol. 14, pp. 23-41..."</em></p>
+                <p class="rojo" style="font-size:0.75em; margin-top:0.5em">Este artículo no existe. El DOI falla. El autor y la revista fueron generados.</p>
+              </div>
+            </div>
+            <div>
+              <p><strong>El modelo no mintió.</strong><br/>Generó el texto más estadísticamente probable para esa pregunta. Una cita académica bien formada es exactamente lo que "debería" seguir a esa pregunta.</p>
+              <br/>
+              <p class="tag">CONCEPTO CLAVE</p>
+              <p>Fluidez ≠ Exactitud</p>
+            </div>
+          </div>
+          <aside class="notes">
+            Este es el momento central del módulo. Tomarse el tiempo necesario. Preguntar: ¿alguien ha encontrado algo así? ¿Cómo lo descubrieron? El ejemplo de la cita inventada es el más fácil de verificar en tiempo real durante la demo.
+          </aside>
+        </section>
+
+        <!-- 08 POR QUÉ ALUCINA -->
+        <section>
+          <h2>¿Por qué alucina el modelo?</h2>
+          <p class="subtitle">El problema de la fluidez sobre la exactitud</p>
+          <div class="two-col">
+            <div>
+              <p><strong>El modelo fue entrenado para generar texto fluido y coherente,<br/>no texto verdadero.</strong></p>
+              <br/>
+              <p>Cuando no tiene suficiente información sobre un tema específico, no responde "no sé".</p>
+              <p>¿Por qué? Porque "no sé" es una secuencia de baja probabilidad en el corpus de entrenamiento. Las buenas respuestas raramente dicen "no sé".</p>
+            </div>
+            <div class="card">
+              <h3>Resultado</h3>
+              <p>El modelo genera la respuesta más plausible dado el patrón de la pregunta.</p>
+              <br/>
+              <p>Una respuesta elaborada y detallada es estadísticamente <strong>más parecida</strong> a una buena respuesta que un reconocimiento de ignorancia.</p>
+              <br/>
+              <p class="rojo">La confianza en la respuesta es un patrón aprendido, no una señal de exactitud.</p>
+            </div>
+          </div>
+          <aside class="notes">
+            La pregunta que más desorientan al estudiantado: "¿cómo puede estar tan segura y estar tan equivocada?" Esta slide responde eso. El tono seguro es un artefacto de entrenamiento — las buenas respuestas suenan seguras, así que el modelo aprende a sonar seguro. No hay un verificador de hechos interno.
+          </aside>
+        </section>
+
+        <!-- 09 TIPOS COMUNES DE ALUCINACIÓN -->
+        <section>
+          <h2>Tipos comunes de alucinación</h2>
+          <p class="subtitle">En contextos académicos y profesionales</p>
+          <table>
+            <thead>
+              <tr><th>Tipo</th><th>Ejemplo</th><th>Riesgo</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Cita inventada</strong></td>
+                <td>Artículo con autor, año, revista y volumen que no existe</td>
+                <td class="rojo">Alto</td>
+              </tr>
+              <tr>
+                <td><strong>Estadística sin fuente</strong></td>
+                <td>"El 73% de los estudiantes..." sin referencia verificable</td>
+                <td class="rojo">Alto</td>
+              </tr>
+              <tr>
+                <td><strong>Cita mal atribuida</strong></td>
+                <td>Frase real de una persona real, atribuida a otra persona</td>
+                <td class="amarillo">Medio</td>
+              </tr>
+              <tr>
+                <td><strong>Fecha incorrecta</strong></td>
+                <td>Evento real con año equivocado</td>
+                <td class="amarillo">Medio</td>
+              </tr>
+              <tr>
+                <td><strong>Síntesis inexacta</strong></td>
+                <td>Resumen de un artículo que atribuye argumento que el artículo no hace</td>
+                <td class="rojo">Alto</td>
+              </tr>
+            </tbody>
+          </table>
+          <aside class="notes">
+            La síntesis inexacta es especialmente peligrosa porque el artículo existe — solo el resumen está mal. Muchos estudiantes verifican que la cita existe y consideran eso suficiente. No lo es. Hay que leer el argumento original.
+          </aside>
+        </section>
+
+        <!-- 10 CÓMO DETECTAR UNA ALUCINACIÓN -->
+        <section>
+          <h2>Cómo detectar una alucinación</h2>
+          <p class="subtitle">Señales de alerta que exigen verificación</p>
+          <div class="two-col">
+            <div>
+              <p><strong>Buscar siempre:</strong></p>
+              <ul>
+                <li>Números específicos sin fuente explícita</li>
+                <li>Citas académicas — siempre verificar por DOI o búsqueda directa</li>
+                <li>Frases como <em>"según estudios recientes"</em> sin referencia</li>
+                <li>Afirmaciones definitivas sobre temas debatidos</li>
+                <li>Información sobre eventos recientes o posteriores al corte</li>
+              </ul>
+            </div>
+            <div>
+              <p><strong>Cómo verificar:</strong></p>
+              <ul>
+                <li>Google Scholar con el título exacto</li>
+                <li>Buscador de DOI (doi.org)</li>
+                <li>Repositorio institucional de la revista</li>
+                <li>Base de datos de la biblioteca universitaria</li>
+              </ul>
+              <div class="tip" style="margin-top:0.6em">
+                Un artículo que existe pero fue resumido incorrectamente también es una alucinación. Verifica el contenido, no solo la existencia.
+              </div>
+            </div>
+          </div>
+          <aside class="notes">
+            Demonstrar cómo buscar en Google Scholar en tiempo real si hay conexión. Mostrar la diferencia entre buscar con el título exacto entre comillas vs. buscar sin comillas. También mostrar doi.org para verificar DOIs.
+          </aside>
+        </section>
+
+        <!-- 11 SESGO: ORIGEN Y TIPOS -->
+        <section>
+          <h2>Sesgo en IA: origen y tipos</h2>
+          <div class="two-col">
+            <div>
+              <p><strong>Los modelos heredan los sesgos de sus datos de entrenamiento.</strong></p>
+              <br/>
+              <p class="tag">SESGO DE ORIGEN</p>
+              <p>El corpus de entrenamiento sobrerepresenta: inglés, perspectivas occidentales, voces masculinas, ciertos grupos socioeconómicos.</p>
+              <br/>
+              <p class="tag">AMPLIFICACIÓN</p>
+              <p>Los modelos no replican — amplifican. Correlaciones débiles en los datos se vuelven más pronunciadas en las salidas.</p>
+            </div>
+            <div class="card">
+              <h3>Brechas de representación</h3>
+              <p>Grupos culturales, idiomas, disciplinas y regiones subrepresentadas en internet son subrepresentadas en el modelo.</p>
+              <br/>
+              <p>El modelo produce contenido de <span class="amarillo">menor calidad, menos matizado o factualmente incorrecto</span> sobre esos temas.</p>
+              <br/>
+              <p class="rojo">Esto no es un bug. Es una consecuencia directa de entrenar con datos desiguales.</p>
+            </div>
+          </div>
+          <aside class="notes">
+            Preguntar al grupo: si investigan sobre algo de su región, comunidad o disciplina local, ¿esperarían la misma calidad de respuesta que sobre un tema con mucha cobertura en inglés? Esto activa la intuición correcta. El sesgo no se elimina con mejores prompts — se gestiona con verificación cruzada y fuentes primarias diversas.
+          </aside>
+        </section>
+
+        <!-- 12 IMPACTO PRÁCTICO DEL SESGO -->
+        <section>
+          <h2>Impacto práctico del sesgo</h2>
+          <p class="subtitle">Lo que significa para el trabajo estudiantil</p>
+          <div class="three-col">
+            <div class="card">
+              <h3>Investigación local</h3>
+              <p>Temas sobre comunidades, regiones o fenómenos poco documentados en inglés recibirán respuestas de menor calidad o directamente incorrectas.</p>
+            </div>
+            <div class="card">
+              <h3>Perspectivas subrepresentadas</h3>
+              <p>El modelo puede presentar la perspectiva "por defecto" (occidental, anglófona) como neutral. Temas que requieren otras perspectivas son especialmente vulnerables.</p>
+            </div>
+            <div class="card">
+              <h3>Disciplinas emergentes</h3>
+              <p>Áreas de especialización con poca bibliografía en el corpus de entrenamiento producen respuestas menos confiables, aunque el modelo no lo señale.</p>
+            </div>
+          </div>
+          <div class="callout" style="margin-top:0.7em">
+            <strong>¿Qué hacer?</strong> Ser consciente no elimina el sesgo — lo gestiona. Cruzar con fuentes primarias diversas. No usar la IA como representativa de perspectivas que el modelo puede conocer mal.
+          </div>
+          <aside class="notes">
+            Este es un momento para conectar con las disciplinas del grupo. Si el grupo tiene estudiantes de humanidades, ciencias sociales o disciplinas regionales, hacer preguntas específicas a sus áreas. El sesgo no es abstracto — tiene impacto en la calidad de las respuestas que ellos van a recibir.
+          </aside>
+        </section>
+
+        <!-- 13 METODOLOGÍA DE COMPARACIÓN -->
+        <section>
+          <h2>Metodología de comparación de sistemas</h2>
+          <p class="subtitle">Comparar no es una actividad técnica — es pensamiento crítico</p>
+          <div class="two-col">
+            <div>
+              <p><strong>Protocolo paso a paso:</strong></p>
+              <ol>
+                <li>Formular una pregunta académica específica</li>
+                <li>Enviar el <span class="hl">mismo prompt exacto</span> a dos sistemas distintos</li>
+                <li>Registrar ambas respuestas completas</li>
+                <li>Construir la tabla de comparación</li>
+                <li>Verificar las afirmaciones que difieren</li>
+              </ol>
+            </div>
+            <div>
+              <p><strong>Ejes de la tabla de comparación:</strong></p>
+              <ul>
+                <li>Afirmaciones factuales realizadas</li>
+                <li>Fuentes citadas (si las hay)</li>
+                <li>Tono y nivel de certeza</li>
+                <li>Qué dice cada sistema que no sabe</li>
+                <li><span class="hl">Contradicciones entre los dos sistemas</span></li>
+              </ul>
+              <div class="warning" style="margin-top:0.6em">
+                Las contradicciones son señales, no empates. Donde los sistemas difieren es exactamente donde se necesita verificación.
+              </div>
+            </div>
+          </div>
+          <aside class="notes">
+            El punto más importante: un sistema más confiado no es más correcto. Si los dos sistemas se contradicen, ninguno de los dos tiene la respuesta correcta por default — ambos necesitan verificación. Esto derriba la idea de que "si dos sistemas dicen lo mismo, debe ser verdad".
+          </aside>
+        </section>
+
+        <!-- 14 DEMO EN VIVO -->
+        <section>
+          <h2>Demo en vivo: provocar una alucinación</h2>
+          <p class="subtitle">Instructor: ejecutar en pantalla compartida</p>
+          <div class="two-col">
+            <div>
+              <p class="tag">PROMPT RECOMENDADO</p>
+              <div class="callout">
+                <p><em>"Cita tres artículos académicos recientes sobre el impacto de la IA generativa en [disciplina del grupo]. Incluye autor, año, título y revista."</em></p>
+              </div>
+              <br/>
+              <p><strong>Pasos:</strong></p>
+              <ol style="font-size:0.85em">
+                <li>Enviar en pantalla compartida</li>
+                <li>Leer la respuesta en voz alta sin comentar</li>
+                <li>Copiar la primera cita y buscarla en Google Scholar</li>
+                <li>Verificar el DOI si existe</li>
+                <li>Mostrar el resultado al grupo</li>
+              </ol>
+            </div>
+            <div>
+              <p><strong>Preguntar al grupo:</strong></p>
+              <p><em>¿Qué señales había en la respuesta que deberían habernos advertido?</em></p>
+              <br/>
+              <p><strong>Señales a identificar:</strong></p>
+              <ul style="font-size:0.85em">
+                <li>Sin URL de acceso al artículo</li>
+                <li>DOI ausente o no funciona</li>
+                <li>Nombre de revista genérico</li>
+                <li>Respuesta con total confianza, sin ninguna reserva</li>
+              </ul>
+              <div class="tip" style="margin-top:0.6em; font-size:0.85em">
+                Si la cita existe: verificar que autor, año y argumento coincidan. El artículo puede existir y el resumen puede estar mal.
+              </div>
+            </div>
+          </div>
+          <aside class="notes">
+            Preparar el prompt antes de la sesión. Tener abierto Google Scholar y doi.org. Si el modelo da una cita que existe, no es un problema — usarla para mostrar que incluso las citas "reales" pueden estar mal resumidas. El objetivo es modelar el proceso de verificación, no garantizar que el modelo falle.
+          </aside>
+        </section>
+
+        <!-- 15 ACTIVIDAD 1: COMPARAR DOS RESPUESTAS -->
+        <section>
+          <div class="activity-label">Actividad — 20 min</div>
+          <h2>Comparar dos respuestas de IA</h2>
+          <p class="subtitle">Práctica guiada · Individualmente o en duplas</p>
+          <div class="two-col">
+            <div>
+              <p><strong>Instrucciones:</strong></p>
+              <ol>
+                <li>Usar el prompt de práctica que proporciona el instructor</li>
+                <li>Enviar el <strong>mismo prompt exacto</strong> a dos sistemas distintos</li>
+                <li>Registrar ambas respuestas completas en la plantilla</li>
+                <li>Identificar <strong>tres afirmaciones factuales</strong> en cada respuesta</li>
+                <li>Anotar qué dice cada sistema que no sabe (o si no lo dice)</li>
+              </ol>
+            </div>
+            <div class="card">
+              <h3>Tabla de comparación</h3>
+              <table style="font-size:0.75em">
+                <thead>
+                  <tr><th>Eje</th><th>Sistema A</th><th>Sistema B</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>Afirmación 1</td><td></td><td></td></tr>
+                  <tr><td>Afirmación 2</td><td></td><td></td></tr>
+                  <tr><td>Afirmación 3</td><td></td><td></td></tr>
+                  <tr><td>Fuentes citadas</td><td></td><td></td></tr>
+                  <tr><td>Nivel de certeza</td><td></td><td></td></tr>
+                  <tr><td>Dice que no sabe</td><td></td><td></td></tr>
+                  <tr><td>Contradicciones</td><td colspan="2"></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <aside class="notes">
+            Circular (o revisar en pantalla compartida si es virtual) y hacer preguntas de sondeo: ¿las dos respuestas dicen lo mismo sobre X? ¿Qué harían si difieren? ¿Alguno de los sistemas reconoció que no sabe algo? Seleccionar uno o dos casos representativos para la transición plenaria.
+          </aside>
+        </section>
+
+        <!-- 16 ACTIVIDAD 2: VERIFICAR TRES AFIRMACIONES -->
+        <section>
+          <div class="activity-label">Actividad — 25 min</div>
+          <h2>Verificar tres afirmaciones</h2>
+          <p class="subtitle">Práctica aplicada · Individualmente</p>
+          <div class="two-col">
+            <div>
+              <p><strong>Instrucciones:</strong></p>
+              <ol>
+                <li>Seleccionar <strong>tres afirmaciones específicas</strong> de las respuestas recolectadas — preferir estadísticas, citas o fechas</li>
+                <li>Buscar cada una en fuentes primarias</li>
+                <li>Documentar el resultado:</li>
+              </ol>
+              <ul style="margin-left:1.5em">
+                <li class="verde">Encontrada y correcta</li>
+                <li class="amarillo">Encontrada pero con diferencias</li>
+                <li class="rojo">No encontrada / incorrecta</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h3>Plantilla de verificación</h3>
+              <p style="font-size:0.78em"><strong>Afirmación exacta:</strong> copiar textual de la respuesta de IA</p>
+              <p style="font-size:0.78em"><strong>Resultado:</strong> encontrada / con diferencias / no encontrada</p>
+              <p style="font-size:0.78em"><strong>Fuente consultada:</strong> URL, DOI o nombre de base de datos</p>
+              <p style="font-size:0.78em"><strong>Nota:</strong> qué difiere si hay discrepancia</p>
+              <hr/>
+              <p style="font-size:0.72em"><strong>Dónde buscar:</strong> Google Scholar, doi.org, biblioteca universitaria, repositorio institucional</p>
+            </div>
+          </div>
+          <aside class="notes">
+            Mostrar cómo buscar en Google Scholar con el título exacto entre comillas antes de que empiecen. Tener doi.org abierto. Si un estudiante no encuentra ninguna fuente para verificar, eso también es un hallazgo — una afirmación sin fuente verificable es una señal de alerta en sí misma.
+          </aside>
+        </section>
+
+        <!-- 17 SEÑALES DE RESPUESTA ESPECULATIVA -->
+        <section>
+          <h2>Señales de respuesta especulativa</h2>
+          <p class="subtitle">Lista de verificación antes de citar o usar</p>
+          <div class="two-col">
+            <div>
+              <div class="warning">
+                <p><strong>Señales de alto riesgo:</strong></p>
+                <ul>
+                  <li>Números específicos sin fuente explícita</li>
+                  <li>Citas académicas (siempre verificar)</li>
+                  <li>"Según estudios recientes" sin referencia</li>
+                  <li>Información muy reciente o posterior al corte</li>
+                  <li>Afirmaciones técnicas en especialización nicho</li>
+                </ul>
+              </div>
+            </div>
+            <div>
+              <div class="tip">
+                <p><strong>Regla práctica:</strong></p>
+                <p>Si vas a usar la información para algo con consecuencias — entrega evaluada, decisión, afirmación pública — <span class="hl">verifica siempre</span>.</p>
+                <br/>
+                <p>Si estás explorando o generando un borrador que tú vas a revisar, el riesgo es menor.</p>
+                <br/>
+                <p><strong>Tú eres el autor final.</strong> El autor es responsable del contenido.</p>
+              </div>
+            </div>
+          </div>
+          <aside class="notes">
+            Esta slide puede servir como referencia posterior para el estudiantado. El principio de "tú eres el autor final" es central en toda la política del programa. La responsabilidad no se delega a la herramienta.
+          </aside>
+        </section>
+
+        <!-- 18 EL INFORME DE CONTRASTE -->
+        <section>
+          <h2>El informe de contraste</h2>
+          <p class="subtitle">Entregable asíncrono · 300 palabras</p>
+          <div class="two-col">
+            <div>
+              <p><strong>Qué debe incluir:</strong></p>
+              <ul>
+                <li>Los dos sistemas comparados (nombre y versión si está disponible)</li>
+                <li>El prompt utilizado (exacto, sin modificar)</li>
+                <li>Principales diferencias encontradas entre respuestas</li>
+                <li>Al menos un hallazgo de verificación documentado</li>
+                <li>Reflexión: ¿qué cambiarías en tu práctica?</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h3>Criterios mínimos de aprobación</h3>
+              <ul style="font-size:0.85em">
+                <li class="verde">Menciona los dos sistemas explícitamente</li>
+                <li class="verde">Incluye al menos un hallazgo de verificación</li>
+                <li class="verde">Distingue entre afirmaciones verificadas y no verificadas</li>
+                <li class="verde">Concluye con reflexión sobre práctica futura</li>
+                <li class="rojo">No presenta como verificada una afirmación que no lo está</li>
+              </ul>
+            </div>
+          </div>
+          <aside class="notes">
+            Leer los criterios en voz alta antes de cerrar la sesión. Aclarar que 300 palabras es el mínimo — no un objetivo estético. El informe es evidencia de que el proceso ocurrió, no solo el resultado. El proceso de verificación debe ser visible en el texto.
+          </aside>
+        </section>
+
+        <!-- 19 CIERRE: LO QUE LLEVAS HOY -->
+        <section>
+          <h2>Lo que te llevas hoy</h2>
+          <p class="subtitle">Tres ideas que no deben salir de esta sesión sin haberse asentado</p>
+          <div class="three-col">
+            <div class="card">
+              <div class="big-num">01</div>
+              <p><strong>Fluidez ≠ exactitud</strong></p>
+              <p>Una respuesta bien redactada puede ser completamente incorrecta. El tono seguro es un patrón aprendido, no una señal de verdad.</p>
+            </div>
+            <div class="card">
+              <div class="big-num">02</div>
+              <p><strong>Verifica antes de citar</strong></p>
+              <p>Cualquier afirmación factual con consecuencias — estadística, cita, fecha — requiere verificación en fuente primaria antes de usarse.</p>
+            </div>
+            <div class="card">
+              <div class="big-num">03</div>
+              <p><strong>Tú eres el autor final</strong></p>
+              <p>La responsabilidad del contenido que entregas no se delega a la herramienta. Tú firmas el trabajo — tú lo defiendes.</p>
+            </div>
+          </div>
+          <aside class="notes">
+            Pedirle a tres estudiantes distintos que digan en una frase por qué les importa cada punto. Cerrar con el ticket de salida: tres preguntas de reflexión en el LMS o en papel. 1) ¿Qué afirmación te sorprendió más al verificar? 2) ¿Qué cambiarías en cómo usabas IA? 3) ¿Qué harías diferente la próxima vez que necesites citar algo?
+          </aside>
+        </section>
+
+        <!-- 20 PRÓXIMA SEMANA -->
+        <section>
+          <h2>Próxima semana</h2>
+          <p class="subtitle">Módulo 03 · Prompting y verificación</p>
+          <div class="two-col">
+            <div>
+              <p><strong>¿Qué cubriremos?</strong></p>
+              <ul>
+                <li>Anatomía de un prompt efectivo</li>
+                <li>Técnicas: contexto, rol, formato, restricciones</li>
+                <li>Cómo formular preguntas que reduzcan el riesgo de alucinación</li>
+                <li>Verificación sistemática integrada al flujo de trabajo</li>
+              </ul>
+            </div>
+            <div class="callout">
+              <p><strong>Para antes de la próxima sesión:</strong></p>
+              <ul>
+                <li>Entregar la tabla de comparación</li>
+                <li>Entregar el informe de contraste (300 palabras)</li>
+                <li>Traer una pregunta de tu disciplina que quieras trabajar con IA la semana que viene</li>
+              </ul>
+            </div>
+          </div>
+          <aside class="notes">
+            Cerrar con energía positiva. El módulo de hoy fue sobre entender los límites — el módulo siguiente es sobre trabajar con esos límites de manera productiva. Recordar la política de trazabilidad: todos los entregables deben registrar qué herramienta se usó, cuándo y con qué prompt.
+          </aside>
+        </section>
+
+      </div>
+    </div>
+    <script type="module" src="../shared/reveal-init.js"></script>
+  </body>
+</html>

@@ -1,0 +1,146 @@
+.tool {
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1.25rem 0;
+  background: var(--ifm-background-surface-color);
+  box-shadow: 0 8px 24px rgba(31, 45, 61, 0.08);
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  align-items: center;
+  margin: 0.75rem 0 1rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 0.85rem;
+}
+
+.card {
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 8px;
+  padding: 0.9rem;
+  background: #ffffff;
+}
+
+[data-theme='dark'] .card {
+  background: #20272c;
+}
+
+.card h3,
+.card h4 {
+  margin-top: 0;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0.5rem 0;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  background: #e9f7f4;
+  color: #0b5d53;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.2rem 0.55rem;
+}
+
+.accent {
+  background: #fff3d7;
+  color: #785600;
+}
+
+.danger {
+  background: #ffe9e2;
+  color: #8a2d12;
+}
+
+.button {
+  border: 1px solid #12756a;
+  border-radius: 8px;
+  background: #12756a;
+  color: #ffffff;
+  cursor: pointer;
+  font-weight: 700;
+  padding: 0.55rem 0.8rem;
+}
+
+.buttonSecondary {
+  border: 1px solid #12756a;
+  border-radius: 8px;
+  background: transparent;
+  color: #12756a;
+  cursor: pointer;
+  font-weight: 700;
+  padding: 0.55rem 0.8rem;
+}
+
+.button:focus,
+.buttonSecondary:focus,
+.input:focus,
+.select:focus,
+.textarea:focus {
+  outline: 3px solid #f2c94c;
+  outline-offset: 2px;
+}
+
+.select,
+.input,
+.textarea {
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 8px;
+  padding: 0.5rem;
+  width: 100%;
+}
+
+.textarea {
+  min-height: 96px;
+  resize: vertical;
+}
+
+.tableWrap {
+  overflow-x: auto;
+}
+
+.progress {
+  height: 10px;
+  width: 100%;
+  background: var(--ifm-color-emphasis-200);
+  border-radius: 999px;
+  overflow: hidden;
+  margin: 0.75rem 0;
+}
+
+.progressBar {
+  height: 100%;
+  background: linear-gradient(90deg, #12756a, #d9633f);
+}
+
+.checkItem {
+  display: flex;
+  gap: 0.55rem;
+  align-items: flex-start;
+  margin: 0.45rem 0;
+}
+
+.printArea {
+  border: 1px dashed var(--ifm-color-emphasis-300);
+  border-radius: 8px;
+  padding: 1rem;
+  background: #fffaf0;
+}
+
+[data-theme='dark'] .printArea {
+  background: #2a2921;
+}
+

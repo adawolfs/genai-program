@@ -1,0 +1,39 @@
+---
+title: "Cómo actualizar contenido"
+sidebar_label: "Actualizar contenido"
+tags: ["mantenimiento"]
+---
+
+# Cómo actualizar contenido
+
+## Cambiar una página
+
+Edita el archivo MDX correspondiente en `docs/`. Mantén frontmatter, título y enlaces internos.
+
+## Cambiar datos de módulos o herramientas
+
+Edita `src/data/program.ts`. Las herramientas React usan ese archivo para mantener consistencia entre dashboard, planificador, rúbrica, mapa de evaluación y presupuesto.
+
+## Cambiar métricas de tiempo
+
+Edita `src/data/timeMetrics.ts`. Mantén cuadrado el total de cada módulo: sesiones en vivo más trabajo autónomo debe coincidir con la duración del módulo, cada sesión debe sumar sus segmentos y ninguna sesión puede superar 90 minutos ni romper la regla de una sesión por semana.
+
+## Cambiar slides
+
+Edita el `index.html` del deck en `slides/` y ejecuta:
+
+```bash
+npm run slides:build
+```
+
+## Añadir una nueva página
+
+1. Crear el archivo `.mdx`.
+2. Agregarlo a `sidebars.ts`.
+3. Verificar enlaces con `npm run build`.
+
+## Control editorial
+
+- No inventar políticas institucionales.
+- Marcar ausencias como "Not specified in source documentation".
+- Conservar tono académico, claro y operativo.

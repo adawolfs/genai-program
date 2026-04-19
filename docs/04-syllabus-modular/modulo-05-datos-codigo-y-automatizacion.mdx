@@ -1,0 +1,682 @@
+---
+title: "Módulo 05. Datos, código y automatización"
+sidebar_label: "05. Datos, código y automatización"
+description: "Trabaja con CSV, hojas de cálculo, notebooks, scripts simples y asistentes de código para producir análisis reproducibles con licencias claras."
+tags: ["syllabus", "modulo", "modulo-05"]
+---
+
+import TimeBudget from '@site/src/components/program/TimeBudget';
+
+# Módulo 05. Datos, código y automatización
+
+Trabaja con CSV, hojas de cálculo, notebooks, scripts simples y asistentes de código para producir análisis reproducibles con licencias claras.
+
+**Duración:** 10 horas.  
+**Ubicación sugerida:** Semanas 7 y 8.  
+**Deck Reveal.js:** [abrir diapositivas](/slides/modulo-05/).
+
+:::tip Uso docente
+Esta página está escrita para que un instructor pueda ejecutar el módulo sin depender de memoria oral o decisiones implícitas. El módulo ofrece **dos rutas paralelas**: una con Python/Jupyter Notebooks y una completamente en hoja de cálculo (Google Sheets, Excel o LibreOffice Calc). Ambas rutas cubren los mismos objetivos de aprendizaje; ningún estudiante necesita saber programar para aprobar. Ajustes institucionales específicos: valida qué herramientas de IA están aprobadas por tu institución antes de la Semana 7.
+:::
+
+<TimeBudget moduleId="modulo-05" />
+
+## Objetivos de aprendizaje
+
+- Limpiar y analizar un dataset simple con herramientas accesibles (hoja de cálculo o Python).
+- Usar IA para explicar, revisar o prototipar código o fórmulas sin dejar de probarlo todo.
+- Documentar datos, licencias, pasos de análisis y límites de interpretación.
+- Producir una visualización con título, ejes, fuente y nota de límites.
+- Describir el flujo de trabajo asistido por IA de forma trazable y verificable.
+
+## Competencias abordadas
+
+- Datos básicos: comprensión de estructura, tipos y calidad de datos
+- Reproducibilidad: documentar pasos para que otro pueda repetir el análisis
+- Automatización responsable: usar código o fórmulas generadas por IA con criterio crítico
+
+## Resultados medibles
+
+- Entrega un notebook, hoja de cálculo o script comentado con pasos claros.
+- Explica qué parte del flujo fue asistida por IA y qué pruebas realizó para verificarlo.
+- Identifica licencia y restricciones de uso del dataset empleado.
+- Produce al menos una visualización con todos los elementos requeridos.
+
+## Materiales requeridos
+
+- Dataset público pequeño provisto por el instructor (≤ 200 filas, sin datos personales, formato CSV)
+- Notebook base (plantilla `.ipynb` con celdas guía para la ruta código)
+- README de análisis (plantilla Markdown con campos requeridos)
+- Checklist de licencias (lista de verificación para evaluar uso permitido de fuentes de datos)
+- Instrucciones descargables paso a paso para baja conectividad
+
+## Herramientas
+
+| Capa gratuita o institucional | Capa de pago opcional |
+|---|---|
+| Google Colab (ruta código)<br />Google Sheets / LibreOffice Calc (ruta sin código)<br />Kaggle Datasets<br />Datos abiertos gubernamentales<br />Our World in Data<br />VS Code + Python local | Copilot Pro, Colab Pro o pool de cómputo premium por proyecto |
+
+---
+
+## Contenido del módulo — Semana 7: Datos y análisis
+
+### 1. Anatomía de un dataset
+
+Un **dataset** (conjunto de datos) tiene estructura tabular: filas y columnas.
+
+- **Filas = observaciones**: cada fila es un registro individual (una persona, un evento, una ciudad, una transacción).
+- **Columnas = variables**: cada columna es un atributo o característica de esa observación.
+- **Celda = valor**: la intersección de una fila y una columna contiene exactamente un valor.
+
+**Tipos de variables frecuentes:**
+
+| Tipo | Subtipo | Ejemplo |
+|---|---|---|
+| Numérica | Continua | Temperatura (20.5 °C), precio ($349.90) |
+| Numérica | Discreta | Número de hijos (0, 1, 2…), cantidad de clicks |
+| Categórica | Nominal | País, color, género, nombre de carrera |
+| Categórica | Ordinal | Nivel de satisfacción (1–5), grado escolar |
+| Texto libre | — | Comentario de reseña, descripción de producto |
+| Fecha/hora | — | 2024-03-15, 14:30:00 |
+
+**¿Qué es un dataset "tidy"?**
+
+Un dataset está ordenado (_tidy_) cuando cumple tres reglas:
+1. Cada fila es exactamente una observación.
+2. Cada columna es exactamente una variable.
+3. Cada celda contiene exactamente un valor.
+
+Los datasets reales casi nunca llegan así. Limpiarlos es parte del trabajo.
+
+**Formatos comunes:**
+
+- **CSV** (Comma-Separated Values): texto plano, universal, fácil de compartir. La primera fila suele ser el encabezado.
+- **Excel / ODS**: formato de hoja de cálculo con múltiples pestañas. Cuidado con celdas combinadas y macros ocultas.
+- **JSON**: estructurado como pares clave-valor, frecuente en APIs. Puede ser anidado (difícil de convertir a tabla).
+
+### 2. El ciclo de análisis de datos
+
+El análisis de datos no es un paso único: es un ciclo de seis etapas. Los asistentes de IA pueden ayudar en cada una, pero el juicio en cada etapa es humano.
+
+**Etapa 1 — Definir la pregunta**  
+¿Qué quieres saber exactamente? Una buena pregunta analítica es específica, responde a un interés real y puede contestarse con los datos disponibles. Ejemplo malo: "analizar las ventas". Ejemplo bueno: "¿Cuál es el promedio de ventas mensuales por región entre enero y junio de 2023?"
+
+**Etapa 2 — Obtener los datos**  
+¿De dónde provienen? ¿Qué licencia tienen? ¿Son relevantes para la pregunta? Documenta la URL o DOI, la fecha de descarga y la versión. Sin esto, el análisis no es reproducible.
+
+**Etapa 3 — Limpiar los datos**  
+Eliminar duplicados, corregir tipos (texto donde debería haber número), estandarizar formatos de fecha, manejar valores faltantes (¿eliminar la fila? ¿rellenar con la mediana? ¿marcarlo como ausente?). Cada decisión de limpieza debe documentarse.
+
+**Etapa 4 — Analizar**  
+Calcular estadísticas descriptivas (media, mediana, desviación estándar, frecuencias). Crear visualizaciones para detectar patrones. Cruzar variables. En esta etapa la IA puede generar fórmulas o código; tú decides qué calcular.
+
+**Etapa 5 — Interpretar**  
+¿Qué significan los números? ¿Qué no dicen? Correlación no implica causalidad. Un promedio puede ocultar variaciones importantes. Un resultado estadístico puede ser real pero no importante en la práctica. Los límites de interpretación deben declararse explícitamente.
+
+**Etapa 6 — Comunicar**  
+¿Quién es la audiencia? ¿Qué nivel de detalle necesita? ¿Qué formato es más claro (tabla, gráfica de barras, mapa)? Una visualización sin etiquetas o sin fuente no es comunicación, es ruido.
+
+### 3. Limpieza de datos con IA (asistida)
+
+Puedes describir problemas de calidad de datos a un asistente de IA y pedir fórmulas o código para resolverlos. Lo importante es entender el principio:
+
+**Lo que puedes pedirle a la IA:**
+
+- "Tengo una columna de fechas con formato DD/MM/AAAA y AAAA-MM-DD mezclados. ¿Cómo estandarizo en Google Sheets?"
+- "¿Qué fórmula de Excel elimina los espacios dobles en una columna de nombres?"
+- "¿Cómo cuento en Python cuántas filas tienen valor nulo en la columna 'edad'?"
+
+**Lo que tú debes hacer después:**
+
+1. Leer la fórmula o el código que te dé antes de aplicarlo.
+2. Verificar manualmente con 3 a 5 filas que conoces. ¿El resultado es el esperado?
+3. Documentar: qué pediste, qué fórmula obtuviste, qué modificaste, qué validaste.
+
+**Lo que la IA no puede hacer:**
+
+- Ver tu archivo real (a menos que lo pegues; y si tiene datos personales, no debes hacerlo).
+- Saber qué significa un valor faltante en tu contexto: ¿es un cero? ¿Un dato no recabado? ¿Un error?
+- Decidir si eliminar filas con valores ausentes o imputarlos. Esa decisión metodológica es tuya.
+
+**Regla de privacidad:**  
+Para datasets de práctica (≤ 100 filas, sin datos personales identificables): puedes pegar el CSV directamente en el chat de IA. Para datasets más grandes o con cualquier información personal (nombres, correos, ubicaciones, identificadores): usa la IA para generar el código y aplícalo localmente. Nunca subas datos de personas reales a servicios externos sin revisión de privacidad institucional.
+
+### 4. Fuentes de datos abiertas para estudiantes
+
+| Fuente | Tipo de datos | Licencia típica | Nota |
+|---|---|---|---|
+| **Kaggle Datasets** | Variado (educación, salud, negocios, ciencia) | CC0, CC-BY u "Other" | Siempre revisar la pestaña de licencia específica |
+| **UCI ML Repository** | Datasets clásicos de aprendizaje automático | Variada | Ideal para prácticas de clasificación y regresión |
+| **Datos.gob.mx** | Datos gubernamentales de México | Libre uso con atribución | Calidad variable según dependencia |
+| **Datos.gov.co** | Datos gubernamentales de Colombia | Libre uso | Amplia variedad de temas |
+| **World Bank Open Data** | Economía, desarrollo, salud global | CC-BY 4.0 | Bien documentados y actualizados |
+| **Our World in Data** | Salud, energía, demografía, economía | CC-BY 4.0 | Excelente documentación y visualizaciones de referencia |
+| **Google Dataset Search** | Índice de datasets de múltiples fuentes | Variable | Revisar fuente original para licencia |
+
+**Cómo verificar la licencia:**  
+Antes de usar cualquier dataset, responde estas preguntas: ¿Puedo usarlo para fines educativos? ¿Necesito citar la fuente (CC-BY)? ¿Puedo modificarlo? ¿Puedo redistribuirlo? Si la licencia dice "Other" o no está especificada, trata el dataset como de uso restringido y consulta al instructor.
+
+### 5. Documentación de datos: el README de datos
+
+Todo análisis académico o profesional que use un dataset externo necesita un README de datos. Sin él, el análisis no es reproducible ni defendible.
+
+**Campos mínimos requeridos:**
+
+```
+# README de datos — [Nombre del análisis]
+
+## Fuente
+- Nombre del dataset: ...
+- URL o DOI: ...
+- Organización/autor: ...
+
+## Licencia
+- Tipo: [CC0 / CC-BY 4.0 / CC-BY-SA / Propietaria / Otra]
+- ¿Puedo usarlo para este trabajo?: [Sí / No / Con restricciones]
+- Cómo citar: ...
+
+## Acceso
+- Fecha de descarga: AAAA-MM-DD
+- Versión o timestamp del archivo: ...
+
+## Descripción del dataset original
+- Filas: N
+- Columnas: M
+- Período cubierto: ...
+- Unidad de observación: ...
+
+## Modificaciones realizadas
+- Columnas eliminadas: [listar]
+- Filas eliminadas: [criterio]
+- Valores imputados o corregidos: [qué, cómo, por qué]
+- Formatos normalizados: [ej. fechas estandarizadas a ISO 8601]
+
+## Limitaciones conocidas
+- [Sesgo de muestreo, grupos subrepresentados, período desactualizado, etc.]
+
+## Uso de IA en la limpieza
+- [Qué fórmulas o código generó la IA, qué se verificó manualmente]
+```
+
+**Por qué importa:**  
+Sin documentación, nadie puede saber si tu análisis es correcto. Si tus datos cambian, no sabrás si tus resultados cambian con ellos. Si alguien encuentra un error, no podrá rastrear su origen. La documentación no es burocracia: es parte del análisis.
+
+---
+
+## Contenido del módulo — Semana 8: Código y automatización
+
+### 6. Asistentes de código: qué hacen (y qué no hacen)
+
+Los asistentes de código basados en IA (GitHub Copilot, ChatGPT, Claude, Gemini) pueden hacer varias cosas útiles:
+
+| Capacidad | Descripción | Ejemplo |
+|---|---|---|
+| **Autocompletar** | Sugiere la siguiente línea basándose en el contexto | Escribes `df.groupby(` y sugiere el resto |
+| **Generar desde descripción** | Escribe una función a partir de un comentario | "# Lee un CSV y devuelve filas donde edad > 18" |
+| **Explicar código** | Describe en lenguaje natural qué hace un bloque | Pegás código y preguntás "¿qué hace esto?" |
+| **Revisar y mejorar** | Señala bugs potenciales o mejoras de estilo | "¿Hay algún problema en esta función?" |
+| **Traducir entre lenguajes** | Convierte Python a R, SQL a Python, etc. | "Conviérteme esta consulta SQL a pandas" |
+
+**Límites críticos:**
+
+- La IA no conoce tu entorno específico (versión de Python, librerías instaladas, estructura de tu proyecto).
+- La IA no conoce tu dataset real ni sus particularidades.
+- La IA puede generar código que parece correcto pero falla con tus datos reales.
+- La IA puede usar funciones obsoletas o con comportamiento diferente entre versiones.
+- La IA no puede ejecutar el código: eso siempre lo haces tú.
+
+### 7. Anatomía de un Jupyter Notebook
+
+Un notebook de Jupyter (o Google Colab) alterna dos tipos de celdas:
+
+**Celdas de código:**  
+Contienen Python (o R) ejecutable. El resultado aparece debajo al correr la celda. Cada celda tiene un número de ejecución `[1]`, `[2]`... que indica el orden en que se corrió.
+
+**Celdas de Markdown:**  
+Contienen texto formateado (títulos, listas, explicaciones, notas de interpretación). No se ejecutan; se renderizan como texto.
+
+**Buena práctica para un notebook reproducible:**
+
+1. Toda celda de código computacionalmente importante tiene una celda de Markdown encima que explica **por qué** se hace ese cálculo (no solo qué hace el código).
+2. El notebook se puede correr de arriba a abajo sin errores (menú: Kernel → Restart & Run All).
+3. Las variables intermedias tienen nombres descriptivos, no `x`, `tmp`, `data2`.
+4. Los resultados numéricos tienen unidades en la celda de interpretación adyacente.
+
+**Ejemplo de estructura correcta:**
+
+```
+[Markdown] ## 2. Limpieza de datos
+[Markdown] Eliminamos filas con valor nulo en la columna 'ingreso'
+            porque representan registros incompletos (ver README).
+            Total de filas antes: 200. Después: 187.
+[Código]   df_clean = df.dropna(subset=['ingreso'])
+[Código]   print(f"Filas eliminadas: {len(df) - len(df_clean)}")
+[Markdown] **Interpretación:** Se eliminaron 13 filas (6.5% del total).
+            Este porcentaje es bajo; no esperamos sesgo significativo.
+```
+
+### 8. Flujo de trabajo con asistente de código
+
+El flujo en seis pasos garantiza que el código generado por IA sea tuyo en términos de comprensión y responsabilidad:
+
+**Paso 1 — Escribir el comentario**  
+Antes de pedir a la IA, escribe un comentario que describe exactamente qué quieres que haga la función. Si no puedes describirlo con claridad, no estás listo para pedirlo.
+
+```python
+# Calcula el promedio de la columna 'precio' agrupado por 'categoria'
+# Devuelve un DataFrame con columnas: categoria, precio_promedio
+# Los valores nulos en 'precio' deben ignorarse (skipna=True)
+```
+
+**Paso 2 — Pedir a la IA (o dejar que autocomplete)**  
+Usa tu comentario como prompt. Pide a la IA que genere el código o deja que el asistente autocomplete.
+
+**Paso 3 — Leer el código línea por línea antes de ejecutar**  
+No ejecutes código que no hayas leído. Para cada línea pregúntate: ¿Sé qué hace esto? ¿Tiene sentido aquí? Si hay algo que no entiendes, pide explicación antes de correr.
+
+**Paso 4 — Probar con entradas conocidas**  
+Crea un mini-dataset de prueba donde conoces la respuesta esperada. Verifica que el código produce ese resultado.
+
+```python
+# Dataset de prueba
+test_df = pd.DataFrame({
+    'categoria': ['A', 'A', 'B', 'B'],
+    'precio': [10, 20, 30, None]
+})
+# Resultado esperado: A=15.0, B=30.0
+resultado = calcular_promedio_por_categoria(test_df)
+print(resultado)
+```
+
+**Paso 5 — Manejar casos borde**  
+¿Qué pasa si la columna está vacía? ¿Si el DataFrame tiene cero filas? ¿Si el tipo de dato es texto en vez de número? Prueba al menos dos casos extremos.
+
+**Paso 6 — Documentar**  
+En la celda de Markdown del notebook, registra: qué prompt usaste, qué código generó la IA, qué modificaste y qué pruebas corriste. Esto es trazabilidad.
+
+### 9. Cómo leer código generado por IA
+
+La regla de oro: **si no puedes explicar cada línea, no puedes defenderla.**
+
+**Proceso de lectura:**
+
+1. Lee la firma de la función: ¿qué recibe? ¿qué devuelve?
+2. Lee el cuerpo línea por línea.
+3. Traza una entrada de ejemplo a mano: ¿qué valor tiene cada variable en cada paso?
+4. Pregunta a la IA que explique las líneas que no entiendes (sin copiar la explicación sin leerla).
+
+**Señales de alerta en código generado — revisar con cuidado:**
+
+| Señal | Por qué preocupa |
+|---|---|
+| `eval()` o `exec()` | Ejecuta código arbitrario; peligro de inyección |
+| `subprocess` o `os.system()` | Ejecuta comandos del sistema operativo |
+| `requests.get()` sin explicación | Hace llamadas a internet desde tu entorno |
+| `open()` con modo `'w'` en ruta absoluta | Escribe o sobreescribe archivos en tu sistema |
+| Importaciones de librerías desconocidas | Pueden requerir datos o permisos adicionales |
+
+Ante cualquiera de estas señales: pregunta a la IA que explique exactamente qué hace esa línea y por qué la incluyó. Si la explicación no te convence, elimina o reemplaza esa parte.
+
+### 10. Visualización de datos responsable
+
+Una visualización sin los elementos correctos es desinformación potencial, aunque sea involuntaria.
+
+**Elementos obligatorios en toda visualización:**
+
+1. **Título** claro: qué muestra la gráfica (no "Gráfica 1", sino "Distribución de calificaciones por semestre, 2023")
+2. **Etiquetas de ejes**: nombre de la variable + unidad si aplica
+3. **Fuente**: de dónde vienen los datos (con URL o referencia completa)
+4. **N**: tamaño de la muestra (n = 187 observaciones)
+5. **Nota de límites**: una oración que declare qué NO muestra la gráfica o qué sesgo puede tener
+
+**Errores comunes a evitar:**
+
+- **Eje Y truncado:** empezar el eje Y en un valor distinto de cero exagera visualmente las diferencias.
+- **Escala engañosa:** usar escala logarítmica sin avisarlo.
+- **Rango de fechas cherry-picked:** mostrar solo el período que favorece tu argumento.
+- **Gráficas de pay para comparaciones complejas:** difíciles de leer con más de 5 categorías.
+- **Colores sin significado:** usar rojo/verde para diferencias que no son negativas/positivas.
+
+**La IA puede generar el código de la gráfica. Tú debes:**
+- Verificar que las etiquetas son correctas y en el idioma correcto.
+- Confirmar que la escala es apropiada y no engañosa.
+- Asegurarte de que la visualización representa fielmente los datos.
+- Añadir la nota de límites tú mismo (la IA no sabe qué sesgo tiene tu dataset).
+
+### 11. Documentación de reproducibilidad: el README técnico
+
+Para la ruta de código, el README del repositorio o del entregable debe incluir:
+
+```
+# README — [Nombre del proyecto/análisis]
+
+## Descripción
+[Una o dos oraciones sobre qué pregunta responde este análisis]
+
+## Entorno
+- Python: 3.11.x
+- Librerías principales: pandas 2.x, matplotlib 3.x, numpy 1.x
+  (ver requirements.txt para versiones exactas)
+- Cómo instalar: pip install -r requirements.txt
+
+## Datos
+- Archivo: datos/dataset_limpio.csv
+- Fuente original: [URL]
+- Licencia: [CC-BY 4.0 / CC0 / etc.]
+- Ver: datos/README_datos.md para documentación completa
+
+## Cómo reproducir
+1. Clonar o descargar el repositorio
+2. Instalar dependencias: pip install -r requirements.txt
+3. Abrir análisis.ipynb en Jupyter o Google Colab
+4. Ejecutar Kernel → Restart & Run All
+5. Los resultados deben coincidir con los reportados en el informe
+
+## Uso de IA
+- Herramienta: [ChatGPT / Claude / GitHub Copilot]
+- Partes generadas: [describir funciones o bloques generados por IA]
+- Modificaciones realizadas: [describir cambios al código generado]
+- Verificación: [describir pruebas realizadas]
+
+## Problemas conocidos
+- [Cualquier error o limitación identificada]
+```
+
+---
+
+## Ruta sin código (hoja de cálculo)
+
+Esta ruta cubre exactamente los mismos objetivos de aprendizaje que la ruta con Python. No es una versión reducida: es una alternativa completa para quien no programa o prefiere una herramienta visual.
+
+### Herramientas válidas
+
+- **Google Sheets** (en línea, gratuito con cuenta Google)
+- **Microsoft Excel** (escritorio o Microsoft 365)
+- **LibreOffice Calc** (gratuito, funciona sin internet)
+
+### Lo que harás en hoja de cálculo
+
+| Equivalente en Python | Equivalente en hoja de cálculo |
+|---|---|
+| `df.head()` | Ver las primeras filas visualmente |
+| `df.describe()` | Funciones `PROMEDIO()`, `MAX()`, `MIN()`, `CONTAR()` |
+| `df.groupby('col').mean()` | Tabla dinámica (pivot table) |
+| `df.dropna()` | Filtrar y eliminar filas vacías manualmente |
+| `matplotlib.pyplot.bar()` | Insertar → Gráfico → Barras |
+| `df['col'].value_counts()` | `CONTAR.SI()` por categoría |
+
+### Cómo usar IA en la ruta de hoja de cálculo
+
+1. **Describir el problema en lenguaje natural:** "Tengo una columna A con categorías y una columna B con números. Quiero el promedio de B para cada valor único de A en Google Sheets."
+2. **Recibir la fórmula:** La IA podría responder: `=PROMEDIO.SI(A:A,"Categoría1",B:B)`
+3. **Verificar manualmente:** Calcula a mano el promedio de 3 o 4 filas de "Categoría1" y compara con el resultado de la fórmula.
+4. **Documentar:** En una celda de comentario o en un documento aparte, registra qué pediste, qué fórmula obtuviste, qué validaste.
+
+### Actividad de la Semana 7 — Ruta hoja de cálculo
+
+1. Descargar el CSV provisto por el instructor.
+2. Abrirlo en tu herramienta de hoja de cálculo.
+3. Responder dos preguntas de análisis usando fórmulas (puedes pedir las fórmulas a la IA).
+4. Verificar cada fórmula con al menos 3 filas manuales.
+5. Completar el README de datos (plantilla provista).
+6. Añadir nota de licencia y fuente en la primera pestaña.
+
+### Actividad de la Semana 8 — Ruta hoja de cálculo
+
+1. Crear una gráfica con los datos del CSV (Google Sheets: Insertar → Gráfico).
+2. Añadir título, etiquetas de ejes y fuente de datos.
+3. Escribir en una celda adyacente o en el documento de entrega: "Esta gráfica muestra [X] pero no considera [Y limitación]."
+4. Documentar el proceso completo en el README (campos: fuente, licencia, modificaciones, uso de IA, limitaciones).
+
+---
+
+## Guía de sesión síncrona — Semana 7
+
+**Duración total:** 90 minutos  
+**Tema:** Datos, hojas de cálculo y análisis asistido
+
+### Apertura (10 min)
+
+Pregunta disparadora: "¿Alguna vez descargaste datos y no sabías si podías usarlos? ¿Qué hiciste?"
+
+Conectar con el módulo anterior (escritura y autoría): así como en escritura declaramos qué generó la IA y qué escribimos nosotros, en análisis declaramos qué calculó la IA y qué decidimos nosotros.
+
+Anunciar las dos rutas disponibles y confirmar cuántos estudiantes seguirán cada una.
+
+### Demo guiada (15 min)
+
+**Instructor:** Abrir el CSV provisto en Google Sheets en pantalla compartida.  
+Mostrar:
+- Cómo identificar los tipos de variables de cada columna.
+- Cómo hacer una pregunta analítica simple ("¿Cuál es el promedio de la columna X por categoría?").
+- Cómo pedirle a un asistente de IA la fórmula o el código.
+- Cómo verificar el resultado manualmente con 3 filas.
+
+**Punto de énfasis:** El instructor muestra explícitamente el paso de verificación manual. Sin esto, el ejercicio no enseña nada.
+
+### Práctica estructurada (20 min)
+
+Estudiantes cargan el CSV en su herramienta. El instructor circula (en clase presencial) o responde en el chat (en línea).
+
+**Consigna:** "Identifica el tipo de cada variable en el dataset. Responde: ¿cuántas observaciones hay? ¿Cuántas variables numéricas? ¿Hay valores faltantes visibles?"
+
+Pausa de 2 min para que compartan respuestas en chat o en voz alta.
+
+### Transición (5 min)
+
+Introducir el concepto de limpieza: "Ahora que conocemos el dataset, ¿qué problemas de calidad vemos?" Anotar respuestas del grupo en pantalla.
+
+### Práctica aplicada (25 min)
+
+**Consigna completa:** Responde la Pregunta 1 de análisis del dataset usando la herramienta elegida (hoja de cálculo o Python). Usa IA para obtener la fórmula o el código si lo necesitas. Verifica con 3 filas manuales. Documenta en el README de datos.
+
+Estudiantes trabajan. El instructor está disponible para preguntas.
+
+**Hito a observar:** ¿Están verificando manualmente? Si ves que alguien aplica directamente sin verificar, intervenir con la pregunta: "¿Cómo sabes que esa fórmula está bien?"
+
+### Cierre (10 min)
+
+Pedir a dos o tres voluntarios que muestren su resultado y expliquen cómo lo obtuvieron.
+
+Preguntas de cierre:
+- "¿Qué parte le pediste a la IA?"
+- "¿Qué verificaste tú?"
+- "¿Qué decisión tomaste tú que la IA no podía tomar?"
+
+### Tarea para la Semana 7 (5 min para explicar)
+
+Completar las dos preguntas de análisis, llenar el README de datos con todos los campos requeridos. Entrega antes de la Semana 8.
+
+---
+
+## Guía de sesión síncrona — Semana 8
+
+**Duración total:** 90 minutos  
+**Tema:** Código, notebooks y automatización responsable
+
+### Apertura (10 min)
+
+Revisión rápida de entregas de la Semana 7: ¿Pudieron completar las dos preguntas? ¿Qué problemas encontraron?
+
+Conectar: "Esta semana pasamos de 'analizar' a 'automatizar': si tuviéramos 10 archivos como ese CSV, ¿querríamos hacer cada paso a mano?"
+
+Para estudiantes en ruta sin código: "Esta semana van a crear la visualización y el README completo. Los mismos objetivos, herramientas diferentes."
+
+### Demo guiada (15 min)
+
+**Instructor:** Abrir el notebook base en Google Colab (o Jupyter) en pantalla compartida.
+
+Mostrar el flujo de seis pasos con un ejemplo concreto:
+1. Escribir el comentario descriptivo en Python.
+2. Pedir a la IA que genere la función.
+3. Leer el código línea por línea en pantalla (no ejecutar todavía).
+4. Probar con 4 filas conocidas.
+5. Ejecutar con el dataset real.
+6. Añadir la celda de Markdown de interpretación.
+
+**Punto de énfasis:** Mostrar un error deliberado (por ejemplo, generar código que asume que la columna se llama 'age' cuando en realidad se llama 'edad') y modelar cómo depurarlo: leer el mensaje de error, identificar la línea, corregir.
+
+### Práctica estructurada (20 min)
+
+Estudiantes abren el notebook base. El instructor indica qué celda completar primero.
+
+**Consigna:** "Completa la Pregunta 1 del notebook. Escribe el comentario, obtén el código (con IA o por tu cuenta), léelo, pruébalo y añade la celda de interpretación."
+
+Pausa para revisar: ¿Quién encontró un error? ¿Cómo lo resolvió?
+
+### Transición (5 min)
+
+Introducir visualización responsable. Mostrar una gráfica mal hecha (eje Y truncado, sin fuente, sin unidades). Preguntar al grupo: "¿Qué está mal aquí?" Anotar las respuestas.
+
+### Práctica aplicada (25 min)
+
+**Consigna completa:** Genera una visualización del dataset con los elementos obligatorios (título, ejes con unidades, fuente, n, nota de límites). Si usas IA para el código de la gráfica, verifica manualmente que todos los elementos están presentes y son correctos.
+
+### Cierre (10 min)
+
+Pedir a voluntarios que compartan su visualización. Revisar juntos si tiene todos los elementos.
+
+Reflexión final: "¿Qué parte de este flujo no podrías delegar completamente a la IA? ¿Por qué?"
+
+Respuesta esperada: la interpretación, la verificación, la decisión de qué hacer con valores faltantes, la nota de límites.
+
+### Tarea para la Semana 8 (5 min)
+
+Completar el notebook o el entregable de hoja de cálculo con las dos preguntas, la visualización y el README técnico completo. Entrega para revisión por pares antes de la Semana 9.
+
+---
+
+## Demostraciones guiadas
+
+### Demo 1: Analizar un CSV en Google Sheets con IA (Semana 7)
+
+**Objetivo:** Mostrar el ciclo completo desde carga hasta verificación en menos de 15 minutos.
+
+**Pasos del instructor:**
+
+1. Abrir [Google Sheets](https://sheets.google.com) → Archivo → Importar → subir `datos_practica.csv`.
+2. Mostrar: "Tenemos N filas y M columnas. Las columnas son: [lista]. Vamos a identificar qué tipo es cada una."
+3. Abrir el asistente de IA en otra pestaña. Prompt: "Tengo una hoja de cálculo con las columnas [X, Y, Z]. Quiero saber el promedio de [Y] para cada valor único de [X]. ¿Qué fórmula uso en Google Sheets?"
+4. Copiar la fórmula obtenida. Pegarla en una celda vacía.
+5. Antes de mostrar el resultado: calcular a mano con 3 filas del dataset. "Filas donde X='A': Y toma los valores 10, 20, 30. Promedio esperado: 20."
+6. Mostrar que la fórmula produce 20. "¡Coincide! Ahora podemos confiar en ella para todas las filas."
+7. Completar el campo "Uso de IA en la limpieza" del README en vivo.
+
+**Qué evitar:** No mostrar el resultado de la fórmula sin haber hecho la verificación manual. Esa secuencia es el punto pedagógico central.
+
+### Demo 2: Generar y depurar código con IA (Semana 8)
+
+**Objetivo:** Mostrar que el error en código generado por IA es normal y depurable.
+
+**Pasos del instructor:**
+
+1. Abrir el notebook base en Google Colab.
+2. En la celda de comentario, escribir: `# Carga el CSV y muestra el promedio de 'precio' por 'categoria'`
+3. Pedir a la IA que genere el código. Mostrar la respuesta en pantalla.
+4. **Antes de ejecutar:** leer cada línea en voz alta y explicar qué hace.
+5. Ejecutar. (Si la demo funciona sin error: introducir deliberadamente uno renombrando una columna.)
+6. Mostrar el error: `KeyError: 'precio'`. Decir: "Este error me dice que la columna no se llama 'precio' en nuestro dataset. ¿Cómo lo revisamos?" Mostrar `df.columns`.
+7. Corregir el código, ejecutar de nuevo, mostrar el resultado correcto.
+8. En la celda de Markdown, escribir la interpretación del resultado.
+
+---
+
+## Preguntas frecuentes del estudiantado
+
+**"No sé Python. ¿Puedo aprobar este módulo?"**  
+Sí. La ruta sin código cubre exactamente los mismos objetivos de aprendizaje. Lo que se evalúa es la comprensión del flujo de análisis, la documentación y el pensamiento crítico sobre los resultados, no el lenguaje de programación usado.
+
+**"El código que me dio la IA no funciona. ¿Qué hago?"**  
+Eso es esperado y es parte del aprendizaje. Proceso: (1) Lee el mensaje de error completo; (2) Identifica la línea que lo produce; (3) Busca ese mensaje de error en Google o pregúntale a la IA específicamente sobre ese error; (4) Prueba paso a paso, no ejecutes todo de golpe. El debugging es una habilidad, no un fracaso.
+
+**"Encontré un dataset en Kaggle. ¿Puedo usarlo?"**  
+Sí, si verificas la licencia. Ve a la pestaña del dataset → sección "License". CC0 = libre uso sin restricciones. CC-BY = libre uso con atribución obligatoria. "Other" o sin licencia especificada = tratar como restringido y consultar. Documenta lo que encuentres en el README.
+
+**"¿Puedo pegar todo mi CSV en ChatGPT para que lo analice?"**  
+Depende del dataset. Si tiene ≤ 100 filas y cero datos personales identificables: sí, con declaración de uso de IA. Si tiene más filas o cualquier dato personal (nombres, correos, teléfonos, identificadores): no. Usa la IA para generar el código y aplícalo localmente. Esta distinción no es opcional.
+
+**"¿La IA puede equivocarse en estadísticas?"**  
+Sí. Puede calcular mal, usar la función incorrecta o malinterpretar tu pregunta. Por eso el paso de verificación manual existe. Nunca reportes un resultado que no hayas comprobado por otra vía.
+
+**"¿Cómo sé si mi visualización está bien?"**  
+Checklist: ¿Tiene título descriptivo? ¿Los ejes tienen etiquetas y unidades? ¿Se indica la fuente de los datos? ¿Se indica el n (tamaño de muestra)? ¿Hay una nota que declare qué no muestra la gráfica? Si las cinco respuestas son sí, la visualización cumple los requisitos mínimos.
+
+**"¿Puedo usar un dataset sobre datos de personas reales que encontré en internet?"**  
+Solo si tiene una licencia que lo permite explícitamente y siempre y cuando no publiques ni redistribuyas los datos individuales. Datos agregados (por región, por año, por grupo) generalmente son seguros. Datos a nivel de individuo requieren revisión cuidadosa. Ante la duda, usa uno de los datasets provistos o aprobados por el instructor.
+
+---
+
+## Señales de alerta y cómo responder
+
+| Señal observada | Qué está pasando | Cómo responder |
+|---|---|---|
+| El estudiante copia código sin leerlo ni ejecutarlo | Está usando la IA como sustituto, no como asistente | Pedir que explique cada línea en voz alta. Si no puede, debe leer antes de avanzar. |
+| El análisis no tiene README ni fuente de datos | No hay trazabilidad | Pedir que complete el README antes de aceptar cualquier otra entrega. Sin documentación no hay entrega válida. |
+| La visualización no tiene título ni ejes | Resultado incompleto | Mostrar la lista de elementos obligatorios. Pedir corrección antes de la entrega final. |
+| El estudiante reporta resultados sin haber verificado manualmente | Riesgo de error sin detectar | Pedir que muestre el cálculo manual de verificación para al menos 3 filas. |
+| El estudiante pega datos personales en la IA | Violación de privacidad | Detener inmediatamente. Explicar la regla. Pedir que documente el incidente si hay datos sensibles involucrados. Escalar a coordinación si corresponde. |
+| El estudiante dice "la IA no puede equivocarse en matemáticas" | Malentendido sobre las capacidades de la IA | Mostrar un ejemplo concreto de error estadístico de la IA. La IA puede usar la función equivocada, malinterpretar el contexto o devolver resultados plausibles pero incorrectos. |
+| El notebook no corre de arriba a abajo sin errores | No es reproducible | Pedir que ejecute Kernel → Restart & Run All y corrija todos los errores antes de entregar. |
+| El código generado por IA incluye `eval()`, `subprocess` u otras llamadas de riesgo | Posible riesgo de seguridad | Pedir al estudiante que pregunte a la IA qué hace esa línea y si puede reemplazarse por algo más simple. No ejecutar ese código hasta que se entienda. |
+
+---
+
+## Plan de sesiones síncronas semanales
+
+| Tramo | Actividad |
+|---|---|
+| 90 min | Semana 7: pregunta analítica, dataset, licencia, carga, limpieza y análisis con hoja de cálculo o Python |
+| 90 min | Semana 8: análisis reproducible, pruebas, visualización responsable y README técnico |
+
+## Actividades asíncronas
+
+- Completar notebook o hoja de cálculo con dos preguntas de análisis documentadas.
+- Generar una visualización con todos los elementos obligatorios y nota de límites.
+- Documentar licencia, fuente, modificaciones y uso de IA en el README.
+- Revisión por pares: verificar si el README del compañero tiene todos los campos requeridos.
+
+## Evaluación formativa
+
+- Notebook o hoja de cálculo comentados con verificación explícita
+- README de datos con todos los campos completados
+- Revisión por pares de pasos reproducibles
+
+## Evaluación sumativa
+
+- Entrega reproducible: datos con licencia explicitada, análisis trazable, visualización con elementos completos y README técnico.
+
+## Entregables
+
+- Notebook `.ipynb` o hoja de cálculo (con pestaña de README)
+- README de datos (campos: fuente, licencia, acceso, modificaciones, limitaciones, uso de IA)
+- Visualización comentada (con título, ejes, fuente, n y nota de límites)
+
+## Herramientas
+
+| Capa gratuita o institucional | Capa de pago opcional |
+|---|---|
+| VS Code<br />Google Colab<br />Kaggle<br />Hugging Face datasets<br />GitHub | Opcional: Copilot Pro, Colab Pro o pool de cómputo premium por proyecto |
+
+## Consideraciones de accesibilidad
+
+- Ruta alternativa completa con hoja de cálculo para quienes no programan.
+- Dataset pequeño (≤ 200 filas) para uso con baja conectividad o sin internet.
+- Instrucciones descargables paso a paso disponibles antes de la Semana 7.
+- Las herramientas de hoja de cálculo funcionan offline (LibreOffice Calc).
+
+## Consideraciones éticas y de privacidad
+
+- Usar solo datos públicos con licencia explícita o datasets provistos por el instructor.
+- No inferir atributos sensibles ni perfilar personas reales.
+- Nunca cargar datos personales identificables a servicios de IA externos.
+- Documentar cualquier incidente de privacidad y escalar a coordinación.
+
+## Continuidad
+
+Siguiente módulo recomendado: [Módulo 06. Comunicación, colaboración y carrera](/docs/04-syllabus-modular/modulo-06-comunicacion-y-carrera).
+
+## Enlaces de rúbrica
+
+- [Rúbrica analítica del proyecto final](/docs/05-evaluacion/rubricas)
+- [Instrumentos de evaluación](/docs/05-evaluacion/instrumentos)
+- [Estrategia de evaluación](/docs/05-evaluacion/estrategia-de-evaluacion)

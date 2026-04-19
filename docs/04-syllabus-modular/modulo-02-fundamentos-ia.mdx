@@ -1,0 +1,408 @@
+---
+title: "Módulo 02. Fundamentos de IA y límites"
+sidebar_label: "02. Fundamentos de IA y límites"
+description: "Presenta capacidades, límites y riesgos de los sistemas de IA generativa, incluyendo contexto, memoria, sesgos, alucinaciones y seguridad."
+tags: ["syllabus", "modulo", "modulo-02"]
+---
+
+import TimeBudget from '@site/src/components/program/TimeBudget';
+
+# Módulo 02. Fundamentos de IA y límites
+
+Presenta capacidades, límites y riesgos de los sistemas de IA generativa, incluyendo contexto, memoria, sesgos, alucinaciones y seguridad.
+
+**Duración:** 6 horas.  
+**Ubicación sugerida:** Semana 2.  
+**Deck Reveal.js:** [abrir diapositivas](/slides/modulo-02/).
+
+:::tip Uso docente
+Esta página está escrita para que un instructor pueda ejecutar el módulo sin depender de memoria oral o decisiones implícitas. Cada sección incluye la justificación del contenido, señales de alerta durante la sesión, y respuestas sugeridas ante preguntas frecuentes. El mensaje central de este módulo es: la fluidez de una respuesta de IA no es garantía de exactitud. Ese punto debe quedar grabado antes de que el estudiantado empiece a usar IA para tareas con consecuencias académicas o profesionales.
+:::
+
+<TimeBudget moduleId="modulo-02" />
+
+## Objetivos de aprendizaje
+
+- Diferenciar capacidades reales, límites y errores frecuentes de modelos generativos.
+- Comparar respuestas de dos o más sistemas sin asumir que una salida convincente es correcta.
+- Describir riesgos de sesgo, opacidad, dependencia y alucinación.
+
+## Competencias abordadas
+
+- Alfabetización técnica
+- Pensamiento crítico
+- Gestión de riesgos
+
+## Resultados medibles
+
+- Explica con lenguaje accesible qué puede y qué no puede hacer una herramienta de IA generativa.
+- Identifica señales de respuesta especulativa o no verificable.
+- Produce un informe breve de comparación entre herramientas.
+
+## Materiales requeridos
+
+- Guía de comparación de dos sistemas de IA
+- Plantilla de informe breve (300 palabras)
+- Checklist de errores frecuentes y señales de alerta
+- Acceso simultáneo a dos LLMs distintos durante la sesión
+
+## Herramientas
+
+| Capa gratuita o institucional | Capa de pago opcional |
+|---|---|
+| Dos LLMs con capa gratuita (ej. ChatGPT + Gemini, o Claude + Copilot)<br />LMS o documento compartido para registrar comparaciones<br />Buscador web y acceso a fuentes primarias (Google Scholar, DOI lookup) | Opcional: licencia premium de modelo de razonamiento para demostración docente en vivo |
+
+## Plan de sesiones síncronas semanales
+
+| Tramo | Actividad |
+|---|---|
+| 90 min | Semana 2: capacidades, límites, comparación inicial y verificación de afirmaciones |
+
+## Actividades asíncronas
+
+- Comparar dos respuestas de IA sobre una pregunta académica de su disciplina.
+- Verificar tres afirmaciones específicas (estadísticas, citas o fechas) con fuentes primarias.
+- Redactar un informe corto de contraste (300 palabras) documentando hallazgos.
+
+---
+
+## Contenido del módulo
+
+Esta sección desarrolla los conceptos centrales con la profundidad suficiente para que el instructor los explique sin preparación adicional. Cada bloque incluye la idea clave y cómo articularla con el estudiantado.
+
+### 1. Cómo funciona un LLM (sin matemáticas)
+
+Un modelo de lenguaje grande no "lee" texto como lo haría un ser humano. Lo que hace es convertir el texto en fragmentos llamados **tokens** — unidades que pueden ser palabras completas, sílabas o signos de puntuación — y luego predecir, estadísticamente, cuál es el token más probable que sigue a la secuencia anterior. Repetir este proceso miles de veces produce párrafos completos.
+
+La analogía más útil para el aula: **es autocompletado a escala masiva.** El autocompletado de un teléfono predice "buenos" después de "buenos días" porque esa secuencia aparece muchas veces en los textos con los que fue entrenado. Un LLM hace lo mismo, pero entrenado con cientos de miles de millones de tokens de texto de internet, libros y código.
+
+Conceptos clave para transmitir al estudiantado:
+
+- **Token, no palabra.** La frase "inteligencia artificial" puede ser tres tokens: "intel", "igencia" y " artificial". Esto importa porque el modelo trabaja con patrones en esos fragmentos, no con significados semánticos completos.
+- **Ventana de contexto.** Es la "memoria de trabajo" de una conversación: el máximo de texto que el modelo puede considerar a la vez. Si una conversación es muy larga, el modelo olvida lo que ocurrió al principio. No acumula conocimiento entre sesiones distintas.
+- **Entrenamiento vs. inferencia.** El modelo se entrena una vez sobre una gran cantidad de datos (proceso costoso y largo). Después se "despliega" y responde consultas. Lo que sabe está fijo en el momento del entrenamiento; no aprende de las conversaciones con usuarios individuales.
+
+:::info Punto clave para repetir
+La IA no "sabe" cosas en el sentido humano. Genera el texto más estadísticamente probable dado el contexto. Una respuesta fluida y bien estructurada puede ser completamente incorrecta si los patrones del entrenamiento apuntaban en esa dirección.
+:::
+
+### 2. Capacidades reales de la IA generativa
+
+Comprender qué hace bien la IA es tan importante como comprender sus límites. Un estudiantado que solo aprende los riesgos puede descartar herramientas genuinamente útiles; uno que solo aprende las capacidades puede abusar de ellas.
+
+**Áreas donde los LLMs son consistentemente fuertes:**
+
+- **Reconocimiento de patrones y reformulación:** Tomar un texto y reescribirlo en otro tono, nivel de formalidad o longitud. Ideal para primeros borradores, adaptaciones de audiencia, y paráfrasis.
+- **Síntesis y resumen:** Condensar documentos largos conservando los puntos principales. Funciona bien con textos estructurados (artículos, reportes).
+- **Generación de texto estructurado:** Crear tablas, listas, esquemas, plantillas, correos formales. El modelo es bueno siguiendo formatos cuando el formato está claro en el prompt.
+- **Explicación por niveles:** Explicar el mismo concepto para una audiencia de bachillerato, universitaria o experta. Es una de las aplicaciones más directamente útiles para estudiantes.
+- **Traducción:** Calidad alta entre idiomas con gran representación en los datos de entrenamiento (especialmente inglés-español).
+- **Código desde especificación:** Dado un problema bien descrito, generar código funcional en lenguajes populares. La calidad depende mucho de la claridad del prompt.
+- **Lluvia de ideas:** Generar múltiples alternativas, ángulos o contraargumentos para estimular el pensamiento propio.
+
+**Áreas con rendimiento variable:**
+
+- **Razonamiento lógico:** Las cadenas de pensamiento ("piensa paso a paso") mejoran el rendimiento, pero el razonamiento complejo de varios pasos sigue siendo poco confiable. El modelo puede "razonar" de manera convincente y llegar a la conclusión incorrecta.
+- **Recuperación de hechos específicos:** El modelo recuerda información que aparecía frecuentemente en sus datos de entrenamiento. Información rara, técnica o reciente es mucho menos confiable.
+
+### 3. Límites fundamentales
+
+Estos son límites estructurales, no fallos de una versión específica. Seguirán existiendo en versiones futuras mientras el paradigma sea el mismo.
+
+| Límite | Descripción práctica |
+|---|---|
+| **Corte de conocimiento** | El modelo no sabe nada de lo que ocurrió después de su fecha de entrenamiento. Si pregunta sobre eventos recientes, puede inventar información plausible. |
+| **Sin acceso a internet** | A menos que tenga herramientas explícitas habilitadas, no puede buscar información. Lo que sabe está fijo. |
+| **Sin memoria entre sesiones** | Cada conversación nueva parte de cero. El modelo no recuerda que ya trabajaron juntos antes. |
+| **No puede verificar sus propias afirmaciones** | No tiene acceso a una "base de verdad". No sabe si lo que acaba de decir es correcto. |
+| **Límite de contexto** | En conversaciones muy largas, el modelo puede perder coherencia o "olvidar" instrucciones dadas al principio. |
+| **No razona sobre sí mismo** | Si le preguntas si se equivocó, puede generar una respuesta plausible sobre su propio funcionamiento que también puede ser incorrecta. |
+
+:::warning Punto crítico para el estudiantado
+El modelo no tiene acceso a la verdad. Cuando afirma algo con confianza, esa confianza es un artefacto de su entrenamiento, no una señal de exactitud. La ausencia de duda en la respuesta no significa ausencia de error.
+:::
+
+### 4. Alucinaciones: qué son y por qué ocurren
+
+**Definición:** Una alucinación es una salida del modelo que suena plausible y está bien estructurada, pero es factualmente incorrecta. El término viene del campo de la psicología — percibir algo que no está ahí — y se aplica a la IA cuando el modelo "percibe" (genera) hechos que no corresponden a la realidad.
+
+**Por qué ocurren:** El modelo fue entrenado para generar texto fluido y coherente, no texto verdadero. Cuando no tiene suficiente información en su contexto de entrenamiento sobre un tema específico, no responde "no sé" — eso sería una secuencia de baja probabilidad. En cambio, genera la respuesta más plausible dado el patrón de la pregunta. Una respuesta elaborada y detallada es, estadísticamente, más "parecida" a una buena respuesta que un reconocimiento de ignorancia.
+
+**Tipos más comunes en el contexto académico:**
+
+- **Citas inventadas:** El modelo genera un título, un autor y un año que suenan académicos pero no corresponden a ningún artículo real. Los DOIs inventados parecen válidos pero fallan al verificarse.
+- **Estadísticas incorrectas:** Números que parecen precisos ("el 73% de los estudiantes...") pero no tienen fuente verificable.
+- **Citas mal atribuidas:** Una frase real de una persona real, pero atribuida a la persona equivocada.
+- **Fechas incorrectas:** Eventos reales con fechas incorrectas, o eventos inexistentes con fechas.
+- **Síntesis inexacta:** En textos largos, el modelo puede "resumir" un argumento que el texto original no hace.
+
+**Condiciones que aumentan el riesgo:**
+
+- Temas poco frecuentes en los datos de entrenamiento (investigación regional, disciplinas minoritarias)
+- Preguntas sobre números específicos sin verificación fácil
+- Eventos recientes o posteriores al corte de conocimiento
+- Áreas de especialización técnica muy nicho
+
+**Cómo detectarlas:** Siempre que el modelo cite una fuente específica, intenta verificar la existencia de esa fuente con el DOI, el nombre completo del autor y el nombre de la publicación. Si el modelo da un número preciso ("en 2019, el 42% de..."), busca la fuente primaria antes de usarlo.
+
+### 5. Sesgo en IA
+
+Los modelos de IA heredan los sesgos de sus datos de entrenamiento. Dado que esos datos son principalmente texto de internet, libros publicados y contenido digital, reflejan las desigualdades de representación del mundo real.
+
+**Tipos de sesgo relevantes para el aula:**
+
+- **Sesgo de origen (datos):** El corpus de entrenamiento sobrerepresenta el inglés, perspectivas occidentales, voces masculinas, y contenido de ciertos grupos socioeconómicos. Un modelo entrenado así tenderá a generar contenido que refleje esas perspectivas como "neutras" o "por defecto".
+- **Amplificación:** Los modelos no solo replican los sesgos de sus datos — los amplifican. Si los datos muestran una correlación entre X e Y, el modelo puede generar esa correlación de manera más pronunciada.
+- **Brechas de representación:** Ciertos grupos culturales, idiomas, disciplinas académicas y contextos geográficos están subrepresentados. El modelo puede producir contenido de peor calidad, menos matizado o directamente incorrecto sobre esos temas.
+
+**Impacto práctico:** Un estudiantado que use IA para investigar sobre temas locales, regionales o sobre comunidades subrepresentadas recibirá respuestas de menor calidad que quien investigue sobre temas bien representados en el corpus. Esto no es una falla que se va a "arreglar" pronto — es inherente al proceso de entrenamiento con datos desiguales.
+
+**Qué hacer:**
+- Ser consciente del sesgo no elimina el problema, pero permite un uso más crítico.
+- Cruzar información con fuentes primarias diversas, especialmente para temas locales.
+- No usar la respuesta de la IA como representativa de una perspectiva cultural que el modelo podría no conocer bien.
+
+### 6. Metodología para comparar sistemas
+
+Comparar dos sistemas de IA con el mismo prompt es una herramienta de pensamiento crítico, no solo un ejercicio técnico. Las diferencias entre respuestas revelan que ninguna de las dos es "la respuesta" — ambas son aproximaciones que deben verificarse.
+
+**Protocolo de comparación:**
+
+1. Formular una pregunta académica específica de la propia disciplina.
+2. Enviar exactamente el mismo prompt a dos sistemas distintos, sin modificaciones.
+3. Registrar las respuestas completas, indicando sistema y versión si es posible.
+4. Construir una tabla de comparación con los siguientes ejes:
+   - Afirmaciones factuales realizadas
+   - Fuentes citadas (si las hay)
+   - Tono y nivel de certeza
+   - Lo que cada sistema dice que no sabe
+   - Contradicciones entre los dos sistemas
+
+**Qué buscar:** Los puntos donde los dos sistemas están de acuerdo son indicadores de mayor confiabilidad (aunque no garantía). Los puntos donde difieren son señales de alerta que requieren verificación independiente. Un sistema más confiado no es más correcto.
+
+### 7. Señales de respuesta especulativa
+
+Estas señales no significan que la respuesta sea necesariamente incorrecta, pero indican que se requiere verificación antes de citar o usar el contenido.
+
+- Números específicos sin fuente explícita (porcentajes, años, cantidades)
+- Citas académicas con título, autor y año (siempre verificar por DOI o búsqueda directa)
+- Afirmaciones definitivas sobre temas conocidamente debatidos
+- Información sobre eventos recientes o posteriores al corte de conocimiento del modelo
+- Afirmaciones técnicas en áreas de especialización nicho
+- Frases como "según estudios recientes" sin referencia concreta
+
+---
+
+## Guía de sesión síncrona detallada
+
+Esta guía permite ejecutar la sesión de 90 minutos con transiciones claras y sin improvisación. Los tiempos son orientativos; el instructor puede ajustar según el ritmo del grupo.
+
+### Apertura — 10 minutos
+
+**Objetivo:** Activar conocimiento previo y enmarcar la sesión.
+
+Abrir con una pregunta directa al grupo: *"¿Alguien usó una herramienta de IA esta semana para algo académico? ¿Qué pasó?"* Escuchar dos o tres respuestas sin evaluar. Anotar en la pizarra (física o digital) las palabras clave que el estudiantado use.
+
+Conectar con el módulo anterior: en el Módulo 01 establecimos reglas de uso. Hoy vamos a entender por qué esas reglas existen — qué puede fallar y por qué.
+
+Anunciar los entregables del módulo: tabla de comparación e informe breve. Decir explícitamente que esos entregables requieren evidencia de verificación.
+
+### Demo en vivo — 15 minutos
+
+**Objetivo:** Provocar una alucinación en tiempo real y hacerla visible.
+
+Ver sección "Demostraciones guiadas" para el protocolo completo. En síntesis:
+
+1. Hacer una pregunta diseñada para provocar alucinación (cita académica en un tema específico).
+2. Mostrar la respuesta en pantalla compartida.
+3. Intentar verificar la cita en tiempo real (Google Scholar, DOI lookup).
+4. Discutir con el grupo qué señales previas había en la respuesta.
+
+El instructor debe modelar explícitamente el proceso de verificación, no solo mostrar que la IA se equivocó. La verificación es la habilidad que se está enseñando.
+
+### Práctica estructurada — 20 minutos
+
+**Objetivo:** Primera comparación entre dos sistemas, guiada por el instructor.
+
+El instructor proporciona un prompt de práctica (puede ser una pregunta académica genérica o una de la disciplina del grupo). Cada estudiante o dupla:
+
+1. Envía el prompt a dos sistemas distintos.
+2. Registra ambas respuestas en la plantilla de comparación.
+3. Identifica tres afirmaciones factuales en cada respuesta.
+
+El instructor circula (o revisa en pantalla si es virtual) y hace preguntas: *"¿Esas dos respuestas dicen lo mismo sobre X? ¿Qué harías si difieren?"*
+
+### Transición — 5 minutos
+
+Breve discusión plenaria: ¿qué encontraron? ¿Algún caso interesante de diferencia entre sistemas? El instructor selecciona uno o dos ejemplos representativos para comentar sin identificar al estudiante.
+
+### Práctica aplicada — 25 minutos
+
+**Objetivo:** Verificación independiente de afirmaciones.
+
+Cada estudiante selecciona tres afirmaciones específicas de las respuestas recolectadas (preferiblemente números, citas o fechas) e intenta verificar cada una con fuentes primarias. Documenta en la plantilla:
+
+- Afirmación exacta como apareció en la respuesta de la IA
+- Resultado de la verificación: encontrada / no encontrada / incorrecta
+- Fuente consultada y URL o DOI
+
+El instructor modela cómo buscar en Google Scholar, cómo usar un buscador de DOIs, y cómo distinguir entre fuentes primarias y secundarias.
+
+### Cierre — 10 minutos
+
+Tres preguntas de reflexión, para responder individualmente en el LMS o en papel:
+
+1. ¿Qué afirmación te sorprendió más al verificar?
+2. ¿Qué cambiarías en cómo usabas IA antes de esta sesión?
+3. ¿Qué harías diferente la próxima vez que necesites citar algo?
+
+Recordar los entregables y el plazo. Anunciar brevemente el Módulo 03 (prompting y verificación).
+
+### Asignación — 5 minutos
+
+Entregar las instrucciones del informe de contraste (300 palabras). Leer en voz alta los criterios mínimos:
+
+- Debe mencionar explícitamente los dos sistemas comparados
+- Debe incluir al menos un hallazgo de verificación (encontrada / no encontrada / incorrecta)
+- Debe concluir con una reflexión sobre qué cambiaría en su práctica de uso
+
+---
+
+## Demostraciones guiadas
+
+### Demo 1: Provocar una alucinación en vivo
+
+**Propósito:** Mostrar que la alucinación no es un fallo aleatorio — es un fenómeno predecible bajo ciertas condiciones.
+
+**Prompt recomendado (adaptar a la disciplina del grupo):**
+
+> "Cita tres artículos académicos recientes que traten sobre el impacto de la IA generativa en [disciplina específica del grupo]. Incluye autor, año, título y revista."
+
+**Por qué funciona:** El modelo generará citas con estructura académica correcta. Algunas pueden existir; otras probablemente no. Los DOIs serán inventados o incorrectos.
+
+**Pasos del instructor:**
+
+1. Mostrar el prompt y enviarlo en pantalla compartida.
+2. Leer la respuesta en voz alta, sin comentar aún.
+3. Copiar la primera cita y buscarla en Google Scholar con el título exacto.
+4. Si no aparece: "Esta cita no existe. El modelo la generó porque suena académicamente plausible."
+5. Si aparece: verificar que el autor, año y revista coincidan. Es frecuente que algún dato esté mal.
+6. Preguntar al grupo: *"¿Qué señales había en la respuesta que deberían habernos advertido?"*
+
+**Señales a identificar:**
+
+- No hay URL de acceso al artículo
+- El DOI no está incluido o no funciona
+- El nombre de la revista suena genérico
+- El modelo respondió con total confianza sin ninguna reserva
+
+### Demo 2: Comparación entre sistemas
+
+**Propósito:** Mostrar que distintos sistemas producen respuestas distintas sobre la misma pregunta, lo cual revela que ninguna es la "verdad".
+
+**Prompt recomendado:**
+
+> "¿Cuál es la estadística más reciente sobre el porcentaje de estudiantes universitarios en América Latina que usan inteligencia artificial en sus estudios?"
+
+**Pasos del instructor:**
+
+1. Enviar el mismo prompt a dos sistemas en ventanas paralelas.
+2. Comparar las respuestas: ¿dan el mismo número? ¿citan la misma fuente? ¿tienen el mismo nivel de certeza?
+3. Intentar verificar el número más específico que aparezca.
+4. Discutir: *"Si dos sistemas expertos dan números distintos sin fuente, ¿cuál usarías en tu trabajo? ¿Por qué?"*
+
+---
+
+## Preguntas frecuentes del estudiantado
+
+**"Pero me dio la respuesta correcta en esta ocasión. ¿Por qué no puedo confiar en ella?"**
+
+Esta sesión existe precisamente para responder eso. El problema no es que la IA se equivoque siempre — es que no podemos saber de antemano cuándo se equivoca. Una respuesta correcta hoy no garantiza que la misma herramienta, con un prompt ligeramente distinto o en otro tema, sea igualmente confiable. La verificación es el mecanismo que cierra esa brecha.
+
+**"No entiendo cómo puede estar tan segura y tan equivocada al mismo tiempo."**
+
+La fluidez y la exactitud son cosas distintas. El modelo genera texto que suena como una buena respuesta, no texto que es una buena respuesta. El "tono seguro" es un patrón estadístico: en los textos de entrenamiento, las respuestas bien escritas raramente dicen "no sé". El modelo aprende a sonar seguro porque así suenan las buenas respuestas. No tiene un verificador de hechos interno.
+
+**"¿Entonces no debería usar IA para nada académico?"**
+
+No. La conclusión correcta es usarla con los ojos abiertos. Para tareas donde los errores son detectables (borradores, reformulación, lluvia de ideas, código que va a ejecutarse), el costo de un error es bajo. Para tareas donde los errores tienen consecuencias (citas, estadísticas, afirmaciones factuales en trabajos evaluados), se requiere verificación independiente antes de entregar.
+
+**"¿Hay diferencia entre modelos? ¿Uno es más confiable que otro?"**
+
+Todos comparten los mismos límites estructurales: corte de conocimiento, sin acceso a internet por defecto, sin memoria entre sesiones, sin capacidad de verificar sus propias afirmaciones. Las diferencias entre modelos son de grado — algunos alucinan más en ciertos dominios, algunos reconocen mejor la incertidumbre — pero ninguno es inmune. Por eso la metodología de comparación importa: no confiar en uno solo.
+
+**"¿Cómo sé cuándo verificar y cuándo no?"**
+
+Una regla práctica: si vas a usar la información para algo que tenga consecuencias (una entrega evaluada, una decisión, una afirmación pública), verifica. Si estás explorando, generando ideas o produciendo un borrador que tú vas a revisar, el riesgo es menor. La clave es que tú eres el autor final — y el autor es responsable del contenido, no la herramienta.
+
+**"¿Qué pasa si la IA cita una fuente que existe pero la resume mal?"**
+
+Esto es igualmente problemático que una cita inventada. El modelo puede citar un artículo real pero atribuirle un argumento que ese artículo no hace, o resumirlo de manera incorrecta. Por eso no es suficiente verificar que la cita existe — hay que leer el extracto o el resumen del artículo original para confirmar que el contenido coincide.
+
+---
+
+## Señales de alerta y cómo responder
+
+Esta sección está diseñada para que el instructor identifique patrones en el estudiantado que requieren intervención.
+
+### El estudiante acepta todo por fluidez
+
+**Señal:** Entrega trabajos con afirmaciones de IA sin verificación. Cuando se le pregunta, dice que "suena bien" o que "la IA sabe más que yo".
+
+**Respuesta sugerida:** Pedir que traigan un ejemplo de la entrega y que busquen en tiempo real la fuente de una afirmación específica. No juzgar el resultado — explorar juntos. El objetivo es que experimente la verificación como un proceso normal, no como una señal de desconfianza hacia ellos.
+
+### El estudiante rechaza toda IA por desconfianza
+
+**Señal:** Dice que prefiere no usar IA porque "nunca se puede confiar en nada de lo que dice".
+
+**Respuesta sugerida:** Validar el escepticismo como punto de partida inteligente. Luego mostrar casos concretos donde la IA es útil con verificación: reformular un párrafo, generar una lista de posibles preguntas para investigación, explicar un concepto en términos más simples. La postura correcta no es confianza ciega ni rechazo total.
+
+### El estudiante no registra qué herramienta usó
+
+**Señal:** Entrega con "usé IA" pero sin especificar sistema, versión ni fecha de consulta.
+
+**Respuesta sugerida:** Recordar la política de trazabilidad del programa. El registro no es burocracia — es la diferencia entre un proceso auditable y uno que no lo es. Si la herramienta produce un error en el trabajo, el registro permite entender qué pasó.
+
+### El estudiante confunde "estilo" con "exactitud"
+
+**Señal:** Dice que la respuesta de la IA "está mejor escrita" que sus propias fuentes, y la prefiere por eso.
+
+**Respuesta sugerida:** Separar explícitamente las dos dimensiones. La IA puede estar mejor redactada y ser factualmente incorrecta al mismo tiempo. Pedir al estudiante que compare el contenido factual, no el estilo, entre la respuesta de la IA y la fuente primaria.
+
+---
+
+## Evaluación formativa
+
+- Bitácora de pruebas completada durante la sesión
+- Tabla de comparación con al menos tres afirmaciones verificadas por sistema
+
+## Evaluación sumativa
+
+- Informe breve de contraste (300 palabras): síntesis de la comparación, hallazgos de verificación y reflexión sobre práctica futura
+
+## Entregables
+
+- Tabla de comparación (ambos sistemas, mismo prompt)
+- Informe corto con fuentes verificadas documentadas
+
+## Enlaces de rúbrica
+
+- [Rúbrica analítica del proyecto final](/docs/05-evaluacion/rubricas)
+- [Instrumentos de evaluación](/docs/05-evaluacion/instrumentos)
+- [Estrategia de evaluación](/docs/05-evaluacion/estrategia-de-evaluacion)
+
+## Consideraciones de accesibilidad
+
+- Ofrecer ejemplos textuales además de demostración en vivo para estudiantes con dificultades para seguir demos rápidas.
+- Permitir trabajar con lectura de transcripción, audio o dataset simple en lugar de uso activo de herramientas si el acceso tecnológico es limitado.
+- La plantilla de comparación debe estar disponible en formato editable antes de la sesión.
+
+## Consideraciones éticas y de privacidad
+
+- No evaluar personas reales ni grupos protegidos con herramientas no auditadas durante las demostraciones.
+- Discutir sesgo sin exponer casos personales del estudiantado.
+- Los prompts de práctica deben usar ejemplos ficticios o temáticos, nunca datos reales de personas identificables.
+
+## Continuidad
+
+Siguiente módulo recomendado: [Módulo 03. Prompting y verificación](/docs/04-syllabus-modular/modulo-03-prompting-y-verificacion).

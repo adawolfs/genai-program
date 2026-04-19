@@ -1,0 +1,564 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Módulo 04. Estudio, lectura y escritura</title>
+    <link rel="stylesheet" href="../shared/theme.css" />
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+
+        <!-- ═══════════════════════════════════════════════
+             SLIDE 1 — TÍTULO
+        ════════════════════════════════════════════════ -->
+        <section class="title-slide">
+          <p class="eyebrow">Programa IA Universitaria · Semanas 5–6</p>
+          <h1>Módulo 04.<br>Estudio, lectura y escritura</h1>
+          <p>Usa IA para comprender más, escribir mejor y mantener autoría real sobre tu trabajo.</p>
+          <aside class="notes">
+            Abrir con la pregunta: "¿Cuántos de ustedes han pedido a una IA que resuma un texto que debían leer?" Esperar respuesta honesta, sin juicio. Eso introduce la tensión central del módulo: la diferencia entre usar IA para preparar la lectura y usarla para reemplazarla. Este módulo abarca dos semanas (5 y 6), ocho horas en total. Evidencias esperadas al cierre: ficha de lectura, borrador revisado y miniensayo con declaración de uso de IA.
+          </aside>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════
+             SLIDE 2 — AGENDA
+        ════════════════════════════════════════════════ -->
+        <section>
+          <h2>Agenda — dos semanas</h2>
+          <div class="two-col">
+            <div class="card">
+              <h3><span class="tag">Semana 5</span> Estudio y lectura</h3>
+              <ul>
+                <li>IA como compañero vs. sustituto</li>
+                <li>Preparación de la lectura con anclas</li>
+                <li>Notas Cornell + IA</li>
+                <li>Mapas conceptuales asistidos</li>
+                <li>Preguntas de estudio y flashcards</li>
+                <li>Ficha de lectura: argumento, preguntas, objeción</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h3><span class="tag">Semana 6</span> Escritura académica</h3>
+              <ul>
+                <li>Qué significa ser el autor</li>
+                <li>IA como co-escritor, no ghostwriter</li>
+                <li>Proceso de revisión asistida (4 pasos)</li>
+                <li>Voz y estilo propio</li>
+                <li>Declaración de uso de IA</li>
+                <li>Reglas de oro en citas y referencias</li>
+              </ul>
+            </div>
+          </div>
+          <aside class="notes">
+            Este módulo tiene dos sesiones sincrónicas de 90 minutos cada una. La Semana 5 se centra en cómo la IA puede mejorar la forma en que las personas estudian y leen, sin reemplazar el contacto real con los textos. La Semana 6 aborda la escritura académica y la autoría humana. Ambas semanas comparten un hilo conductor: las herramientas de IA deben aumentar el pensamiento propio, no sustituirlo.
+          </aside>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════
+             SLIDE 3 — IA COMPAÑERO VS. SUSTITUTO
+        ════════════════════════════════════════════════ -->
+        <section>
+          <h2>IA como compañero de estudio</h2>
+          <p class="subtitle">La distinción que cambia todo</p>
+          <div class="two-col">
+            <div class="tip">
+              <strong class="verde">Compañero de estudio</strong>
+              <p>"¿Qué preguntas debería poder responder después de leer sobre este tema?"</p>
+              <p>→ Tú lees. Tú buscas respuestas. Tú construyes comprensión.</p>
+            </div>
+            <div class="warning">
+              <strong class="rojo">Sustituto de la lectura</strong>
+              <p>"Resume este artículo que tengo que leer."</p>
+              <p>→ La IA lee. Tú copias. No hay comprensión.</p>
+            </div>
+          </div>
+          <div class="callout" style="margin-top:0.8em">
+            <strong>Principio rector:</strong> La IA debe <span class="hl">aumentar tu contacto con la fuente original</span>, no reemplazarlo.
+          </div>
+          <aside class="notes">
+            Esta distinción es el núcleo del módulo. Cuando alguien usa IA para que le explique un texto antes de leerlo, puede reconocer las palabras clave cuando aparecen, pero no ha desarrollado el trabajo cognitivo de extraer el argumento por cuenta propia. El resultado: puede participar en discusión de clase con frases del resumen de IA, pero no puede responder preguntas de seguimiento. Preguntar al grupo: "¿Cuál de los dos usos han hecho? ¿Qué notaron después?"
+          </aside>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════
+             SLIDE 4 — PREPARACIÓN DE LA LECTURA
+        ════════════════════════════════════════════════ -->
+        <section>
+          <h2>Preparación de la lectura con IA</h2>
+          <p class="subtitle">Tres prompts que crean "anclas de lectura"</p>
+          <div class="three-col">
+            <div class="card">
+              <h3>Vocabulario previo</h3>
+              <p style="font-size:0.7em">"Voy a leer sobre <em>[tema]</em>. ¿Qué 8 términos técnicos debería conocer antes de empezar?"</p>
+            </div>
+            <div class="card">
+              <h3>Preguntas orientadoras</h3>
+              <p style="font-size:0.7em">"¿Qué 5 preguntas debería poder responder después de leer sobre <em>[tema]</em>?"</p>
+            </div>
+            <div class="card">
+              <h3>Mapa de controversias</h3>
+              <p style="font-size:0.7em">"¿Cuál es la posición convencional sobre <em>[tema]</em> y cuáles son las controversias actuales?"</p>
+            </div>
+          </div>
+          <div class="tip" style="margin-top:0.8em">
+            <strong>Por qué funciona:</strong> Vas al texto <span class="hl">buscando respuestas específicas</span>, no esperando que el texto te diga qué importa. Eso activa la lectura activa.
+          </div>
+          <aside class="notes">
+            Las anclas de lectura son objetivos específicos que la persona estudiante se fija antes de abrir el texto. Una persona que busca responder 5 preguntas mientras lee está cognitivamente más comprometida que una que lee sin objetivo. Ejercicio en clase: pedir que anoten las anclas antes de leer, luego respondan cada una con citas textuales después. Eso hace el proceso verificable y crea el material base para la ficha de lectura.
+          </aside>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════
+             SLIDE 5 — NOTAS CORNELL + IA
+        ════════════════════════════════════════════════ -->
+        <section>
+          <h2>Toma de notas: Cornell + IA</h2>
+          <p class="subtitle">Siempre notas propias primero</p>
+          <ol style="font-size:0.82em; line-height:1.7">
+            <li><span class="step">1</span> <strong>Lee el texto.</strong> Toma notas propias (método Cornell u otro preferido). Sin IA.</li>
+            <li><span class="step">2</span> <strong>Pega tus notas en la IA:</strong> "¿Qué conexiones no estoy capturando? ¿Hay algo inconsistente?"</li>
+            <li><span class="step">3</span> <strong>Evalúa cada sugerencia:</strong> ¿la encuentro en el texto? ¿la acepto, modifico o descarto?</li>
+          </ol>
+          <div class="two-col" style="margin-top:0.8em; font-size:0.8em">
+            <div class="tip">
+              <strong class="verde">Correcto</strong><br>
+              Tus notas → IA como revisor → tú decides
+            </div>
+            <div class="warning">
+              <strong class="rojo">Nunca</strong><br>
+              "Resume este artículo" → IA como lector → tú no lees
+            </div>
+          </div>
+          <aside class="notes">
+            El valor pedagógico de este método está en el paso 3: la persona tiene que evaluar cada sugerencia de la IA con referencia al texto real. Ese proceso de evaluación es aprendizaje activo. Si alguien simplemente acepta todas las sugerencias sin verificar, el método pierde su propósito. Para textos muy técnicos con terminología bloqueante: está bien pedir a la IA que explique un término específico antes de continuar leyendo. Es equivalente a consultar un glosario.
+          </aside>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════
+             SLIDE 6 — MAPAS CONCEPTUALES
+        ════════════════════════════════════════════════ -->
+        <section>
+          <h2>Mapas conceptuales asistidos</h2>
+          <p class="subtitle">Tú eres el cartógrafo. La IA es el revisor.</p>
+          <div style="font-size:0.85em">
+            <p><span class="step">1</span> Dibuja el mapa conceptual <strong>a mano</strong>, solo con lo que recuerdas del texto.</p>
+            <p><span class="step">2</span> Transcribe o fotografía el mapa. Pégalo en la IA:<br>
+              <em style="font-size:0.88em">"Aquí está mi mapa conceptual. ¿Qué relaciones no estoy capturando?"</em></p>
+            <p><span class="step">3</span> Por cada sugerencia de la IA: ¿está respaldada por el texto? ¿la entiendo lo suficiente para incluirla?</p>
+            <p><span class="step">4</span> Actualiza el mapa <strong>solo con las adiciones que sobrevivan tu evaluación</strong>.</p>
+          </div>
+          <div class="callout" style="margin-top:0.7em; font-size:0.82em">
+            Si la IA construyó el mapa y tú solo lo copiaste, <span class="hl">no hay aprendizaje ni autoría</span>.
+          </div>
+          <aside class="notes">
+            El mapa conceptual es especialmente útil para textos con múltiples conceptos interrelacionados. La clave pedagógica es que la persona estudiante haga el esfuerzo de recuperación del texto desde la memoria (paso 1) antes de consultar a la IA. Ese esfuerzo de recuperación —incluso si el mapa queda incompleto— produce retención superior a simplemente leer un mapa pre-elaborado.
+          </aside>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════
+             SLIDE 7 — FLASHCARDS Y PREGUNTAS
+        ════════════════════════════════════════════════ -->
+        <section>
+          <h2>Preguntas de estudio y flashcards</h2>
+          <div class="two-col">
+            <div>
+              <h3 style="font-size:0.85em">Cómo generarlas</h3>
+              <p style="font-size:0.75em">Pega el texto o tus notas:</p>
+              <p style="font-size:0.72em; font-style:italic">"Genera 10 preguntas de examen sobre este material, en distintos niveles: recuerdo, comprensión, aplicación."</p>
+            </div>
+            <div>
+              <h3 style="font-size:0.85em">Cómo usarlas</h3>
+              <ol style="font-size:0.72em; line-height:1.6">
+                <li>Responde sin mirar el texto <strong>ni la IA</strong></li>
+                <li>Verifica con el <strong>texto original</strong> (no con la IA)</li>
+                <li>Repetición espaciada: vuelve a preguntas fallidas en la siguiente sesión</li>
+              </ol>
+            </div>
+          </div>
+          <div class="warning" style="margin-top:0.8em; font-size:0.78em">
+            <strong>Advertencia:</strong> Las preguntas de IA reflejan la estructura <em>general</em> del tema, no el énfasis de tu instructor ni del syllabus. Úsalas como <span class="hl">complemento</span>, no como guía de estudio principal.
+          </div>
+          <aside class="notes">
+            Las flashcards generadas por IA son una herramienta válida siempre que la verificación se haga con el texto original. Si la persona verifica con la IA ("¿Es correcta mi respuesta?") en lugar del texto, refuerza potencialmente información incorrecta o imprecisa. El ciclo correcto: pregunta → respuesta propia → verificación con fuente → si falla, volver al texto a estudiar esa sección.
+          </aside>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════
+             SLIDE 8 — FICHA DE LECTURA
+        ════════════════════════════════════════════════ -->
+        <section>
+          <h2>La nota de lectura: 3 partes</h2>
+          <p class="subtitle">El entregable central de la Semana 5</p>
+          <div class="three-col" style="font-size:0.82em">
+            <div class="card">
+              <h3>(a) El argumento</h3>
+              <p>En 3–5 oraciones propias: ¿qué dice el texto?</p>
+              <p style="font-size:0.85em; color:#607d8b">Criterio: ¿podrías explicarlo en voz alta sin ver el texto?</p>
+            </div>
+            <div class="card">
+              <h3>(b) Dos preguntas</h3>
+              <p>Preguntas genuinas que el texto te genera — no retóricas.</p>
+              <p style="font-size:0.85em; color:#607d8b">Ej: "¿Aplica este argumento si el contexto es diferente?"</p>
+            </div>
+            <div class="card">
+              <h3>(c) Una objeción</h3>
+              <p>Algo que no te convence, que parece incompleto o contradictorio.</p>
+              <p style="font-size:0.85em; color:#607d8b">Luego: usa IA para que desafíe tu objeción.</p>
+            </div>
+          </div>
+          <div class="tip" style="margin-top:0.8em; font-size:0.8em">
+            <strong>Uso socrático de IA:</strong> "Aquí está mi objeción al texto. ¿Cómo respondería probablemente el autor?" — La IA es interlocutora de <em>tus</em> ideas, no generadora de ideas ajenas.
+          </div>
+          <aside class="notes">
+            Este formato de ficha está diseñado para que cada parte sea verificable. (a) El argumento: el instructor puede preguntar "¿dónde dice eso el texto?" (b) Las preguntas: son genuinas si la persona no puede responderlas con lo que ya sabe. (c) La objeción: debe referir a una afirmación específica del texto, no al tema en general. El uso de IA para desafiar la objeción es el único punto de entrada de IA en este entregable, y está explícitamente marcado como uso socrático.
+          </aside>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════
+             SLIDE 9 — ACTIVIDAD SEMANA 5
+        ════════════════════════════════════════════════ -->
+        <section>
+          <p class="activity-label">Actividad — Semana 5</p>
+          <h2>Nota de lectura con apoyo de IA</h2>
+          <p class="subtitle">Tiempo estimado: 25 min en clase + completar fuera</p>
+          <div style="font-size:0.82em">
+            <p><span class="step">1</span> <strong>(5 min)</strong> Pide a la IA las tres anclas de lectura para el texto asignado. Anótalas.</p>
+            <p><span class="step">2</span> <strong>(10 min)</strong> Lee el texto (o la sección asignada) con las anclas en mente. Toma notas propias.</p>
+            <p><span class="step">3</span> <strong>(5 min)</strong> Pega tus notas en la IA: "¿Qué conexiones no estoy capturando?" Evalúa cada sugerencia.</p>
+            <p><span class="step">4</span> <strong>(5 min)</strong> Inicia la ficha de tres partes: argumento, dos preguntas, una objeción.</p>
+          </div>
+          <div class="callout" style="margin-top:0.7em; font-size:0.8em">
+            <strong>Entrega:</strong> Ficha completa + nota de pie indicando qué partes se trabajaron con IA y qué decisiones fueron propias. Antes de la Semana 6.
+          </div>
+          <aside class="notes">
+            Al cierre de la actividad en clase, pedir a 2-3 personas que compartan su objeción (parte c). Preguntar al grupo: "¿Están de acuerdo con la objeción? ¿Qué respondería el autor?" Esa discusión modela el uso socrático de IA en formato presencial. La nota de pie de la ficha es precursora de la declaración de uso formal que se practica en Semana 6.
+          </aside>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════
+             SLIDE 10 — DEMO SEMANA 5
+        ════════════════════════════════════════════════ -->
+        <section>
+          <p class="activity-label">Demo en vivo — Semana 5</p>
+          <h2>Preparación de lectura: paso a paso</h2>
+          <div style="font-size:0.82em">
+            <p><span class="step">1</span> Abrir la herramienta en pantalla compartida.</p>
+            <p><span class="step">2</span> Prompt de vocabulario → leer en voz alta → comentar con el grupo.</p>
+            <p><span class="step">3</span> Prompt de preguntas orientadoras → seleccionar 3 de las 5 generadas → explicar por qué.</p>
+            <p><span class="step">4</span> Lectura rápida de introducción y conclusión del artículo (3 min) → mostrar dónde aparecen las anclas.</p>
+          </div>
+          <div class="callout" style="margin-top:0.8em; font-size:0.82em">
+            <strong>Pregunta de reflexión para el grupo:</strong> "¿Este proceso hace que lean más o menos el texto? ¿Por qué?"
+          </div>
+          <aside class="notes">
+            Para esta demo seleccionar un artículo académico real que no sea sobre IA (para que el contenido sea neutral y la demostración no sea tautológica). Mostrar el prompt completo antes de ejecutarlo — la transparencia sobre el prompt es parte del modelado pedagógico. Al seleccionar 3 de las 5 preguntas orientadoras, explicar en voz alta por qué se descartan las otras 2: "Esta pregunta es demasiado general" / "Esta ya la sé responder". Ese juicio de selección es lo que la persona estudiante debe aprender a hacer.
+          </aside>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════
+             SLIDE 11 — TRANSICIÓN SEMANA 6
+        ════════════════════════════════════════════════ -->
+        <section class="title-slide">
+          <p class="eyebrow">Semana 6</p>
+          <h1>Escritura académica<br>con autoría humana</h1>
+          <p>Cómo usar IA para escribir mejor sin dejar de ser tú quien escribe.</p>
+          <aside class="notes">
+            Abrir la Semana 6 conectando con la Semana 5: "En la semana pasada aprendimos a usar IA para preparar mejor la lectura. Esta semana trasladamos esa lógica a la escritura: la IA como herramienta en tu proceso, no como reemplazo del proceso." Preguntar: "¿Qué hace que un texto sea tuyo?" Esperar respuestas del grupo antes de avanzar a la siguiente diapositiva.
+          </aside>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════
+             SLIDE 12 — AUTORÍA HUMANA
+        ════════════════════════════════════════════════ -->
+        <section>
+          <h2>Autoría humana: ¿quién es el autor?</h2>
+          <div class="two-col">
+            <div class="tip">
+              <strong class="verde">Eres autor/a si:</strong>
+              <ul style="font-size:0.78em; line-height:1.6">
+                <li>Decidiste qué argumento hacer</li>
+                <li>Elegiste qué evidencia usar y por qué</li>
+                <li>Revisaste el texto con juicio propio</li>
+                <li>Puedes explicar y defender cada afirmación</li>
+              </ul>
+            </div>
+            <div class="warning">
+              <strong class="rojo">No eres autor/a si:</strong>
+              <ul style="font-size:0.78em; line-height:1.6">
+                <li>Diste a la IA un tema y entregaste lo que vino</li>
+                <li>No puedes explicar por qué el texto dice lo que dice</li>
+                <li>El argumento central no es tuyo</li>
+              </ul>
+            </div>
+          </div>
+          <div class="callout" style="margin-top:0.8em; font-size:0.82em">
+            <strong>Pregunta de diagnóstico rápido:</strong> ¿Podrías defender este argumento en una conversación de <span class="hl">5 minutos</span> con un compañero, sin notas?
+          </div>
+          <aside class="notes">
+            La "zona gris" que vale la pena discutir: la IA escribió un borrador pero la persona lo revisó sustancialmente. ¿Es autor/a? Depende: ¿el argumento es suyo? ¿la evidencia la eligió él/ella? ¿el texto suena a él/ella? Si la respuesta a las tres preguntas es sí, puede haber autoría — pero requiere declaración explícita. Si la respuesta a alguna es no, hay un problema de autoría. El criterio de los 5 minutos de defensa oral es útil porque es verificable: el instructor puede simplemente preguntarle al estudiante sobre su trabajo.
+          </aside>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════
+             SLIDE 13 — CO-ESCRITOR NO GHOSTWRITER
+        ════════════════════════════════════════════════ -->
+        <section>
+          <h2>IA como co-escritor, no ghostwriter</h2>
+          <div class="two-col" style="font-size:0.78em">
+            <div>
+              <p><strong class="verde">Apropiado</strong></p>
+              <ul style="line-height:1.7">
+                <li>"Aquí está mi tesis. <strong>Desafíala.</strong>"</li>
+                <li>"¿Qué estoy asumiendo sin justificar en este argumento?"</li>
+                <li>"Pega mi borrador: ¿qué sección es más difícil de entender?"</li>
+                <li>"Reescribe esta oración para mayor claridad" — luego tú evalúas si la reescritura mantiene tu sentido</li>
+              </ul>
+            </div>
+            <div>
+              <p><strong class="rojo">No apropiado</strong></p>
+              <ul style="line-height:1.7">
+                <li>"Escribe un ensayo sobre X"</li>
+                <li>"Desarrolla mi argumento con más detalle"</li>
+                <li>"Genera una bibliografía sobre este tema"</li>
+                <li>"Mejora todo mi ensayo" — sin criterio propio</li>
+              </ul>
+            </div>
+          </div>
+          <aside class="notes">
+            La distinción entre co-escritor y ghostwriter no está en cuánto texto generó la IA sino en quién tomó las decisiones. Un ghostwriter toma decisiones de contenido, argumento y énfasis. Un co-escritor ejecuta decisiones que otra persona tomó. La IA puede ser co-escritora legítima si la persona estudiante mantiene el control sobre qué argumento se hace, qué evidencia se usa y qué voz se proyecta.
+          </aside>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════
+             SLIDE 14 — PROCESO DE REVISIÓN ASISTIDA
+        ════════════════════════════════════════════════ -->
+        <section>
+          <h2>El proceso de revisión asistida</h2>
+          <p class="subtitle">4 pasos para revisar tu borrador con IA</p>
+          <div style="font-size:0.82em">
+            <p><span class="step">1</span> <strong>Borrador propio sin IA</strong> — Escribe el borrador completo. El argumento y las decisiones de contenido son tuyos.</p>
+            <p><span class="step">2</span> <strong>Revisión estructural</strong> — "¿Mi argumento fluye lógicamente? ¿Hay secciones que no conectan con la tesis?"</p>
+            <p><span class="step">3</span> <strong>Revisión de claridad</strong> — "¿Cuáles son las tres oraciones más difíciles de entender? ¿Por qué?"</p>
+            <p><span class="step">4</span> <strong>Revisión de vacíos</strong> — "¿Qué contraargumentos no estoy abordando? ¿Qué evidencia me falta?"</p>
+          </div>
+          <div class="callout" style="margin-top:0.7em; font-size:0.8em">
+            Para cada sugerencia: <span class="hl">acepta / modifica / rechaza</span> — y anota por qué. Eso es lo que aparece en tu declaración de uso.
+          </div>
+          <aside class="notes">
+            La secuencia de 4 pasos está diseñada para que cada iteración de IA tenga un propósito específico y limitado. Esto evita el problema de pasar el ensayo completo a la IA con instrucciones vagas ("mejóralo") y aceptar el resultado sin criterio. Cada paso genera una categoría de sugerencias que la persona puede evaluar con un criterio claro: ¿fluye lógicamente? ¿es claro? ¿está argumentativamente completo? Al anotar aceptaciones, modificaciones y rechazos, la persona construye su declaración de uso al mismo tiempo que revisa.
+          </aside>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════
+             SLIDE 15 — VOZ Y ESTILO PROPIO
+        ════════════════════════════════════════════════ -->
+        <section>
+          <h2>Voz y estilo propio</h2>
+          <p class="subtitle">El problema de la voz genérica</p>
+          <div class="callout">
+            La IA tiene una voz <strong>competente pero genérica</strong>. Tu voz es parte de tu identidad intelectual.
+          </div>
+          <div style="margin-top:0.8em; font-size:0.82em">
+            <p><strong>Señal de alerta:</strong> Tu texto revisado por IA no suena en nada a tu escritura anterior. Puede ser más "pulido" pero perdió los marcadores de tu pensamiento.</p>
+            <p><strong>Ejercicio de calibración:</strong></p>
+            <ol style="line-height:1.6">
+              <li>Pega un párrafo que la IA reescribió.</li>
+              <li>Pega un párrafo tuyo que te gusta.</li>
+              <li>Compara: ¿cuál tiene tu perspectiva particular?</li>
+              <li>Si el de IA es "mejor" pero no eres tú — pide: <em>"Aquí hay 3 oraciones mías que me gustan. Ayúdame a revisar este párrafo en el mismo estilo."</em></li>
+            </ol>
+          </div>
+          <aside class="notes">
+            La voz propia no es solo un valor estético. En escritura académica, la voz es parte de la trazabilidad del argumento: se sabe que esa persona pensó eso porque suena a como ella piensa. Cuando un texto homogéneo y genérico reemplaza una voz idiosincrática, se pierde esa trazabilidad. El ejercicio de calibración de voz es útil hacerlo en clase porque permite que las personas vean la diferencia de manera concreta, no solo conceptual.
+          </aside>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════
+             SLIDE 16 — DECLARACIÓN DE USO DE IA
+        ════════════════════════════════════════════════ -->
+        <section>
+          <h2>Declaración de uso de IA</h2>
+          <p class="subtitle">Práctica profesional, no confesión</p>
+          <pre style="font-size:0.55em; line-height:1.5">"En la elaboración de este [tipo de trabajo], utilicé [nombre de herramienta]
+para [propósito específico]. Acepté [proporción] de las sugerencias y
+modifiqué o rechacé el resto. Las decisiones sobre [argumento central /
+selección de evidencia / estructura del texto] fueron mías."</pre>
+          <div class="two-col" style="margin-top:0.6em; font-size:0.78em">
+            <div class="tip">
+              <strong class="verde">Qué incluye</strong>
+              <ul>
+                <li>Herramienta específica usada</li>
+                <li>Propósito concreto</li>
+                <li>Proporción de sugerencias aceptadas</li>
+                <li>Qué decisiones fueron propias</li>
+              </ul>
+            </div>
+            <div class="card">
+              <strong>Para docentes</strong>
+              <p style="font-size:0.9em">Leer las declaraciones como evidencia del proceso de juicio. Una declaración detallada indica madurez metacognitiva. Una declaración vaga indica que la persona no sabía qué estaba decidiendo.</p>
+            </div>
+          </div>
+          <aside class="notes">
+            Enfatizar que declarar el uso de IA es análogo a citar fuentes: transparencia sobre el proceso de producción del trabajo. No es una confesión ni una penalización. En muchos contextos profesionales (periodismo, diseño, investigación), la declaración de herramientas utilizadas es práctica estándar. Para docentes: las declaraciones permiten tener conversaciones más informadas con los estudiantes sobre su proceso. Si alguien declara que rechazó el 80% de las sugerencias y explica por qué, eso es evidencia de juicio editorial sofisticado.
+          </aside>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════
+             SLIDE 17 — CITAS Y REFERENCIAS
+        ════════════════════════════════════════════════ -->
+        <section>
+          <h2>Citas y referencias: reglas de oro</h2>
+          <div class="two-col">
+            <div class="warning">
+              <strong class="rojo">Nunca</strong>
+              <ul style="font-size:0.78em; line-height:1.7">
+                <li>Pedir a la IA que genere bibliografías</li>
+                <li>Usar una referencia de IA sin verificarla</li>
+                <li>Entregar citas que no has leído</li>
+              </ul>
+              <p style="font-size:0.72em; color:#607d8b">Las IA inventan referencias con títulos plausibles, autores reales y años verosímiles — pero los artículos no existen.</p>
+            </div>
+            <div class="tip">
+              <strong class="verde">Sí puedes</strong>
+              <ul style="font-size:0.78em; line-height:1.7">
+                <li>Dar a la IA una referencia que <em>ya tienes</em> y pedir que la formatee en APA 7</li>
+                <li>Pedir términos de búsqueda para bases de datos reales</li>
+                <li>Pedir que explique un formato de cita que no conoces</li>
+              </ul>
+            </div>
+          </div>
+          <div class="callout" style="margin-top:0.8em; font-size:0.8em">
+            <strong>Regla:</strong> Tú accedes a la fuente real → la lees → verificas que dice lo que citas → la incluyes. <span class="hl">La IA no reemplaza ninguno de esos pasos.</span>
+          </div>
+          <aside class="notes">
+            Las alucinaciones de referencias son uno de los errores más costosos del uso de IA en academia porque pueden generar acusaciones de deshonestidad académica incluso cuando la persona no tenía intención de engañar. Vale la pena hacer una demostración en clase: pedir a la IA que genere una bibliografía sobre un tema y luego buscar cada referencia en Google Scholar. Mostrar cuántas no existen o no dicen lo que la IA afirma.
+          </aside>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════
+             SLIDE 18 — DEMO SEMANA 6
+        ════════════════════════════════════════════════ -->
+        <section>
+          <p class="activity-label">Demo en vivo — Semana 6</p>
+          <h2>Revisión de borrador: en tiempo real</h2>
+          <div style="font-size:0.82em">
+            <p><span class="step">1</span> Mostrar borrador en pantalla: introducción + un párrafo de desarrollo.</p>
+            <p><span class="step">2</span> Aplicar revisión estructural. Mostrar la sugerencia.</p>
+            <p><span class="step">3</span> En voz alta: <em>"Esta sugerencia dice que mi transición no es clara. ¿Están de acuerdo?"</em></p>
+            <p><span class="step">4</span> Aceptar una sugerencia, modificar otra, rechazar una tercera. Mostrar el razonamiento en voz alta.</p>
+            <p><span class="step">5</span> Mostrar el texto antes y después. "¿Suena a mí? ¿Perdí algo?"</p>
+            <p><span class="step">6</span> Escribir la declaración de uso en tiempo real.</p>
+          </div>
+          <aside class="notes">
+            El paso más importante de esta demo es el 4: mostrar que no todas las sugerencias se aceptan y explicar el razonamiento de cada decisión. Eso modela el juicio editorial que es la competencia central del módulo. Para el paso 6, escribir la declaración en vivo, en el mismo documento, al final del texto. Mostrar que no toma más de 3-4 minutos si la persona ha ido documentando sus decisiones durante la revisión.
+          </aside>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════
+             SLIDE 19 — ACTIVIDAD SEMANA 6
+        ════════════════════════════════════════════════ -->
+        <section>
+          <p class="activity-label">Actividad — Semana 6</p>
+          <h2>Mini-ensayo + declaración de uso</h2>
+          <p class="subtitle">500–700 palabras · Tiempo en clase: 25 min + completar fuera</p>
+          <div style="font-size:0.82em">
+            <p><span class="step">1</span> <strong>(5 min)</strong> Aplicar revisión estructural a tu borrador propio.</p>
+            <p><span class="step">2</span> <strong>(5 min)</strong> Revisión de claridad: identificar las 3 oraciones más difíciles.</p>
+            <p><span class="step">3</span> <strong>(5 min)</strong> Revisión de vacíos: ¿qué contraargumentos faltan?</p>
+            <p><span class="step">4</span> <strong>(5 min)</strong> Por cada sugerencia: aceptar / modificar / rechazar. Registrar.</p>
+            <p><span class="step">5</span> <strong>(5 min)</strong> Comenzar declaración de uso de IA.</p>
+          </div>
+          <div class="callout" style="margin-top:0.6em; font-size:0.8em">
+            <strong>Entrega:</strong> Mini-ensayo completo + declaración de uso de IA. Criterio: ¿podrías defender el argumento en 5 minutos?
+          </div>
+          <aside class="notes">
+            La revisión por pares que puede seguir a esta actividad es valiosa: intercambiar borradores sin las notas de IA y que cada persona escriba dos observaciones sobre el texto del compañero. Luego comparar si las observaciones humanas coinciden con las de la IA. Generalmente hay coincidencias en claridad y discrepancias en énfasis y voz — eso ilustra bien las diferencias entre retroalimentación humana y de IA.
+          </aside>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════
+             SLIDE 20 — SEÑALES DE ALERTA
+        ════════════════════════════════════════════════ -->
+        <section>
+          <h2>Señales de alerta en escritura asistida</h2>
+          <div class="warning" style="margin-bottom:0.7em">
+            <strong>En tu texto — detente y verifica:</strong>
+          </div>
+          <div style="font-size:0.78em; line-height:1.7">
+            <p><strong class="rojo">●</strong> La voz es inconsistente: párrafos muy pulidos alternados con otros más rudimentarios — mezcla sin integración.</p>
+            <p><strong class="rojo">●</strong> Las referencias tienen formato perfecto pero los contenidos no corresponden a las citas — referencias generadas por IA.</p>
+            <p><strong class="rojo">●</strong> No puedes explicar por qué elegiste esa evidencia o formulaste ese argumento.</p>
+            <p><strong class="rojo">●</strong> El texto "mejorado" perdió tu perspectiva particular — es correcto pero no es tuyo.</p>
+            <p><strong class="amarillo">●</strong> La declaración de uso dice "la usé para edición" pero no sabes exactamente qué cambió.</p>
+          </div>
+          <aside class="notes">
+            Estas señales son útiles tanto para que los estudiantes las apliquen a su propio trabajo como para que los docentes las reconozcan al revisar. La señal de la voz inconsistente es especialmente visible en trabajos de Semana 6 donde la persona combinó texto propio con secciones generadas por IA. Para docentes: ante una señal de alerta, el protocolo es una conversación oral, no una acusación escrita. Las preguntas diagnóstico: "¿Qué significa [término de tu ensayo]?" / "¿Por qué elegiste esta evidencia?" / "¿Qué te convenció del argumento de este autor?"
+          </aside>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════
+             SLIDE 21 — LO QUE LLEVAS EN DOS SEMANAS
+        ════════════════════════════════════════════════ -->
+        <section>
+          <h2>Lo que llevas en dos semanas</h2>
+          <div class="three-col" style="font-size:0.82em">
+            <div class="card">
+              <div class="big-num">1</div>
+              <p>Un método para leer con mayor comprensión usando anclas de lectura y notas verificables</p>
+            </div>
+            <div class="card">
+              <div class="big-num">2</div>
+              <p>Un proceso de revisión asistida en 4 pasos que mantiene la autoría humana</p>
+            </div>
+            <div class="card">
+              <div class="big-num">3</div>
+              <p>Una declaración de uso de IA que refleja tu proceso de juicio y te protege académicamente</p>
+            </div>
+          </div>
+          <div class="tip" style="margin-top:0.8em; font-size:0.82em">
+            <strong>Principio de cierre:</strong> La IA puede mejorar la estructura y la claridad de tu trabajo. <span class="hl">La voz, el argumento y la responsabilidad intelectual son tuyas.</span>
+          </div>
+          <aside class="notes">
+            El cierre del módulo conecta las dos semanas en un solo principio: la distinción entre herramienta y reemplazo. Una herramienta te permite hacer mejor algo que ya sabes hacer. Un reemplazo te libera de tener que saber hacerlo. La IA puede ser lo uno o lo otro — la diferencia la determina quien la usa. Cerrar con la tarea observable de la Semana 6 y recordar la política de trazabilidad del programa.
+          </aside>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════
+             SLIDE 22 — PRÓXIMO MÓDULO
+        ════════════════════════════════════════════════ -->
+        <section>
+          <h2>Próximo módulo</h2>
+          <p class="subtitle">Módulo 05 — Datos, código y automatización</p>
+          <div class="two-col" style="margin-top:0.8em; font-size:0.85em">
+            <div class="card">
+              <h3>Lo que traes de este módulo</h3>
+              <ul>
+                <li>Ficha de lectura verificable</li>
+                <li>Miniensayo con declaración de uso</li>
+                <li>Criterios para evaluar sugerencias de IA</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h3>Lo que viene</h3>
+              <ul>
+                <li>IA para análisis de datos básicos</li>
+                <li>Generación y revisión de código</li>
+                <li>Automatización responsable de tareas repetitivas</li>
+              </ul>
+            </div>
+          </div>
+          <div class="callout" style="margin-top:0.8em; font-size:0.82em">
+            <strong>Antes de la Semana 7:</strong> Entrega de miniensayo con declaración de uso de IA. Llevar borrador revisado con notas de proceso visibles.
+          </div>
+          <aside class="notes">
+            Recordar que el miniensayo con declaración es el entregable sumativo de este módulo. Revisar la rúbrica disponible en el LMS: argumento (25%), evidencia (25%), voz y coherencia (25%), declaración de uso completa y reflexiva (25%). El Módulo 05 aplicará los mismos principios de trazabilidad y autoría al trabajo con datos y código — las competencias de este módulo son directamente transferibles.
+          </aside>
+        </section>
+
+      </div>
+    </div>
+    <script type="module" src="../shared/reveal-init.js"></script>
+  </body>
+</html>

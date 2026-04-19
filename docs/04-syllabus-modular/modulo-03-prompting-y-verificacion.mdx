@@ -1,0 +1,512 @@
+---
+title: "Módulo 03. Prompting y verificación"
+sidebar_label: "03. Prompting y verificación"
+description: "Desarrolla solicitudes reproducibles, criterios de evaluación, verificación con fuentes y corrección humana de salidas de IA."
+tags: ["syllabus", "modulo", "modulo-03"]
+---
+
+import TimeBudget from '@site/src/components/program/TimeBudget';
+
+# Módulo 03. Prompting y verificación
+
+Desarrolla solicitudes reproducibles, criterios de evaluación, verificación con fuentes y corrección humana de salidas de IA.
+
+**Duración:** 10 horas.  
+**Ubicación sugerida:** Semanas 3 y 4.  
+**Deck Reveal.js:** [abrir diapositivas](/slides/modulo-03/).
+
+:::tip Uso docente
+Esta página está escrita para que un instructor pueda ejecutar el módulo sin depender de memoria oral ni decisiones implícitas. Las dos semanas tienen lógica acumulativa: primero el estudiante aprende a construir un prompt defendible (Semana 3), luego aprende a auditar la salida resultante (Semana 4). No adelantar verificación a la Semana 3 ni prompting avanzado a la Semana 4; la secuencia importa. Ajustes institucionales específicos: adaptar los ejemplos de prompts al área disciplinar predominante del grupo.
+:::
+
+<TimeBudget moduleId="modulo-03" />
+
+## Objetivos de aprendizaje
+
+- Diseñar prompts con contexto, tarea, formato, criterios y límites.
+- Auditar una salida de IA con fuentes, revisión humana y documentación del proceso.
+- Rechazar o corregir resultados cuando la evidencia sea insuficiente.
+
+## Competencias abordadas
+
+- Prompting reproducible
+- Verificación
+- Trazabilidad
+
+## Resultados medibles
+
+- Reescribe un prompt débil y demuestra mejora observable.
+- Documenta un ciclo de prompt, resultado, problema, revisión y decisión final.
+- Entrega una auditoría de salida de IA con evidencias.
+
+## Materiales requeridos
+
+- Bitácora de prompts (plantilla en 5 columnas, disponible en la plataforma del curso)
+- Checklist de verificación (tabla de 5 columnas, disponible en la plataforma del curso)
+- Ejemplos de prompts débiles (incluidos en este documento, sección Demostraciones guiadas)
+- Rúbrica de auditoría
+
+## Herramientas
+
+| Capa gratuita o institucional | Capa de pago opcional |
+|---|---|
+| LLMs gratuitos para comparación<br />Fuentes primarias abiertas (doi.org, Google Scholar, Semantic Scholar)<br />Documento de bitácora (Google Docs o equivalente) | Opcional: Perplexity Education Pro, Le Chat Pro o plan premium similar para investigación avanzada |
+
+## Plan de sesiones síncronas semanales
+
+| Tramo | Actividad |
+|---|---|
+| 90 min | Semana 3: anatomía de un prompt verificable y taller de reescritura |
+| 90 min | Semana 4: verificación con fuentes, auditoría de salida y decisión humana |
+
+## Actividades asíncronas
+
+- Completar una bitácora de prompts con al menos dos iteraciones sobre la misma tarea.
+- Auditar una respuesta de IA con al menos tres afirmaciones verificadas con fuentes primarias.
+- Publicar una reflexión (200-300 palabras) sobre qué decisión final fue humana y por qué.
+
+---
+
+## Contenido del módulo — Semana 3: Prompting
+
+### ¿Qué es un prompt?
+
+Un prompt es la instrucción que le das a un sistema de IA. No es una búsqueda en Google: no basta con escribir palabras clave. El sistema de IA no sabe quién eres, qué curso tomas, qué nivel de detalle necesitas ni qué vas a hacer con la respuesta. Todo lo que el sistema no sabe, lo inventa plausiblemente — y esa invención puede ser incorrecta o inapropiada.
+
+Un prompt efectivo especifica cinco cosas de forma explícita:
+
+1. **Quién eres** y cuál es el contexto del trabajo.
+2. **Qué acción quieres** que el sistema realice.
+3. **Qué formato** debe tener la salida.
+4. **Qué criterios** definen una buena respuesta.
+5. **Qué no debe hacer** el sistema.
+
+La diferencia entre "explícame la fotosíntesis" y un prompt bien construido es la diferencia entre una respuesta de Wikipedia y una herramienta de aprendizaje alineada con tu objetivo específico.
+
+### Anatomía de un prompt efectivo: el marco CTFCL
+
+El marco CTFCL es una estructura mnemotécnica para construir prompts reproducibles. Cada letra corresponde a una capa de información que el sistema necesita para generar una respuesta útil:
+
+| Componente | Qué incluye | Ejemplo |
+|---|---|---|
+| **C**ontexto | Quién eres, cuál es la tarea mayor, qué sabe el sistema sobre ti | "Soy estudiante de segundo año de biología redactando un informe de laboratorio sobre cinética enzimática…" |
+| **T**area | La acción específica que debe realizar el sistema | "…explica la diferencia entre inhibición competitiva y no competitiva…" |
+| **F**ormato | Cómo debe presentarse la respuesta | "…en una tabla con tres columnas: mecanismo, efecto sobre Km, efecto sobre Vmax" |
+| **C**riterios | Estándares de calidad que debe cumplir la respuesta | "…usando solo términos cubiertos en un curso de bioquímica de nivel sophomore" |
+| **L**ímites | Qué no debe hacer el sistema | "…No incluyas antecedentes históricos ni nombres de inhibidores específicos" |
+
+Un prompt no necesita seguir este orden exacto, pero sí necesita cubrir los cinco componentes. La ausencia de cualquiera de ellos produce una respuesta genérica que el sistema rellena con supuestos propios.
+
+**Ejemplo completo con CTFCL:**
+
+> Soy estudiante de segundo año de biología y estoy redactando un informe de laboratorio sobre cinética enzimática para mi clase de Bioquímica I. Explica la diferencia entre inhibición competitiva y no competitiva en una tabla con tres columnas: mecanismo de acción, efecto sobre la Km, efecto sobre la Vmax. Usa solo terminología apropiada para un curso de bioquímica de segundo año. No incluyas contexto histórico ni menciones inhibidores específicos por nombre.
+
+### Tipos de prompts
+
+No todos los prompts tienen la misma estructura ni el mismo propósito. Conocer los tipos permite elegir la estrategia correcta:
+
+**Instrucción directa**  
+La forma más simple. Una acción específica sobre un contenido específico.  
+Ejemplo: "Resume este párrafo en dos oraciones que retengan el argumento principal y eliminen ejemplos."
+
+**Rol o perspectiva**  
+Le asignas al sistema un punto de vista para enmarcar la respuesta.  
+Ejemplo: "Actúa como el abogado del diablo de este argumento y señala sus tres debilidades más serias."  
+*Precaución:* El sistema adoptará el rol, pero no tiene juicio real sobre qué es una debilidad vs. una fortaleza. Verifica las objeciones que genere.
+
+**Ejemplo-guiado (few-shot)**  
+Muestras ejemplos del formato o estilo que quieres antes de pedir la tarea real.  
+Ejemplo: "Aquí tienes dos ejemplos del formato de resumen que necesito: [ejemplo 1] [ejemplo 2]. Ahora aplica el mismo formato a este texto: [texto]."  
+Este tipo es especialmente útil cuando el formato es difícil de describir en palabras.
+
+**Cadena de pensamiento (chain-of-thought)**  
+Le pides al sistema que razone paso a paso antes de dar su respuesta.  
+Ejemplo: "Piensa paso a paso antes de responder. Primero identifica las premisas del argumento, luego evalúa si la conclusión se sigue de ellas, luego da tu veredicto."  
+Útil para problemas analíticos; el proceso visible es más fácil de verificar.
+
+**Iteración refinada**  
+No es un tipo de prompt sino una estrategia: empiezas con un prompt amplio, recibes una respuesta, identificas qué falta o sobra, y construyes un prompt de seguimiento específico. Cada vuelta debe estar en la bitácora.
+
+### La bitácora de prompts
+
+La bitácora es un registro obligatorio de cada interacción significativa con un sistema de IA. No es burocracia: es la evidencia de que tu proceso fue reflexivo y controlado por ti, no delegado al azar.
+
+**Formato de cinco columnas:**
+
+| Prompt escrito | Sistema usado + fecha | Resumen de la salida recibida | Qué cambié y por qué | Decisión humana final |
+|---|---|---|---|---|
+| Texto literal del prompt | Nombre del sistema, versión o fecha de acceso | Descripción de 2-3 líneas de lo que generó | "Añadí criterio de nivel porque la respuesta era demasiado avanzada" | "Usé el párrafo 2 textual; reescribí el párrafo 1 porque tenía un término incorrecto" |
+
+**Por qué importa la bitácora:**
+- Demuestra que el proceso fue tuyo, no un copy-paste.
+- Permite al instructor evaluar tu razonamiento, no solo el producto final.
+- Te obliga a identificar qué funcionó y qué no.
+- Crea trazabilidad académica: si alguien pregunta "¿cómo llegaste a esto?", puedes mostrar cada paso.
+- Permite mejorar: al ver tus iteraciones pasadas, identificas patrones de tus propias debilidades de prompting.
+
+### Iteración en la práctica
+
+La iteración es el proceso de mejorar un prompt a partir de los problemas que identificas en la respuesta anterior. No es suficiente con cambiar palabras al azar: debes diagnosticar qué falló y ajustar un elemento específico.
+
+**Ciclo de tres iteraciones — ejemplo:**
+
+**Iteración 1 — Prompt demasiado amplio:**
+> "Explícame el cambio climático."
+
+*Problema:* La respuesta cubre todo (causas, efectos, historia, política) a un nivel enciclopédico. No sirve para ningún propósito específico.  
+*Diagnóstico:* Falta contexto, tarea específica, formato y nivel.
+
+**Iteración 2 — Mejor, pero tono incorrecto:**
+> "Soy estudiante universitario. Explica los efectos del cambio climático en los ecosistemas costeros en tres párrafos, usando solo conceptos de ecología básica."
+
+*Problema:* La respuesta suena a textbook. El tono es demasiado formal para el uso que tengo en mente (preparar notas para una discusión en clase).  
+*Diagnóstico:* Falta especificar el tono o propósito de uso.
+
+**Iteración 3 — Funcional:**
+> "Soy estudiante universitario preparando notas para participar en una discusión de clase sobre cambio climático y ecosistemas costeros. Resume los tres efectos más importantes en ecosistemas costeros en un tono conversacional, apto para hablar con compañeros, no para leer en voz alta. Usa viñetas breves, máximo dos líneas cada una. Solo incluye efectos respaldados por consenso científico actual; no menciones debates políticos."
+
+*Resultado:* Útil, apropiado, usable. Se documenta en la bitácora con las razones de cada cambio.
+
+**Regla:** Documenta cada iteración, no solo la final. El proceso importa tanto como el resultado.
+
+### Errores comunes en prompts
+
+**Demasiado corto o vago:**  
+"Explícame la computación cuántica."  
+El sistema inventa el nivel de profundidad, la audiencia y el propósito. El resultado puede ser correcto pero inútil para tu necesidad específica.
+
+**Pedir citas o referencias:**  
+"Dame cinco artículos académicos sobre este tema con sus DOIs."  
+Peligro alto. El sistema generará citas que parecen reales — autores plausibles, títulos verosímiles, DOIs formateados correctamente — y que no existen. Este es el error más común y el más costoso en términos académicos. *Nunca uses una referencia generada por IA sin verificar su existencia en doi.org o Google Scholar.*
+
+**Acumular múltiples tareas en un solo prompt:**  
+"Resume este artículo, identifica sus limitaciones, propón tres preguntas de investigación relacionadas, y formatea todo como un informe ejecutivo."  
+El sistema intentará hacer todo y hará cada parte mediocremente. Divide en prompts separados, uno por tarea.
+
+**Presión emocional:**  
+"Por favor sé muy cuidadoso esta vez y no cometas errores."  
+El sistema no responde a la urgencia ni a la amabilidad. No tiene cuidado ni negligencia. Esta instrucción no cambia la calidad de la salida.
+
+**Asumir que el sistema recuerda:**  
+En la mayoría de los sistemas, cada sesión comienza desde cero. Si tu trabajo anterior es relevante, debes pegarlo explícitamente en el prompt. No asumas continuidad.
+
+---
+
+## Contenido del módulo — Semana 4: Verificación
+
+### ¿Por qué verificar?
+
+Porque los sistemas de IA expresan confianza lingüística independientemente de su precisión factual. Cuando un sistema dice "estudios demuestran que el 73% de los estudiantes…", no ha leído estudios. Ha generado una afirmación que suena al tipo de afirmación que aparece en ese contexto. La fluidez es una propiedad del lenguaje, no de la verdad.
+
+Esto tiene una consecuencia práctica: **no puedes usar el tono de la respuesta como indicador de su confiabilidad**. Una respuesta segura y bien redactada puede estar completamente equivocada. Una respuesta que el sistema marcó como incierta puede ser correcta. Las expresiones de incertidumbre del sistema no correlacionan bien con la confiabilidad real de sus afirmaciones.
+
+La verificación no es una señal de desconfianza paranoica: es el mínimo de responsabilidad académica cuando usas una fuente que tiene historial documentado de generar afirmaciones incorrectas con confianza.
+
+### El proceso de verificación
+
+El proceso tiene cinco pasos. No son opcionales; son la estructura mínima de una verificación académicamente defensible.
+
+**Paso 1: Identificar afirmaciones específicas.**  
+No verificas "el párrafo"; verificas afirmaciones concretas: estadísticas, citas, nombres, fechas, atribuciones a fuentes. Subraya o lista cada afirmación que requeriría una fuente si apareciese en tu trabajo académico.
+
+**Paso 2: Buscar la fuente primaria.**  
+Para cada afirmación, busca la fuente original: el DOI del artículo, el repositorio institucional, el documento oficial. No aceptes como fuente primaria otro sitio web que cite la misma afirmación sin mostrar la fuente.
+
+**Paso 3: Comparar.**  
+¿Existe la fuente? ¿Dice lo que el sistema afirmó? ¿El número es correcto? ¿El contexto es el mismo? Una fuente puede existir y aun así no respaldar la afirmación específica del sistema.
+
+**Paso 4: Documentar el resultado.**  
+Registra uno de cuatro estados posibles: **confirmada** / **no encontrada** / **encontrada pero incorrecta** / **encontrada con matices**. El matiz es frecuente: la fuente existe pero dice algo más complejo de lo que el sistema simplificó.
+
+**Paso 5: Resolver.**  
+Según el resultado: retén la afirmación con la cita correcta, corrige el número o dato, elimina la afirmación, o reformula con el matiz que la fuente real indica.
+
+### Herramientas de verificación
+
+| Herramienta | Uso principal | URL |
+|---|---|---|
+| **doi.org** | Verificar existencia de un artículo por su DOI | doi.org |
+| **Google Scholar** | Buscar artículo por título exacto | scholar.google.com |
+| **Semantic Scholar** | Buscar por autor + palabras clave | semanticscholar.org |
+| **Bases de datos institucionales** | Acceso completo según suscripción de tu institución | Según tu biblioteca |
+| **Wikipedia** | Solo como punto de partida para orientarse; nunca como cita | wikipedia.org |
+
+**Flujo recomendado para verificar una cita generada por IA:**
+1. Copia el DOI o título exacto que generó el sistema.
+2. Pégalo en doi.org o Google Scholar.
+3. Si no aparece, busca el nombre del autor + palabras clave del título.
+4. Si aparece, lee el abstract para confirmar que el artículo dice lo que el sistema afirmó.
+5. Documenta el resultado en tu tabla de verificación.
+
+### La tabla de verificación
+
+La tabla de verificación es el documento de auditoría de la salida de IA. Es obligatoria para toda tarea de este módulo que use una salida de IA.
+
+**Formato de cinco columnas:**
+
+| Afirmación de la IA | Fuente citada por la IA | Acción de verificación | Resultado | Cómo se resolvió |
+|---|---|---|---|---|
+| Texto literal de la afirmación | DOI, título o "ninguna" | "Busqué en doi.org", "Busqué título en Google Scholar" | Confirmada / No encontrada / Incorrecta / Con matices | "Eliminé la afirmación", "Corregí el porcentaje a 68%", "Reformulé con el matiz del abstract" |
+
+**Ejemplo real de una fila de la tabla:**
+
+| Afirmación de la IA | Fuente citada | Acción | Resultado | Resolución |
+|---|---|---|---|---|
+| "Un estudio de 2019 de la Universidad de Stanford encontró que el 78% de los estudiantes que usan IA en sus estudios mejoran sus calificaciones." | "Johnson et al., 2019, Journal of Educational Technology" | Busqué "Johnson 2019 AI students grades Journal of Educational Technology" en Google Scholar; pegué el supuesto DOI en doi.org | No encontrada — el DOI no resuelve, el artículo no aparece en Scholar | Eliminé la afirmación completa del trabajo final |
+
+### Auditoría completa
+
+La verificación de hechos específicos es necesaria pero no suficiente. Una auditoría completa también examina el razonamiento, el encuadre y las decisiones editoriales del sistema.
+
+**Preguntas de auditoría:**
+
+- **¿El encuadre es equilibrado?** Los sistemas de IA tienden a tomar partido implícitamente, especialmente en temas con debate. ¿La respuesta presenta una sola perspectiva como si fuera la única?
+- **¿Faltan perspectivas relevantes?** ¿Hay voces, enfoques o disciplinas que deberían estar pero no están?
+- **¿La estructura sirve a tu objetivo real?** El sistema organiza la respuesta según lo que considera lógico, no según lo que tú necesitas para tu tarea específica.
+- **¿Qué decidiste conservar, cortar o modificar?** Esta es la parte más importante de la auditoría: tu razonamiento sobre cada decisión editorial.
+
+La auditoría completa produce un texto diferente del original. Si tu entrega final es idéntica a la salida del sistema, no hay auditoría.
+
+### Decisiones humanas en el bucle
+
+"Asistido por IA, liderado por humanos" no es una frase motivacional: es una descripción de quién toma cada decisión en el proceso. En un flujo bien documentado, tú eres quien decide:
+
+1. **Qué pregunta formular** — El sistema responde; tú decides qué vale la pena preguntar.
+2. **Si la salida es apta para el propósito** — El sistema no sabe para qué usarás su respuesta.
+3. **Qué verificar y con qué profundidad** — No todo requiere el mismo nivel de escrutinio; tú juzgas qué afirmaciones son de alto riesgo.
+4. **Qué aceptar vs. rechazar** — Incluye párrafos completos, argumentos, enfoques.
+5. **Cómo integrar con tus otras fuentes** — El sistema no conoce tu bibliografía; tú sí.
+
+La evidencia de estas decisiones es lo que distingue un trabajo académico con IA de una salida de IA con tu nombre encima. La bitácora y la tabla de verificación documentan esas decisiones para que sean visibles, evaluables y defendibles.
+
+---
+
+## Guía de sesión síncrona — Semana 3
+
+**Objetivo de la sesión:** El estudiante construye un prompt completo con CTFCL, lo itera al menos una vez, y comienza su bitácora de prompts.
+
+### Apertura (10 min)
+
+Pregunta de arranque: "¿Cuándo fue la última vez que le pediste algo a alguien y la respuesta fue completamente inútil porque entendió mal lo que necesitabas?" Dejar que dos o tres estudiantes respondan. Conectar: eso pasa siempre que no damos suficiente contexto. Con IA, el problema se amplifica porque el sistema no puede pedir aclaraciones de forma significativa.
+
+Presenta el objetivo de la sesión: al final de los 90 minutos, cada estudiante tendrá una bitácora con al menos una iteración documentada.
+
+### Demo del instructor (15 min)
+
+**Demo 1 — Prompt débil vs. prompt CTFCL:**
+
+Ejecuta en vivo el mismo prompt débil y el prompt CTFCL del ejemplo de cinética enzimática (u otro relevante para tu disciplina). Muestra las dos respuestas en pantalla simultáneamente o en secuencia. Señala específicamente:
+- Diferencia en nivel de lenguaje
+- Diferencia en longitud y relevancia
+- Lo que el sistema "inventó" en el prompt débil
+
+No hagas juicios de valor generales ("la IA es buena/mala"). Mantén el análisis técnico: este prompt produjo este resultado; este otro prompt produjo este otro resultado.
+
+### Práctica estructurada (20 min)
+
+Los estudiantes trabajan individualmente o en pares:
+1. Eligen una tarea real de otro curso o del módulo actual.
+2. Escriben un primer prompt (pueden ser tan vagos como quieran).
+3. Lo ejecutan en el sistema que usen normalmente.
+4. Identifican el problema principal con la respuesta.
+5. Reescriben el prompt añadiendo los componentes CTFCL que faltaban.
+6. Documentan ambas versiones en su bitácora (columnas 1 y 4).
+
+El instructor circula y señala un error concreto en al menos un prompt por grupo/estudiante. No corrijas el prompt tú; haz una pregunta: "¿Qué nivel de profundidad esperas? ¿Lo dijiste?"
+
+### Transición (5 min)
+
+Recoge 2-3 ejemplos de prompts revisados del grupo y muéstralos brevemente en pantalla. No evalúes públicamente; destaca un elemento bien hecho en cada uno.
+
+### Práctica aplicada (25 min)
+
+Segunda iteración: ahora los estudiantes identifican un componente CTFCL que aún falta en su prompt revisado y hacen una segunda iteración. Documentan la diferencia entre la segunda y la tercera versión del prompt, y la diferencia entre las respuestas.
+
+Objetivo mínimo: tres filas en la bitácora (prompt inicial, iteración 1, iteración 2).
+
+### Cierre (10 min)
+
+Pregunta de salida: "¿Cuál fue el cambio que más afectó la calidad de la respuesta?" Tres o cuatro respuestas en voz alta. Conecta con el concepto central: **el control de calidad de la salida empieza en el diseño del prompt.**
+
+Anuncia la tarea asíncrona: completar la bitácora con una tarea diferente que usen en los próximos días.
+
+### Asignación (5 min)
+
+**Tarea para Semana 4 (antes de la sesión):**
+1. Usa un sistema de IA para obtener información sobre un tema de otro curso o de interés personal.
+2. Guarda la salida completa (screenshot o copia de texto).
+3. Identifica tres afirmaciones específicas que requerirían fuente si aparecieran en un trabajo académico.
+4. Trae esas tres afirmaciones sin verificar a la sesión de Semana 4.
+
+---
+
+## Guía de sesión síncrona — Semana 4
+
+**Objetivo de la sesión:** El estudiante verifica al menos tres afirmaciones de una salida de IA, construye su tabla de verificación y formula una auditoría con decisiones humanas explícitas.
+
+### Apertura (10 min)
+
+Activación: "¿Alguien intentó verificar una de las afirmaciones que trajo? ¿Qué encontró?" Dejar 2-3 respuestas. Usar lo que compartan como gancho para la demo.
+
+Si nadie verificó nada: perfecto. Eso es el punto de partida de la demo.
+
+### Demo del instructor (15 min)
+
+**Demo 2 — Verificar una cita alucinada en vivo:**
+
+Usa un prompt que genere una cita académica plausible (ver sección Demostraciones guiadas). Muestra la cita generada. Abre doi.org y pega el DOI. Muestra lo que sucede (no resuelve o resuelve a un artículo diferente). Mueve a Google Scholar y busca el título exacto. Muestra la ausencia o el desajuste.
+
+Comenta el proceso: "No estoy diciendo que esta herramienta sea mala. Estoy diciendo que esta afirmación específica no está respaldada por la fuente citada, y eso es lo que tengo que resolver antes de entregarlo."
+
+### Práctica estructurada (20 min)
+
+Los estudiantes abren su material de la tarea asíncrona (la salida de IA con tres afirmaciones identificadas) y construyen las primeras tres filas de su tabla de verificación:
+- Columnas 1-2: Afirmación y fuente (si la IA dio alguna).
+- Columna 3: Acción de verificación (qué buscaron, dónde).
+- Columna 4: Resultado (confirmada / no encontrada / incorrecta / con matices).
+
+El instructor circula. Puntos a vigilar:
+- Estudiantes que buscan el tema general en lugar de la afirmación específica.
+- Estudiantes que aceptan como verificación otro sitio web que repite la misma afirmación sin fuente original.
+
+### Transición (5 min)
+
+Pausa para registrar resultados en el plenario: "¿Cuántas afirmaciones se confirmaron? ¿Cuántas no se encontraron?" Mostrar los números sin evaluación. Si nadie encontró afirmaciones incorrectas, es un resultado inusual — pide que muestren el proceso de búsqueda.
+
+### Práctica aplicada (25 min)
+
+Los estudiantes completan la columna 5 de su tabla (cómo se resolvió cada afirmación) y escriben el párrafo de auditoría completa: una reflexión de 150-200 palabras sobre el encuadre, perspectivas ausentes y sus decisiones editoriales.
+
+Aviso: este párrafo no es un resumen de lo que dijo la IA. Es un análisis de lo que tú decidiste hacer con esa salida.
+
+### Cierre (10 min)
+
+Pregunta de salida: "¿Qué afirmación te sorprendió más al verificarla? ¿Por qué?" Tres respuestas. Conecta con el concepto de fluidez vs. precisión.
+
+Recuerda: la siguiente sesión (Semana 5, Módulo 04) parte de que ya saben verificar. Si la bitácora y la tabla no están completas, el módulo siguiente será más difícil.
+
+### Asignación (5 min)
+
+**Entregable final del módulo (fecha según calendario del curso):**
+1. Bitácora de prompts: mínimo 2 tareas distintas, mínimo 2 iteraciones por tarea.
+2. Tabla de verificación: mínimo 3 afirmaciones verificadas de una salida de IA.
+3. Auditoría completa: 200-300 palabras con decisiones humanas explícitas.
+
+---
+
+## Demostraciones guiadas
+
+### Demo 1 — Reescribir un prompt débil (Semana 3)
+
+**Prompt débil para ejecutar:**
+```
+Explícame la inhibición enzimática.
+```
+
+**Prompt CTFCL para comparar:**
+```
+Soy estudiante de segundo año de biología y estoy redactando un 
+informe de laboratorio sobre cinética enzimática para mi clase de 
+Bioquímica I. Explica la diferencia entre inhibición competitiva y 
+no competitiva en una tabla con tres columnas: mecanismo de acción, 
+efecto sobre la Km, efecto sobre la Vmax. Usa solo terminología 
+apropiada para un curso de bioquímica de segundo año universitario. 
+No incluyas antecedentes históricos ni menciones inhibidores 
+específicos por nombre.
+```
+
+**Qué señalar al comparar las respuestas:**
+- Nivel de lenguaje: ¿para qué audiencia escribe el sistema en cada caso?
+- Estructura: ¿da tabla o párrafos? ¿Por qué?
+- Longitud: ¿respeta o ignora los límites implícitos?
+- Afirmaciones adicionales: ¿qué añade el sistema que no pediste?
+
+### Demo 2 — Verificar una cita alucinada (Semana 4)
+
+**Prompt que genera cita plausible:**
+```
+Dame una referencia académica en formato APA de un estudio 
+publicado entre 2018 y 2022 que demuestre que el uso de IA 
+en educación superior mejora el rendimiento académico de 
+los estudiantes.
+```
+
+**Lo que típicamente genera:** Un autor plausible, un título verosímil, un nombre de revista existente, y un DOI formateado correctamente que no resuelve a ningún artículo real.
+
+**Proceso de verificación en vivo:**
+1. Copia el DOI generado → abre doi.org → muestra el resultado.
+2. Copia el título exacto → busca en Google Scholar → muestra el resultado.
+3. Si aparece algo: compara el abstract con la afirmación. ¿Dice lo que el sistema afirmó?
+
+**Mensaje clave:** "El sistema no está mintiendo en el sentido humano del término. Está generando lo que estadísticamente suena como una respuesta a esta pregunta. Eso es exactamente el problema."
+
+---
+
+## Preguntas frecuentes del estudiantado
+
+**"Mi primer prompt funcionó bien. ¿Para qué iterar?"**  
+La iteración no es para arreglar prompts rotos; es para controlar la calidad. Haz la prueba: toma el mismo prompt y cámbialo a un contexto diferente (otro nivel, otro propósito, otra audiencia). El prompt que "funcionó" probablemente no funciona igual. Dominar el prompting significa poder producir calidad consistente, no tener suerte una vez.
+
+**"Le pedí citas y me las dio. ¿Por qué no puedo usarlas?"**  
+Porque el sistema generó texto que tiene la forma de una cita, no una cita verificada. Antes de usarla, tienes que comprobar que el artículo existe y dice lo que el sistema afirma. Si no verificas, estás asumiendo que el sistema tiene acceso a bibliografía real, y no lo tiene de esa manera.
+
+**"Verificar tarda mucho. No tengo tiempo."**  
+Cierto. Por eso estamos desarrollando criterio sobre qué verificar con profundidad y qué no. No toda afirmación tiene el mismo riesgo: una estadística específica sobre salud o política pública necesita verificación exhaustiva; una descripción general de un concepto conocido puede necesitar menos. El objetivo de este módulo es que puedas calibrar ese criterio, no que verifiques cada palabra.
+
+**"La IA me dijo que no estaba segura de la respuesta. ¿Eso significa que es confiable cuando sí suena segura?"**  
+No. Las expresiones de incertidumbre del sistema ("no estoy seguro de esto", "podrías verificar esta información") no correlacionan de manera confiable con la precisión real de sus afirmaciones. El sistema puede expresar certeza en afirmaciones incorrectas y duda en afirmaciones correctas. El tono no es una señal de confiabilidad.
+
+**"¿No es esto el mismo trabajo que haría sin IA?"**  
+El trabajo de verificación sí es trabajo que harías con cualquier fuente. La diferencia es que una fuente académica revisada por pares tiene procesos externos de control de calidad; la salida de un sistema de IA no. El estándar de verificación para IA debe ser al menos tan alto como para una fuente de Internet sin editorial.
+
+---
+
+## Señales de alerta y cómo responder
+
+| Señal | Respuesta del instructor |
+|---|---|
+| El estudiante entrega trabajo con citas no verificadas de IA | No invalidar el trabajo completo. Señalar las citas específicas y pedir que complete la tabla de verificación para esas afirmaciones antes de la entrega final. |
+| El estudiante no puede explicar por qué cambió su prompt entre iteraciones | La bitácora no está cumpliendo su función. Pedir que añada la columna de "razón del cambio" con una frase específica por cada iteración. |
+| El estudiante dice que "el sistema verificó sus propias afirmaciones" | Error conceptual crítico. El sistema no puede verificar sus propias afirmaciones de forma confiable. Explicar la diferencia entre consistencia interna (el sistema no se contradice) y verificación externa (existe una fuente independiente). |
+| El estudiante entrega la salida de IA casi sin cambios | Pedir el párrafo de auditoría completa. Si no puede articular qué decidió mantener y por qué, eso es evidencia de que no hubo proceso de revisión humana. |
+| El estudiante afirma que la verificación "no aplica a su disciplina" | Toda disciplina tiene afirmaciones factuales que requieren fuente. Pedir que identifique tres afirmaciones específicas en su salida de IA y explique por qué no necesitarían fuente en un trabajo académico. |
+| El estudiante tiene dificultades técnicas de conectividad | La bitácora y la tabla de verificación pueden completarse en papel o en un documento sin conexión. El proceso es independiente de la herramienta específica. |
+
+---
+
+## Evaluación formativa
+
+- Lista de cotejo por pares (bitácora de prompts: ¿están las 5 columnas? ¿hay al menos 2 iteraciones con razones documentadas?)
+- Revisión de bitácora por instructor con retroalimentación en 24-48 horas antes de la entrega final
+
+## Evaluación sumativa
+
+- Auditoría de una salida de IA (rúbrica: completitud de la tabla de verificación, calidad del párrafo de auditoría, evidencia de decisiones humanas documentadas)
+
+## Entregables
+
+- Prompt inicial y revisado (con bitácora de 5 columnas, mínimo 2 iteraciones)
+- Tabla de verificación (5 columnas, mínimo 3 afirmaciones)
+- Auditoría final (200-300 palabras, con decisiones humanas explícitas)
+
+## Enlaces de rúbrica
+
+- [Rúbrica analítica del proyecto final](/docs/05-evaluacion/rubricas)
+- [Instrumentos de evaluación](/docs/05-evaluacion/instrumentos)
+- [Estrategia de evaluación](/docs/05-evaluacion/estrategia-de-evaluacion)
+
+## Consideraciones de accesibilidad
+
+- Permitir bitácora en formato tabla, audio transcrito o documento narrativo según las necesidades del estudiante.
+- Separar pasos para estudiantes con baja conectividad: la bitácora puede completarse sin conexión y la verificación puede hacerse en momentos de conexión estable.
+- Los ejemplos de prompt en las demostraciones pueden adaptarse a distintas disciplinas; pedir a los estudiantes que los ajusten a su área antes de ejecutarlos.
+
+## Consideraciones éticas y de privacidad
+
+- Verificar con especial cuidado afirmaciones sobre personas, salud, finanzas o decisiones de alto impacto.
+- No fabricar fuentes ni simular verificación. Si una afirmación no puede verificarse, la respuesta correcta es eliminarla o reformularla, no inventar una fuente que la respalde.
+- No cargar en sistemas de IA datos personales de terceros ni información sensible institucional.
+
+## Continuidad
+
+Siguiente módulo recomendado: [Módulo 04. Estudio, lectura y escritura](/docs/04-syllabus-modular/modulo-04-estudio-y-escritura).

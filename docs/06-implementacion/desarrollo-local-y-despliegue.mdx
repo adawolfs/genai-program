@@ -1,0 +1,37 @@
+---
+title: "Desarrollo local y despliegue"
+sidebar_label: "Desarrollo local"
+tags: ["tecnica", "docusaurus"]
+---
+
+# Desarrollo local y despliegue
+
+## Comandos
+
+```bash
+npm install
+npm run dev
+npm run slides:dev
+npm run build
+npm run serve
+```
+
+## Arquitectura técnica
+
+| Carpeta | Uso |
+|---|---|
+| `docs/` | Documentación MDX del programa |
+| `src/components/` | Herramientas React para docentes y coordinación |
+| `src/data/program.ts` | Datos compartidos de módulos, rúbricas, proyectos y escenarios |
+| `src/data/timeMetrics.ts` | Tiempos por módulo, sesión, asignación y carga docente |
+| `slides/` | Decks Reveal.js fuente |
+| `static/templates/` | Plantillas descargables |
+| `static/slides/` | Salida generada por `npm run slides:build` |
+
+## Despliegue
+
+1. Ejecutar `npm install`.
+2. Ejecutar `npm run build`.
+3. Publicar la carpeta `build/` en el hosting elegido.
+
+El proveedor de hosting institucional está Not specified in source documentation.

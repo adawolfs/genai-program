@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 800" role="img" aria-label="Mapa visual del programa de IA">
+  <rect width="1400" height="800" fill="#f7fbfa"/>
+  <path d="M0 560 C220 480 370 620 560 540 C780 448 970 520 1400 350 L1400 800 L0 800 Z" fill="#d7e5e0"/>
+  <g opacity="0.95">
+    <rect x="130" y="135" width="320" height="210" rx="8" fill="#ffffff" stroke="#12756a" stroke-width="6"/>
+    <rect x="170" y="180" width="240" height="18" rx="4" fill="#12756a"/>
+    <rect x="170" y="225" width="180" height="18" rx="4" fill="#d9633f"/>
+    <rect x="170" y="270" width="210" height="18" rx="4" fill="#f2c94c"/>
+    <circle cx="540" cy="245" r="58" fill="#12756a"/>
+    <path d="M508 246h64M540 214v64" stroke="#fff" stroke-width="12" stroke-linecap="round"/>
+    <rect x="680" y="125" width="450" height="245" rx="8" fill="#ffffff" stroke="#d9633f" stroke-width="6"/>
+    <path d="M740 310h330" stroke="#12756a" stroke-width="12" stroke-linecap="round"/>
+    <path d="M740 260h260" stroke="#d9633f" stroke-width="12" stroke-linecap="round"/>
+    <path d="M740 210h310" stroke="#f2c94c" stroke-width="12" stroke-linecap="round"/>
+    <circle cx="320" cy="510" r="58" fill="#d9633f"/>
+    <circle cx="505" cy="565" r="58" fill="#f2c94c"/>
+    <circle cx="690" cy="510" r="58" fill="#12756a"/>
+    <path d="M378 524c38 24 70 34 112 42M563 550c44-16 78-26 112-34" stroke="#3b3f42" stroke-width="8" stroke-linecap="round" fill="none"/>
+  </g>
+</svg>
+

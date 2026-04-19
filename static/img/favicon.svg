@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Programa IA">
+  <rect width="64" height="64" rx="12" fill="#12756a"/>
+  <path d="M17 41V17h9c7 0 12 5 12 12s-5 12-12 12h-9zm7-6h2c3.6 0 5.8-2.4 5.8-6S29.6 23 26 23h-2v12z" fill="#fff"/>
+  <path d="M43 17h7v24h-7z" fill="#f2c94c"/>
+</svg>
+
