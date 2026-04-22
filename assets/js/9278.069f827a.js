@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkportal_ia_universitaria=self.webpackChunkportal_ia_universitaria||[]).push([[9278],{89278:(a,i,r)=>{r.r(i)}}]);

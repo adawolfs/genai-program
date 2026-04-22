@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkportal_ia_universitaria=self.webpackChunkportal_ia_universitaria||[]).push([[6282],{86282:(a,e,r)=>{r.d(e,{createTreemapServices:()=>i.d});var i=r(76609);r(72519)}}]);

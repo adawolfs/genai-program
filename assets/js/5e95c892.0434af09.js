@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkportal_ia_universitaria=self.webpackChunkportal_ia_universitaria||[]).push([[9647],{7121:(e,r,a)=>{a.r(r),a.d(r,{default:()=>l});a(96540);var s=a(34164),i=a(45500),t=a(17559),u=a(22831),n=a(4042),c=a(74848);function l(e){return(0,c.jsx)(i.e3,{className:(0,s.A)(t.G.wrapper.docsPages),children:(0,c.jsx)(n.A,{children:(0,u.v)(e.route.routes)})})}}}]);

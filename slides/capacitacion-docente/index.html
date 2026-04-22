@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Capacitación docente</title>
+    <title>Capacitación docente — Programa IA Universitaria</title>
     <script type="module" crossorigin src="/genai-program/slides/assets/reveal-init-Dr2l8QBW.js"></script>
     <link rel="stylesheet" crossorigin href="/genai-program/slides/assets/reveal-init-CU_mynG4.css">
     <link rel="stylesheet" crossorigin href="/genai-program/slides/assets/theme-Cf8BPWTr.css">
@@ -11,35 +11,406 @@
   <body>
     <div class="reveal">
       <div class="slides">
+
+        <!-- 1. Portada -->
         <section class="title-slide">
-          <p class="eyebrow">Programa IA Universitaria</p>
+          <p class="eyebrow">Programa IA Universitaria · Onboarding docente</p>
           <h1>Capacitación docente</h1>
-          <p>Política, evaluación, accesibilidad, herramientas y respuesta a incidentes.</p>
-          <aside class="notes">Usar este deck antes de abrir la cohorte. Enfatizar decisiones operativas y práctica de corrección.</aside>
+          <p>Estándares de ejecución, evaluación de trabajo con IA, gestión del aula híbrida y protocolos de incidentes.</p>
+          <aside class="notes">Este deck se usa en la sesión de onboarding docente, ANTES de abrir la cohorte. El objetivo no es transmitir políticas — es que cada instructor pueda ejecutar el programa sin depender de decisiones implícitas o memoria oral. Reservar al menos 120 minutos para este deck más práctica de evaluación.</aside>
         </section>
+
+        <!-- 2. Qué logra este onboarding -->
         <section>
-  <h2>Resultados del onboarding</h2>
-  <ul><li>Ejecutar sesión estándar.</li><li>Aplicar rúbrica.</li><li>Revisar bitácora.</li><li>Activar protocolo de incidentes.</li></ul>
-</section>
-<section>
-  <h2>Evaluar trabajo con IA</h2>
-  <ul><li>Pedir proceso, no solo producto.</li><li>Verificar fuentes.</li><li>Usar defensa oral breve.</li><li>Registrar retroalimentación accionable.</li></ul>
-</section>
-<section>
-  <h2>Aula híbrida</h2>
-  <ul><li>Plantillas comunes.</li><li>Alternativas de baja conectividad.</li><li>Tutoría por hitos.</li><li>Canal de soporte visible.</li></ul>
-</section>
-<section>
-  <h2>Incidentes</h2>
-  <ul><li>Integridad académica: Pedir bitácora, versión intermedia y defensa oral breve.</li><li>Privacidad: Retirar material, documentar, anonimizar y cambiar herramienta.</li><li>Accesibilidad: Activar alternativa equivalente y ajustar plazo razonable.</li><li>Identidad, voz o imagen: Pausar publicación o entrega, retirar el archivo y registrar evidencia.</li><li>Técnico: Suspender uso, ajustar permisos y ofrecer alternativa aprobada.</li></ul>
-</section>
-        <section>
-          <h2>Cierre</h2>
-          <p>Registrar evidencias, dudas abiertas y siguiente acción antes de salir de la sesión.</p>
-          <aside class="notes">Cerrar con una tarea observable y recordar la política de trazabilidad.</aside>
+          <h2>Al terminar este onboarding, podrás:</h2>
+          <div class="two-col">
+            <div>
+              <ul>
+                <li>Ejecutar la sesión síncrona estándar de 90 minutos</li>
+                <li>Aplicar la rúbrica analítica al trabajo estudiantil</li>
+                <li>Revisar una bitácora de prompts y dar retroalimentación accionable</li>
+                <li>Conducir una defensa oral breve</li>
+                <li>Activar los protocolos de incidentes (integridad, privacidad, accesibilidad)</li>
+              </ul>
+            </div>
+            <div class="callout">
+              <strong>Principio rector:</strong>
+              <p>Ejecución estandarizada sin impedir la adaptación local. Las decisiones pedagógicas que importan se toman antes de la sesión — no durante.</p>
+            </div>
+          </div>
+          <aside class="notes">Pedir a cada instructor que piense en su cohorte específica: ¿cuántos estudiantes? ¿Modalidad híbrida o en línea? ¿Disciplinas representadas? Esto informará qué adaptaciones necesitarán de lo que se presente aquí.</aside>
         </section>
+
+        <!-- 3. Antes de abrir la cohorte: checklist -->
+        <section>
+          <h2>Antes de abrir la cohorte</h2>
+          <p class="subtitle">Completa esto antes de la primera sesión.</p>
+          <div class="two-col">
+            <div>
+              <p><strong>LMS y calendario:</strong></p>
+              <ul>
+                <li>☐ Curso creado y accesos verificados</li>
+                <li>☐ Syllabus, política de uso y rúbricas publicados</li>
+                <li>☐ Plantillas de bitácora y verificación disponibles</li>
+                <li>☐ Pretest y postest configurados</li>
+                <li>☐ Canal de soporte activo con tiempo de respuesta definido</li>
+              </ul>
+            </div>
+            <div>
+              <p><strong>Técnico y accesibilidad:</strong></p>
+              <ul>
+                <li>☐ Acceso a al menos un LLM gratuito verificado</li>
+                <li>☐ Notebooks de ejemplo ejecutados sin error</li>
+                <li>☐ Materiales descargables preparados (baja conectividad)</li>
+                <li>☐ Subtítulos o transcripciones de demos disponibles</li>
+                <li>☐ Formulario de incidentes activo</li>
+              </ul>
+            </div>
+          </div>
+          <aside class="notes">Este checklist también está en el manual docente (docs/02-manual-docente/checklist-docente.mdx). Recomendar completarlo 48 horas antes de la primera sesión, no el mismo día.</aside>
+        </section>
+
+        <!-- 4. La sesión síncrona estándar -->
+        <section>
+          <h2>La sesión síncrona de 90 minutos</h2>
+          <p class="subtitle">Estructura estándar que aplica a todos los módulos.</p>
+          <table>
+            <thead><tr><th>Tramo</th><th>Duración</th><th>Qué hace el instructor</th></tr></thead>
+            <tbody>
+              <tr><td>Apertura</td><td>10 min</td><td>Enuncia objetivo, criterio de éxito y política aplicable al módulo</td></tr>
+              <tr><td>Demo guiada</td><td>15 min</td><td>Modela la tarea con IA, incluye un error visible y lo corrige en vivo</td></tr>
+              <tr><td>Práctica estructurada</td><td>20 min</td><td>Entrega caso + plantilla; acompaña sin dar respuestas directas</td></tr>
+              <tr><td>Transición</td><td>5 min</td><td>Preguntas críticas; ajusta el plan si nota bloqueos generalizados</td></tr>
+              <tr><td>Práctica aplicada</td><td>25 min</td><td>Circula, da retroalimentación formativa, detecta atajos</td></tr>
+              <tr><td>Cierre</td><td>10 min</td><td>Debrief colectivo; ticket de salida</td></tr>
+              <tr><td>Asignación</td><td>5 min</td><td>Enunciar tarea, rúbrica y ejemplos de nivel suficiente</td></tr>
+            </tbody>
+          </table>
+          <aside class="notes">El tramo de demo es el más crítico pedagógicamente. El error visible no es un accidente — es intencional. Modelar detección y corrección es más valioso que modelar perfección. Preparar el error de antemano (qué preguntarás a la IA, cuál será el output incorrecto, cómo lo detectarás).</aside>
+        </section>
+
+        <!-- 5. Cómo modelar el uso de IA correctamente -->
+        <section>
+          <h2>Modelar el uso de IA: qué hacen los mejores instructores</h2>
+          <div class="two-col">
+            <div>
+              <p><strong>Hacen:</strong></p>
+              <ul>
+                <li>Muestran el prompt completo, no solo el output</li>
+                <li>Cometen un error intencionado y lo detectan en vivo</li>
+                <li>Verifican una afirmación durante la demo (no despues)</li>
+                <li>Leen el output con voz crítica ("¿esto es correcto?")</li>
+                <li>Dicen en voz alta por qué aceptan o rechazan una sugerencia</li>
+              </ul>
+            </div>
+            <div>
+              <p><strong>Evitan:</strong></p>
+              <ul>
+                <li>Mostrar solo el "resultado perfecto"</li>
+                <li>Copiar el output de IA sin comentarlo</li>
+                <li>Hacer la demo muy rápido para cumplir tiempo</li>
+                <li>No registrar la demo en la bitácora propia</li>
+              </ul>
+              <div class="callout" style="margin-top:0.5em;">
+                Tu bitácora de la demo es el modelo de cómo debe verse una bitácora estudiantil.
+              </div>
+            </div>
+          </div>
+          <aside class="notes">Practicar la demo de cada módulo al menos una vez en privado antes de la sesión. El error no sale natural si no se preparó con antelación.</aside>
+        </section>
+
+        <!-- 6. Evaluar trabajo asistido con IA -->
+        <section>
+          <h2>Evaluar trabajo asistido por IA</h2>
+          <p class="subtitle">El proceso importa tanto como el producto.</p>
+          <div class="two-col">
+            <div>
+              <p><strong>Qué revisar primero:</strong></p>
+              <ol>
+                <li>¿Existe declaración de uso? ¿Es específica?</li>
+                <li>¿La bitácora muestra iteraciones reales?</li>
+                <li>¿Las fuentes citadas existen y dicen lo que se afirma?</li>
+                <li>¿El estudiante puede explicar su propio trabajo?</li>
+              </ol>
+            </div>
+            <div>
+              <p><strong>Señales de alerta comunes:</strong></p>
+              <ul>
+                <li>Texto muy pulido pero sin bitácora que lo respalde</li>
+                <li>Citas que no existen o no dicen lo afirmado</li>
+                <li>Código que no ejecuta o que el estudiante no puede explicar</li>
+                <li>Datos sensibles en evidencias entregadas</li>
+              </ul>
+            </div>
+          </div>
+          <aside class="notes">No juzgar "pulido = copiado" — algunos estudiantes son buenos escritores. El test es la bitácora. Si hay texto pulido y bitácora vacía, pedir versión intermedia o defensa oral breve. Esto es formativo, no punitivo.</aside>
+        </section>
+
+        <!-- 7. La defensa oral breve como herramienta de evaluación -->
+        <section>
+          <h2>La defensa oral breve</h2>
+          <p class="subtitle">5 minutos. No requiere preparación del estudiante. Revela comprensión real.</p>
+          <div class="two-col">
+            <div>
+              <p><strong>Cuándo activarla:</strong></p>
+              <ul>
+                <li>Texto muy pulido sin bitácora</li>
+                <li>Fuentes cuestionables</li>
+                <li>Código que no ejecuta</li>
+                <li>Dudas sobre autoría después de revisar evidencias</li>
+              </ul>
+            </div>
+            <div>
+              <p><strong>Preguntas estándar:</strong></p>
+              <ul>
+                <li>"Explícame en tus palabras el argumento principal."</li>
+                <li>"Muéstrame en tu bitácora cuándo tomaste la decisión más importante."</li>
+                <li>"¿Qué verificaste? ¿Cómo?"</li>
+                <li>"¿Qué cambiarías si tuvieras más tiempo?"</li>
+              </ul>
+            </div>
+          </div>
+          <div class="tip" style="margin-top:0.5em;">
+            La defensa oral no es un castigo — es una herramienta pedagógica estándar. Aplicarla de forma rutinaria a una muestra aleatoria reduce la sensación de vigilancia punitiva.
+          </div>
+          <aside class="notes">Llevar un registro de a quiénes se realizó la defensa y resultado. Si un estudiante no puede explicar su trabajo: clasificar como error formativo (sin bitácora) o incidente (datos/declaración falsa) según evidencias. El manual docente tiene el árbol de decisión.</aside>
+        </section>
+
+        <!-- 8. Gestión del aula híbrida -->
+        <section>
+          <h2>Gestión del aula híbrida</h2>
+          <div class="two-col">
+            <div>
+              <p><strong>Reglas base:</strong></p>
+              <ul>
+                <li>Publicar instrucciones ANTES de la sesión (no durante)</li>
+                <li>Mantener plantillas comunes para todos los grupos</li>
+                <li>Documentar las demos como microvídeos con transcripción</li>
+                <li>Canal de soporte visible con tiempo de respuesta comprometido</li>
+                <li>Cerrar cada semana con estado de entregas actualizado en LMS</li>
+              </ul>
+            </div>
+            <div>
+              <p><strong>Para grupos en línea completo:</strong></p>
+              <ul>
+                <li>Convertir demos en microvídeos de 5-8 min</li>
+                <li>Dividir prácticas largas en microtareas de 15-20 min</li>
+                <li>Usar tutorías en equipo de 5-10 min por hitos clave</li>
+                <li>Confirmar que cada actividad tiene alternativa descargable</li>
+              </ul>
+            </div>
+          </div>
+          <aside class="notes">La asimetría más común: el instructor hace la demo en sincrónico pero algunos estudiantes no están en vivo. Solución: grabar SIEMPRE la demo, aunque sea en MP4 básico. Transcripción automática de YouTube o Zoom es suficiente.</aside>
+        </section>
+
+        <!-- 9. Ajustes por conectividad y tamaño de cohorte -->
+        <section>
+          <h2>Ajustes por condiciones del grupo</h2>
+          <div class="two-col">
+            <div>
+              <p><strong>Baja conectividad:</strong></p>
+              <ul>
+                <li>Paquete semanal descargable (PDF + materiales)</li>
+                <li>Actividades equivalentes en hojas de cálculo locales</li>
+                <li>Dataset pequeño incluido en el paquete</li>
+                <li>Capturas de pantalla en lugar de capturas en vivo</li>
+              </ul>
+              <p><strong>Sin audio/video:</strong></p>
+              <ul>
+                <li>Transcripción de demos disponible en LMS</li>
+                <li>Alternativa en texto para todas las instrucciones orales</li>
+              </ul>
+            </div>
+            <div>
+              <p><strong>Por tamaño de cohorte:</strong></p>
+              <table>
+                <thead><tr><th>Tamaño</th><th>Ajuste</th></tr></thead>
+                <tbody>
+                  <tr><td>&lt;20</td><td>Más defensa oral individual, tutoría personalizada</td></tr>
+                  <tr><td>30–60</td><td>Equipos de 5-6, revisión de pares estructurada</td></tr>
+                  <tr><td>&gt;60</td><td>Secciones, rúbricas centralizadas, TAs adicionales</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <aside class="notes">La ruta sin código (hoja de cálculo) es obligatoria tenerla lista en módulo 05. No es una concesión — es un diseño de accesibilidad. Verificar antes de esa semana que el dataset pequeño esté disponible offline.</aside>
+        </section>
+
+        <!-- 10. Señales de dificultad y cómo responder -->
+        <section>
+          <h2>Señales de dificultad y respuesta del instructor</h2>
+          <table>
+            <thead><tr><th>Señal observable</th><th>Diagnóstico probable</th><th>Respuesta</th></tr></thead>
+            <tbody>
+              <tr><td>Estudiante no entrega bitácora en 2+ módulos</td><td>No entiende la utilidad o tiene resistencia</td><td>Tutoría breve: mostrar una bitácora de ejemplo; explicar el valor formativo</td></tr>
+              <tr><td>Trabajo muy pulido, sin proceso documentado</td><td>Uso no declarado de IA o delegación total</td><td>Solicitar versión intermedia o defensa oral breve</td></tr>
+              <tr><td>Estudiante ausente en 2+ síncronos</td><td>Barrera técnica o personal</td><td>Contacto por canal de soporte antes de semana 4</td></tr>
+              <tr><td>Preguntas repetidas sobre política de uso</td><td>Ansiedad por integridad o política poco clara</td><td>Responder en foro público; reforzar tono habilitador</td></tr>
+              <tr><td>Código que no ejecuta en entrega</td><td>No probó antes de entregar</td><td>Pedir ejecución en vivo o explicación línea por línea</td></tr>
+            </tbody>
+          </table>
+          <aside class="notes">Registrar señales de dificultad en el LMS o hoja de seguimiento de cohorte. El manual docente tiene umbrales de escalación: si 3 señales se acumulan, escalar a coordinación antes de la mitad del programa.</aside>
+        </section>
+
+        <!-- 11. Protocolo: integridad académica -->
+        <section>
+          <h2>Protocolo — Integridad académica</h2>
+          <p class="subtitle">Para situaciones de posible uso no declarado o delegación total.</p>
+          <div class="two-col">
+            <div>
+              <p><strong>Pasos:</strong></p>
+              <ol>
+                <li>Solicitar bitácora completa y versión intermedia del trabajo</li>
+                <li>Realizar defensa oral breve (5 min)</li>
+                <li>Clasificar: error formativo / falta de trazabilidad / incidente real</li>
+                <li>Aplicar rúbrica según evidencias obtenidas</li>
+                <li>Escalar solo si hay intención documentada de engaño</li>
+              </ol>
+            </div>
+            <div>
+              <div class="warning">
+                <strong>No escalar prematuramente.</strong>
+                <p>La mayoría de casos son errores de proceso (no declararon) o confusión sobre qué se permite. Resolver pedagógicamente primero. Escalar solo con evidencia clara de intención.</p>
+              </div>
+            </div>
+          </div>
+          <aside class="notes">Registrar cada caso en el formulario de incidentes aunque no se escale. Esto protege al instructor y permite identificar patrones en la cohorte. No discutir casos específicos en foros públicos o grupos de chat del curso.</aside>
+        </section>
+
+        <!-- 12. Protocolo: privacidad -->
+        <section>
+          <h2>Protocolo — Privacidad</h2>
+          <p class="subtitle">Para evidencias con datos personales reales o sensibles.</p>
+          <div class="two-col">
+            <div>
+              <p><strong>Pasos inmediatos:</strong></p>
+              <ol>
+                <li>Retirar el archivo de circulación (LMS, email, repositorio)</li>
+                <li>Documentar qué datos estaban expuestos y desde cuándo</li>
+                <li>Anonimizar la evidencia si es posible; si no, eliminar</li>
+                <li>Verificar si otros estudiantes tuvieron acceso</li>
+                <li>Registrar en formulario de incidentes y notificar coordinación</li>
+              </ol>
+            </div>
+            <div class="callout">
+              <strong>Categorías de riesgo:</strong>
+              <ul>
+                <li><span class="rojo">Alto</span>: datos de salud, menores, financieros, biométricos</li>
+                <li><span class="amarillo">Medio</span>: nombres completos con contexto sensible</li>
+                <li><span class="verde">Bajo</span>: datos agregados sin identificación</li>
+              </ul>
+            </div>
+          </div>
+          <aside class="notes">El formulario de incidentes de privacidad es diferente al de integridad académica. Ambos deben estar listos antes de abrir la cohorte. El contacto de coordinación responsable de privacidad debe ser conocido por todos los instructores antes del inicio.</aside>
+        </section>
+
+        <!-- 13. Protocolo: accesibilidad -->
+        <section>
+          <h2>Protocolo — Accesibilidad</h2>
+          <div class="two-col">
+            <div>
+              <p><strong>Cuando un estudiante reporta barrera:</strong></p>
+              <ol>
+                <li>Identificar la barrera específica (conectividad, dispositivo, discapacidad, idioma)</li>
+                <li>Activar la alternativa equivalente del módulo (siempre debe existir)</li>
+                <li>Ajustar plazo si la barrera fue estructural, no personal</li>
+                <li>Documentar el ajuste en el LMS</li>
+              </ol>
+            </div>
+            <div>
+              <p><strong>Alternativas disponibles por defecto:</strong></p>
+              <ul>
+                <li>Módulo 05: ruta de hojas de cálculo en lugar de código</li>
+                <li>Cualquier demo: transcripción en lugar de video</li>
+                <li>Entregas síncronas: posibilidad de entrega asíncrona equivalente</li>
+                <li>Baja conectividad: paquete descargable semanal</li>
+              </ul>
+            </div>
+          </div>
+          <aside class="notes">No pedir "comprobante" de discapacidad para dar alternativas — esto es innecesario y crea barreras adicionales. Si el ajuste es razonable y la actividad equivalente existe, activarlo sin cuestionamientos. La equidad no require uniformidad de proceso.</aside>
+        </section>
+
+        <!-- 14. Protocolo: voz, imagen e identidad -->
+        <section>
+          <h2>Protocolo — Voz, imagen e identidad</h2>
+          <p class="subtitle">Para contenido multimodal con personas reales en módulo 07 y proyecto final.</p>
+          <div class="two-col">
+            <div>
+              <p><strong>Si un estudiante entrega contenido con voces/imágenes/identidades reales sin consentimiento explícito:</strong></p>
+              <ol>
+                <li>Pausar inmediatamente la publicación o circulación</li>
+                <li>Retirar el archivo</li>
+                <li>Registrar evidencia (metadatos, fecha)</li>
+                <li>Solicitar versión alternativa con consentimiento o sin personas reales</li>
+                <li>Notificar coordinación si hay terceros afectados</li>
+              </ol>
+            </div>
+            <div class="warning">
+              <strong>El consentimiento debe ser:</strong>
+              <ul>
+                <li><strong>Informado</strong> — saben para qué se usará</li>
+                <li><strong>Voluntario</strong> — sin presión del grupo o del instructor</li>
+                <li><strong>Específico</strong> — no vale "para cualquier cosa del curso"</li>
+                <li><strong>Documentado</strong> — escrito o grabado</li>
+              </ul>
+            </div>
+          </div>
+          <aside class="notes">El módulo 07 incluye una sesión específica sobre consentimiento en contenido multimodal. Si los estudiantes llegan al proyecto final sin ese contexto, el instructor debe cubrirlo brevemente antes de revisar los proyectos.</aside>
+        </section>
+
+        <!-- 15. Actividad: práctica de evaluación -->
+        <section>
+          <div class="activity-label">Actividad de onboarding — 25 min</div>
+          <h2>Practica evaluar un trabajo con IA</h2>
+          <p>Se proporciona un trabajo simulado con bitácora. Evalúa en equipos de 2.</p>
+          <div class="two-col">
+            <div>
+              <p><strong>Ronda 1 (10 min):</strong></p>
+              <ol>
+                <li>Lee el trabajo sin ver la bitácora. ¿Qué señales ves?</li>
+                <li>Lee la bitácora. ¿Coincide con el trabajo?</li>
+                <li>Aplica la rúbrica (columnas: insuficiente / básico / competente / sobresaliente)</li>
+              </ol>
+            </div>
+            <div>
+              <p><strong>Ronda 2 (10 min):</strong></p>
+              <ol>
+                <li>Comparte tu evaluación con el equipo</li>
+                <li>¿Dónde hubo discrepancia? ¿Por qué?</li>
+                <li>¿Activarías la defensa oral breve? ¿Por qué sí / no?</li>
+              </ol>
+            </div>
+          </div>
+          <div class="tip" style="margin-top:0.4em;">Los materiales del ejercicio están en LMS → Recursos docentes → Ejercicio de calibración de rúbrica.</div>
+          <aside class="notes">5 minutos finales para puesta en común. El objetivo es calibrar criterios entre instructores de la misma cohorte — las discrepancias son normales y deben resolverse con el manual de rúbrica antes de que empiecen las entregas.</aside>
+        </section>
+
+        <!-- 16. Cierre del onboarding -->
+        <section>
+          <h2>Antes de salir de este onboarding</h2>
+          <div class="two-col">
+            <div>
+              <p><strong>Confirmaciones pendientes:</strong></p>
+              <ul>
+                <li>☐ Fecha de primera sesión síncrona confirmada</li>
+                <li>☐ Acceso al LMS verificado</li>
+                <li>☐ Canal de soporte activo</li>
+                <li>☐ Materiales de baja conectividad preparados</li>
+                <li>☐ Formulario de incidentes conocido y accesible</li>
+                <li>☐ Demo del Módulo 01 ensayada</li>
+              </ul>
+            </div>
+            <div class="callout">
+              <strong>Contacto de coordinación:</strong>
+              <p>Para cualquier situación que supere el protocolo del instructor o requiera decisión institucional, contactar a coordinación dentro de las 24 horas del incidente.</p>
+              <br>
+              <p>Los errores pedagógicos comunes se resuelven en la sesión o en tutoría. Las escalaciones son para situaciones con impacto institucional, legal o de privacidad.</p>
+            </div>
+          </div>
+          <aside class="notes">Verificar en el grupo que todos tienen claro quién es el contacto de coordinación y cómo se activa el formulario de incidentes. Si hay instructores nuevos sin experiencia previa con el programa, asignar un mentor o instructor senior de respaldo para las primeras 3 semanas.</aside>
+        </section>
+
       </div>
     </div>
   </body>
 </html>
-

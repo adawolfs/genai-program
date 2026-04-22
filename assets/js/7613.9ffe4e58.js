@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkportal_ia_universitaria=self.webpackChunkportal_ia_universitaria||[]).push([[7613],{7613:(a,e,i)=>{i.d(e,{createPieServices:()=>r.f});var r=i(9515);i(2519)}}]);
